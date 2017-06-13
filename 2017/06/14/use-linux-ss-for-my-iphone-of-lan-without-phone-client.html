@@ -1,0 +1,110 @@
+<!DOCTYPE html><html lang="zh-cn"><head><!--Document Settings--><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1"><meta name="renderer" content="webkit"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"><!--Page Meta--><title>Bin's Blog</title><meta name="description" content="一个戳逼的日记本。"><!--Mobile Meta--><meta name="HandheldFriendly" content="True"><!--Brand icon--><link rel="shortcut icon" href="/images/favicon.png"><!--Styles'n'Scripts--><link rel="stylesheet" href="/css/font-awesome.min.css"><link rel="stylesheet" href="/css/atom-one-light.css"><link rel="stylesheet" href="/css/waves.min.css"><link rel="stylesheet" href="/css/zoom.css"><link rel="stylesheet" href="/css/layout.css"><link rel="stylesheet" href="/css/adapt.css"><script src="/js/jquery-2.2.4.min.js"></script></head><body><!-- page-loading--><div class="page-loading"><div class="page-loading-main"><div class="page-loading-one"></div><div class="page-loading-two"></div></div></div><div id="pjax-container"><div class="mask"></div><div class="mask2"></div><!-- navigation--><div class="navbar-layout"><div class="navbar-header"><img src="/images/logo.jpg" alt="Bin's Blog"></div><div class="navbar-date"><div class="navbar-date-post"><h2>文章</h2><p>6</p></div><div class="navbar-date-tags"><h2>标签</h2><p>13</p></div><div class="clear-float"></div></div><div class="navbar-links"><ul><li><a href="/" target="_self">BLOG</a></li><li><a href="/archives/" target="_self">ARCHIVE</a></li><li><a href="/tags" target="_self">TAG</a></li><li><a href="/links" target="_self">LINK</a></li></ul></div><div class="navbar-icon"><a class="fa fa-github navbar-github" href="https://github.com/liaobinbin"></a><a class="fa fa-weibo navbar-weibo" href="http://weibo.com/mycxs"></a><a class="fa fa-envelope navbar-mail" href="mailto:undefined"></a><a class="fa fa-rss navbar-rss" href="/atom.xml"></a></div></div><!--body--><div class="body-layout"><div class="post-body-layout"><style media="screen">.post-header {
+    width: 100%;
+    height: 280px;
+    background: url(https://cdn.weic96.cn/website/a/15/4545620ec1ce9ee9147a91ab69c06.jpg);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-position: center;
+    padding: 50px 0;
+    text-align: center;
+    margin-bottom: 100px;
+    position: relative;
+}
+
+.post-header-wave {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 56px;
+    background: url(images/index-header-wave.png);
+    background-size: 100% 100%;
+}
+
+.post-header-info {
+    text-align: center;
+    margin-top: 70px;
+    width: 100%;
+}
+
+.post-header-info > h2 {
+    font-size: 35px;
+    color: #fff;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.post-header-info > time {
+    font-size: 9pt;
+    color: #fff;
+    font-weight: 400;
+}
+
+.post-body-layout {
+    background: none;
+}
+
+@media screen and (max-width: 380px) {
+    .post-header {
+        width: 98%;
+        height: auto;
+        background: none;
+        padding: 30px 0;
+        margin-bottom: 30px;
+        margin: 0 auto;
+    }
+
+    .post-header-info {
+        margin-top: 35px;
+    }
+
+    .post-header-info > h2 {
+        font-size: 26px;
+        font-weight: 200;
+        color: #666;
+        margin-bottom: 15px;
+    }
+
+    .post-header-info > time {
+        font-size: 9pt;
+        color: #999;
+        font-weight: 200;
+    }
+
+    .post-header-wave {
+        position: absolute;
+        bottom: 0;
+        width: 0;
+        height: 0;
+        background: none;
+    }
+}</style><div class="post-header"><div class="post-header-info"><h2>使用linux系统的ss为局域网的iphone实现网络加速kcptun</h2><time datetime="2017年06月14日"><i class="fa fa-calendar"> 发表于 2017年06月14日</i></time></div><div class="post-header-wave"></div></div><div class="index-container"><div class="post-layout"><article class="post-main"><section class="post-main-section"><p>折腾这个的原因是因为在IOS下没有支持<code>kcptun</code>加速的ss客户端，而且我这个穷屌丝，买不起可以刷固件的路由器。<br>所以就只有想办法把linux系统中的ss共享到局域网，IOS可以局域网的代理进行加速。实现躺在床上高速看<code>youtube</code>的效果。<br>因为<code>windows</code>的ss客户端已经自带的允许来自局域网的连接的功能，然而Linux的ss却没有此功能。<br>所有只有另寻它径，在网上查找资料就找到了一个名为<code>meow</code>代理工具，可以讲sock5代理转为http代理。</p>
+<p>老规矩上<code>gayhub</code>地址：<a href="https://github.com/renzhn/MEOW" target="_blank" rel="external">https://github.com/renzhn/MEOW</a></p>
+<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p>根据帮助文档，这里我直接执行他所提供的脚本</p>
+<pre><code class="bash">curl -L git.io/meowproxy | bash
+</code></pre>
+<p>这里会弹出一个提示框会让你输入安装的绝对路径，前提是该目录存在。<br>我填写的是<code>/home/bob/meow</code>。<br>安装的过程根据网络的因素可能时间会有点长，等待安装完成后。</p>
+<h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><p>可以在安装目录下找到一个可执行文件，使用<code>./MEOW</code>就可以执行。<br>它会自动调用<code>~/.meow/rc</code>这个配置文件。</p>
+<pre><code class="config">#############################
+# 监听地址，设为0.0.0.0可以监听所有端口，共享给局域网使用
+#############################
+listen = http://0.0.0.0:4411
+#############################
+# 指定二级代理
+#############################
+# 例子：
+#SOCKS5:
+proxy = socks5://127.0.0.1:1080
+# HTTP:
+#   proxy = http://127.0.0.1:8080
+#   proxy = http://user:password@127.0.0.1:8080
+# shadowsocks:
+#   proxy = ss://encrypt_method:password@1.2.3.4:8388
+#   支持的加密方法如下：
+#     aes-128-cfb, aes-192-cfb, aes-256-cfb,
+#     bf-cfb, cast5-cfb, des-cfb, rc4-md5,
+#     chacha20, salsa20, rc4, table
+</code></pre>
+<p>以上是我的配置文件，当跑起该服务后，将会在4411端口开放一个http代理服务。</p>
+<h3 id="IOS"><a href="#IOS" class="headerlink" title="IOS"></a>IOS</h3><p>手机端的设置，首先保证手机和linux在同一局域网，而且要注意防火墙不要拦截该端口，主要是针对linux。<br>手机可以在编辑WiFil里面的最下面，找到<code>HTTP代理</code>，设置为<code>手动</code>，填入你的linux的局域网ip地址和端口号。<br>不需要开启鉴定。</p>
+<h3 id="然后"><a href="#然后" class="headerlink" title="然后"></a>然后</h3><p>就愉快的玩耍吧。</p>
+</section><div class="post-tags"><item class="tags each" function(){ p none; }></item><!-- index pagination--><!-- post pagination--><div class="post-readmore"><div class="post-readmore-left"></div><div class="post-readmore-center"></div><div class="post-readmore-right"><a class="down-a" href="/2017/03/10/linux-use-keptun-and-shadowsocks.html"><span class="post-readmore-text">下一篇：</span>&nbsp;Linux用Kcptun和SS进行上网加速&nbsp;<i class="post-readmore-icon fa fa-angle-right"> </i></a></div></div></div></article></div></div></div><!-- footer--><footer class="page-footer"><p>Copyright @ 2017 <a href="https://liaobinbin.com">Bob Liao</a></p><p>Powered by <a target="_blank">Hexo</a> , Themes <a href="https://weic96.cn/themes-note/" target="_blank">Note</a>.</p></footer></div><span class="navbar-btn"><span class="navbar-btn-line1"></span><span class="navbar-btn-line2"></span><span class="navbar-btn-line3"></span></span><span class="backtop-btn waves-effect waves-button waves-float"><i class="fa fa-angle-up"></i></span></div><!-- script--><script src="/js/jquery.pjax.js"></script><script src="/js/highlight.pack.js"></script><script src="/js/highlightjs-line-numbers.js"></script><script src="/js/waves.min.js"></script><script src="/js/zoom.js"></script><script src="/js/transition.js"></script><script src="/js/main.js"></script><script src="/js/loading.js"></script></body></html>

@@ -1,0 +1,349 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Bin&#39;s Blog</title>
+  <subtitle>Good Lucky.</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="https://liaobinbin.com/"/>
+  <updated>2017-06-13T19:13:13.000Z</updated>
+  <id>https://liaobinbin.com/</id>
+  
+  <author>
+    <name>Bob Liao</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>使用linux系统的ss为局域网的iphone实现网络加速kcptun</title>
+    <link href="https://liaobinbin.com/2017/06/14/use-linux-ss-for-my-iphone-of-lan-without-phone-client.html"/>
+    <id>https://liaobinbin.com/2017/06/14/use-linux-ss-for-my-iphone-of-lan-without-phone-client.html</id>
+    <published>2017-06-13T19:09:51.000Z</published>
+    <updated>2017-06-13T19:13:13.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>折腾这个的原因是因为在IOS下没有支持<code>kcptun</code>加速的ss客户端，而且我这个穷屌丝，买不起可以刷固件的路由器。<br>所以就只有想办法把linux系统中的ss共享到局域网，IOS可以局域网的代理进行加速。实现躺在床上高速看<code>youtube</code>的效果。<br>因为<code>windows</code>的ss客户端已经自带的允许来自局域网的连接的功能，然而Linux的ss却没有此功能。<br>所有只有另寻它径，在网上查找资料就找到了一个名为<code>meow</code>代理工具，可以讲sock5代理转为http代理。</p>
+<p>老规矩上<code>gayhub</code>地址：<a href="https://github.com/renzhn/MEOW" target="_blank" rel="external">https://github.com/renzhn/MEOW</a></p>
+<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p>根据帮助文档，这里我直接执行他所提供的脚本</p>
+<pre><code class="bash">curl -L git.io/meowproxy | bash
+</code></pre>
+<p>这里会弹出一个提示框会让你输入安装的绝对路径，前提是该目录存在。<br>我填写的是<code>/home/bob/meow</code>。<br>安装的过程根据网络的因素可能时间会有点长，等待安装完成后。</p>
+<h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><p>可以在安装目录下找到一个可执行文件，使用<code>./MEOW</code>就可以执行。<br>它会自动调用<code>~/.meow/rc</code>这个配置文件。</p>
+<pre><code class="config">#############################
+# 监听地址，设为0.0.0.0可以监听所有端口，共享给局域网使用
+#############################
+listen = http://0.0.0.0:4411
+#############################
+# 指定二级代理
+#############################
+# 例子：
+#SOCKS5:
+proxy = socks5://127.0.0.1:1080
+# HTTP:
+#   proxy = http://127.0.0.1:8080
+#   proxy = http://user:password@127.0.0.1:8080
+# shadowsocks:
+#   proxy = ss://encrypt_method:password@1.2.3.4:8388
+#   支持的加密方法如下：
+#     aes-128-cfb, aes-192-cfb, aes-256-cfb,
+#     bf-cfb, cast5-cfb, des-cfb, rc4-md5,
+#     chacha20, salsa20, rc4, table
+</code></pre>
+<p>以上是我的配置文件，当跑起该服务后，将会在4411端口开放一个http代理服务。</p>
+<h3 id="IOS"><a href="#IOS" class="headerlink" title="IOS"></a>IOS</h3><p>手机端的设置，首先保证手机和linux在同一局域网，而且要注意防火墙不要拦截该端口，主要是针对linux。<br>手机可以在编辑WiFil里面的最下面，找到<code>HTTP代理</code>，设置为<code>手动</code>，填入你的linux的局域网ip地址和端口号。<br>不需要开启鉴定。</p>
+<h3 id="然后"><a href="#然后" class="headerlink" title="然后"></a>然后</h3><p>就愉快的玩耍吧。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;折腾这个的原因是因为在IOS下没有支持&lt;code&gt;kcptun&lt;/code&gt;加速的ss客户端，而且我这个穷屌丝，买不起可以刷固件的路由器。&lt;br&gt;所以就只有想办法把linux系统中的ss共享到局域网，IOS可以局域网的代理进行加速。实现躺在床上高速看&lt;code&gt;youtub
+    
+    </summary>
+    
+    
+      <category term="kcptun" scheme="https://liaobinbin.com/tags/kcptun/"/>
+    
+      <category term="shadowsocks" scheme="https://liaobinbin.com/tags/shadowsocks/"/>
+    
+      <category term="ios" scheme="https://liaobinbin.com/tags/ios/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Linux用Kcptun和SS进行上网加速</title>
+    <link href="https://liaobinbin.com/2017/03/10/linux-use-keptun-and-shadowsocks.html"/>
+    <id>https://liaobinbin.com/2017/03/10/linux-use-keptun-and-shadowsocks.html</id>
+    <published>2017-03-09T19:04:18.000Z</published>
+    <updated>2017-06-13T19:08:41.000Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote>
+<p>针对使用linux桌面版的用户和基于linux路由器的用户。</p>
+</blockquote>
+<h2 id="第一步：下载Kcptun可执行文件。"><a href="#第一步：下载Kcptun可执行文件。" class="headerlink" title="第一步：下载Kcptun可执行文件。"></a>第一步：下载Kcptun可执行文件。</h2><p><a href="https://github.com/xtaci/kcptun/releases" target="_blank" rel="external">Kcptun下载地址</a><br>需要根据自己系统版本选择相应的软件版本进行下载，因为我的主机是64位的，所以我下载的是<a href="https://github.com/xtaci/kcptun/releases/download/v20170218/kcptun-linux-amd64-20170218.tar.gz" target="_blank" rel="external">kcptun-linux-amd64-20170218.tar.gz</a></p>
+<pre><code class="bash">tar -xzf  kcptun-linux-amd64-20170218.tar.gz
+</code></pre>
+<p>解压后你将会得到两个文件，一个是<code>server_linux_amd64</code>，另外一个是<code>client_linux_amd64</code>。作为客户端，我们当然应该使用<code>client_linux_amd64</code>。<br>执行下面的命令可以获取到帮助文档</p>
+<pre><code class="bash">./client_linux_amd64 -h
+</code></pre>
+<a id="more"></a>
+<p>为了方便进行参数的设置，我这里使用其中<code>-c</code>的选项，这个选项将会让kcptun运行的时候调用一个<code>json</code>文件，在<code>json</code>文件里面有我们提前写好的服务器参数。</p>
+<pre><code class="json">{
+    &quot;localaddr&quot;: &quot;:8388&quot;, //本地使用的端口
+    &quot;remoteaddr&quot;: &quot;********:29900&quot;, //服务器的kcptun服务的ip地址加端口
+    &quot;key&quot;: &quot;*****&quot;, //你设定的加密密码
+    &quot;crypt&quot;: &quot;aes&quot;, //加密方式
+    &quot;mode&quot;: &quot;fast2&quot;, //加速模式
+    &quot;conn&quot;: 1, //从这以下的参数，你需要根据你在服务器端的配置参数进行设置
+    &quot;autoexpire&quot;: 60,
+    &quot;mtu&quot;: 1350,
+    &quot;sndwnd&quot;: 1024,
+    &quot;rcvwnd&quot;: 1024,
+    &quot;datashard&quot;: 10,
+    &quot;parityshard&quot;: 3,
+    &quot;dscp&quot;: 0,
+    &quot;nocomp&quot;: false,
+    &quot;acknodelay&quot;: false,
+    &quot;nodelay&quot;: 0,
+    &quot;interval&quot;: 20,
+    &quot;resend&quot;: 2,
+    &quot;nc&quot;: 1,
+    &quot;sockbuf&quot;: 4194304,
+    &quot;keepalive&quot;: 10
+}
+</code></pre>
+<p>然后我讲这个文件保存为<code>myvps.json</code><br>在终端执行下面的命令就可以运行kcptun服务。</p>
+<pre><code class="bash">./client_linux_amd64 -c myvps.json 
+#我是把该`json`文件存放在相同的路径下，如不同，则需要完整路径。
+</code></pre>
+<h2 id="第二步，关于ss的设置"><a href="#第二步，关于ss的设置" class="headerlink" title="第二步，关于ss的设置"></a>第二步，关于ss的设置</h2><p>执行完第一步的操作以后，在你的电脑或者是你的路由器就已经跑起了kcptun服务并且运行在”8388”端口上。<br>你需要把你的ss客户端配置文件进行修改，把原来的远程服务器IP地址改为<code>127.0.0.1</code>，并且修改原来的SS服务端口为<code>8388</code>，而SS里面的加密方式和密码还有SS服务器的本地端口则不需要修改。</p>
+<p>这样关于你浏览器的插件设置将不需要修改便可直接使用。<br>但是得到网速将会是以前很多倍。</p>
+<h2 id="完结，优化"><a href="#完结，优化" class="headerlink" title="完结，优化"></a>完结，优化</h2><h3 id="将SS用于命令行"><a href="#将SS用于命令行" class="headerlink" title="将SS用于命令行"></a>将SS用于命令行</h3><p>你需要用到一个工具室<code>proxychains</code><br>在配置文件的最后一行加上</p>
+<pre><code class="bash">socks5 127.0.0.1 1080
+</code></pre>
+<p>这样可以使你的git等命令也可以走代理的路线，大大的提高了从<code>github</code>下载速度。其他需要下载国外资源的命令也可以使用。</p>
+<p>命令用法：就在原有的命令的最前面加上<code>proxychains</code> <em>注意命令后面需要接一个空格</em></p>
+<pre><code class="bash">proxychains git clone git://xxxxxxxxx
+</code></pre>
+<h3 id="开机自启动kcptun"><a href="#开机自启动kcptun" class="headerlink" title="开机自启动kcptun"></a>开机自启动kcptun</h3><p>我把自动启动的命令添加了加载图形界面后，实际上加入到系统自启会更好,所以我在我的<code>.xinitrc</code>中添加了以下代码</p>
+<pre><code class="bash">( ( sleep 2 &amp;amp;&amp;amp; /home/bob/Downloads/client_linux_amd64 -c /home/bob/Downloads/myvps.json ) &amp;amp; )
+</code></pre>
+<p>其中路径应该修改为你自己的文件的绝对路径。</p>
+<h2 id="结束"><a href="#结束" class="headerlink" title="结束"></a>结束</h2><p>撒花撒花撒花撒花撒花撒花撒花撒花撒花撒花撒花撒花撒花撒花！！！！</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;针对使用linux桌面版的用户和基于linux路由器的用户。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&quot;第一步：下载Kcptun可执行文件。&quot;&gt;&lt;a href=&quot;#第一步：下载Kcptun可执行文件。&quot; class=&quot;headerlink&quot; title=&quot;第一步：下载Kcptun可执行文件。&quot;&gt;&lt;/a&gt;第一步：下载Kcptun可执行文件。&lt;/h2&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/xtaci/kcptun/releases&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Kcptun下载地址&lt;/a&gt;&lt;br&gt;需要根据自己系统版本选择相应的软件版本进行下载，因为我的主机是64位的，所以我下载的是&lt;a href=&quot;https://github.com/xtaci/kcptun/releases/download/v20170218/kcptun-linux-amd64-20170218.tar.gz&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;kcptun-linux-amd64-20170218.tar.gz&lt;/a&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;bash&quot;&gt;tar -xzf  kcptun-linux-amd64-20170218.tar.gz
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;解压后你将会得到两个文件，一个是&lt;code&gt;server_linux_amd64&lt;/code&gt;，另外一个是&lt;code&gt;client_linux_amd64&lt;/code&gt;。作为客户端，我们当然应该使用&lt;code&gt;client_linux_amd64&lt;/code&gt;。&lt;br&gt;执行下面的命令可以获取到帮助文档&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;bash&quot;&gt;./client_linux_amd64 -h
+&lt;/code&gt;&lt;/pre&gt;
+    
+    </summary>
+    
+    
+      <category term="linux" scheme="https://liaobinbin.com/tags/linux/"/>
+    
+      <category term="kcptun" scheme="https://liaobinbin.com/tags/kcptun/"/>
+    
+      <category term="shadowsocks" scheme="https://liaobinbin.com/tags/shadowsocks/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Linux VPS 搭建tomcat 6 基于centos 7</title>
+    <link href="https://liaobinbin.com/2016/07/24/install-tomcat6-to-centos7.html"/>
+    <id>https://liaobinbin.com/2016/07/24/install-tomcat6-to-centos7.html</id>
+    <published>2016-07-23T18:54:24.000Z</published>
+    <updated>2017-06-13T19:01:40.000Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote>
+<p>因为部门老大的需要，所以部门老大让我在公司的服务器上面搭建一个linux 服务器。并且安装<code>tomcat 6</code>.其原因不详，我猜可能是他接的外水吧。</p>
+</blockquote>
+<a id="more"></a>
+<h1 id="安装Linux"><a href="#安装Linux" class="headerlink" title="安装Linux"></a>安装Linux</h1><h2 id="创建一个虚拟机"><a href="#创建一个虚拟机" class="headerlink" title="创建一个虚拟机"></a>创建一个虚拟机</h2><p>　　公司是一台VPS主服务器，里面的虚拟机采用<code>Hyper-v</code>的软件来开通VPS，首先是类似<code>VMware</code>一样创建的一台空虚拟机，这里的配置使用的是双核，1GB内存，40GB磁盘。<br>　　内存启用了<code>Hyper-v</code>的动态内存，启动内存为1024MB，最小内存为512M，最大内存为1024MB，压缩比为百分之20。</p>
+<h3 id="下载centos7镜像文件"><a href="#下载centos7镜像文件" class="headerlink" title="下载centos7镜像文件"></a>下载centos7镜像文件</h3><p>　　在<a href="https://www.centos.org/" target="_blank" rel="external">centos的官网</a>直接通过谷歌浏览器下载，速度很快，10MB每秒。因为公司的服务器本身是一个美国VPS宿主机。<br>　　我选择下载的<a href="http://isoredirect.centos.org/centos/7/isos/x86_64/CentOS-7-x86_64-Minimal-1511.iso" target="_blank" rel="external">CentOS-7-x86_64-Minimal-1511.iso</a>。</p>
+<h3 id="安装系统"><a href="#安装系统" class="headerlink" title="安装系统"></a>安装系统</h3><p>　　1. 编辑该虚拟机的配置，使其的光驱设置为刚才下载的iso文件。<br>　　2. 启动虚拟机，并且使用Hyper-v连接到该虚拟机。<br>　　3. 进入引导界面，选择第一步，开始安装。<br>　　4. 等待加载图形界面<br>　　5. 配置需要安装的磁盘和安全性、时区、语言等参数<br>　　6. 点击开始安装，会在完成安装后要求你设置root密码和新建用户（可以选择不新建用户）。<br>　　7. 我新建一个叫做bob的用户，并且将该用户设置为系统管理员。<br>　　8. 完成安装，系统重启。</p>
+<h2 id="配置Linux"><a href="#配置Linux" class="headerlink" title="配置Linux"></a>配置Linux</h2><h3 id="网络设置"><a href="#网络设置" class="headerlink" title="网络设置"></a>网络设置</h3><p>　　进入系统后，第一个设置是修改网卡配置。<br>　　因为该服务器是需要接入互联网的，所以使用的是一个独立IP，通过编辑ifcfg-eth0可以实现静态网络连接。而且这里因为是最小化安装，所以很多的编辑器自带是没有安装的，能够使用的是<code>VI</code>。而且我使用的是bob身份登陆的。不是root身份还需要使用sudo命令。</p>
+<pre><code class="bash">sudo vi /etc/sysconfig/network-scripts/ifcfg-eth0
+</code></pre>
+<p>　　修改如下内容：</p>
+<h1 id="其他已经存在的参数不需要删除"><a href="#其他已经存在的参数不需要删除" class="headerlink" title="其他已经存在的参数不需要删除"></a>其他已经存在的参数不需要删除</h1><pre><code class="bash">BOOTPROTO=&quot;static&quot; #dhcp改为static   
+ONBOOT=&quot;yes&quot; #开机启用本配置  
+IPADDR=XXX.XXX.XXX.XXX #静态IP  
+GATEWAY=XXX.XXX.XXX.XXX #默认网关  
+NETMASK=255.255.255.248 #子网掩码  
+DNS1=8.8.8.8 #DNS 配置  
+DNS2=8.8.4.4
+</code></pre>
+<p>保存文件后重启网络服务：</p>
+<pre><code class="bash">sudo service network restart
+</code></pre>
+<h1 id="或者用"><a href="#或者用" class="headerlink" title="或者用"></a>或者用</h1><pre><code class="bash">sudo systemctl restart network.serivce
+</code></pre>
+<p>使用<code>ip addr</code>查看效果。</p>
+<h3 id="更新软件仓库和系统"><a href="#更新软件仓库和系统" class="headerlink" title="更新软件仓库和系统"></a>更新软件仓库和系统</h3><p>　　这个使用的是一个很简单的命令：</p>
+<pre><code class="bash">sudo yum update
+</code></pre>
+<p>　　等待系统更新完成。这时候通过<code>Hyper-v</code>生成一个快照，以免后面的错误操作方便可以随时还原。</p>
+<h1 id="安装tomcat"><a href="#安装tomcat" class="headerlink" title="安装tomcat　　"></a>安装tomcat　　</h1><h2 id="安装jdk"><a href="#安装jdk" class="headerlink" title="安装jdk"></a>安装jdk</h2><p>　　最小化安装centos是没有包含任何jdk存在的，包括openjdk也是没有的，所以这里可以直接去官网下载最新的Jdk.</p>
+<h3 id="安装Wget"><a href="#安装Wget" class="headerlink" title="安装Wget"></a>安装Wget</h3><pre><code class="bash">sudo yum install wget
+</code></pre>
+<h3 id="安装JDK"><a href="#安装JDK" class="headerlink" title="安装JDK"></a>安装JDK</h3><p>　　在浏览器中找到jdk的官网和正确的版本下载地址，这里选用的是 <a href="http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html" target="_blank" rel="external">Java SE Development Kit 8u101</a>,找到<code>jdk-8u101-linux-x64.rpm</code>复制其下载地址，使用以下命令下载到centos中：</p>
+<pre><code class="bash">wget http://download.oracle.com/otn-pub/java/jdk/8u101-b13/jdk-8u101-linux-x64.rpm
+</code></pre>
+<p>　　下载完成后，使用rpm开始安装：</p>
+<pre><code class="bash">sudo rpm -ivh jdk-8u101-linux-x64.rpm
+</code></pre>
+<h2 id="安装tomcat6"><a href="#安装tomcat6" class="headerlink" title="安装tomcat6"></a>安装tomcat6</h2><h3 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h3><pre><code class="bash">wget http://mirrors.hust.edu.cn/apache/tomcat/tomcat-6/v6.0.45/bin/apache-tomcat-6.0.45.tar.gz
+</code></pre>
+<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p>　　首先解压到当前目录，使用<code>tar</code>命令解压到下载的目录。</p>
+<pre><code class="bash">tar -zxvf apache-tomcat-6.0.45.tar.gz
+</code></pre>
+<p>　　然后移动到根目录下，这使用root权限移动到跟目录，并且重命名为tomcat6。</p>
+<pre><code class="bash">sudo mv apache-tomcat-6.0.45 /tomcat6
+</code></pre>
+<h2 id="启动tomcat6"><a href="#启动tomcat6" class="headerlink" title="启动tomcat6"></a>启动tomcat6</h2><p>　　启动tomcat6比较容易，直接移动到tomcat目录下的Bin文件夹。里面有启动脚本，使用普通用户权限执行即可。</p>
+<pre><code class="bash">cd /tomcat6/bin
+./startup
+</code></pre>
+<p>　　这时候应该可以看到提示成功运行的信息。</p>
+<h2 id="访问tomcat6"><a href="#访问tomcat6" class="headerlink" title="访问tomcat6"></a>访问tomcat6</h2><p>　　访问tomcat6默认的端口是8080。使用<code>XXX.XXX.XXX.XXX:8080</code>就可以看到访问效果了。不需要关闭<code>iptables</code>。</p>
+<h1 id="安装完成后。"><a href="#安装完成后。" class="headerlink" title="安装完成后。"></a>安装完成后。</h1><p>　　啥也不会，也不会写jsp代码。发现没什么卵用。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;因为部门老大的需要，所以部门老大让我在公司的服务器上面搭建一个linux 服务器。并且安装&lt;code&gt;tomcat 6&lt;/code&gt;.其原因不详，我猜可能是他接的外水吧。&lt;/p&gt;
+&lt;/blockquote&gt;
+    
+    </summary>
+    
+    
+      <category term="linux" scheme="https://liaobinbin.com/tags/linux/"/>
+    
+      <category term="tomact" scheme="https://liaobinbin.com/tags/tomact/"/>
+    
+      <category term="centos" scheme="https://liaobinbin.com/tags/centos/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>关于hexo使用七牛图床</title>
+    <link href="https://liaobinbin.com/2016/07/14/hexo-use-qiniu-image.html"/>
+    <id>https://liaobinbin.com/2016/07/14/hexo-use-qiniu-image.html</id>
+    <published>2016-07-13T18:50:33.000Z</published>
+    <updated>2017-06-13T18:52:15.000Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote>
+<p>因为hexo的博客静态网页文件是在本地生成，对于图片附件的支持不是很好，本来是用的官方的一个插件，但是那个插件在我使用固定连接后会有一个文件夹的问题存在，我没有时间去捣鼓，就去找了别的图床工具。</p>
+</blockquote>
+<a id="more"></a>
+<h3 id="说说"><a href="#说说" class="headerlink" title="说说"></a>说说</h3><p>IPic<br>　　这个工具在MAC下还是真的不错。<br>　　以下是官方使用的截图：<br><img src="http://7xs9lb.com1.z0.glb.clouddn.com/16-7-14/92334554.jpg" alt="官方使用截图"><br>　　普通用户只可以使用免费版，只支持微博免费图床，我下载了上传了几个图片都失败了，因为苹果账号没有绑定付款信息，所以我没有去升级付费版，一年25元人民币，算是很便宜的，还是值得退款的，支持多种方式去上传，有兴趣的同学可以自己去他官网查看详细的介绍。这里我就不多说了，因为没有使用。<br><img src="http://7xs9lb.com1.z0.glb.clouddn.com/16-7-14/96536054.jpg" alt="ipic免费版"></p>
+<h3 id="极简图床"><a href="#极简图床" class="headerlink" title="极简图床"></a>极简图床</h3><p>　　这个说的简单一点就是一个网页上传工具。不过提供的chrome插件，相当于一个书签，可以快速访问该网站而已。<br>　　比较好的一点就是可以直接绑定七牛账号，上传后自动保存到自己的七牛云存储空间，那真的极好的。<br>　　网页截图：<br><img src="http://7xs9lb.com1.z0.glb.clouddn.com/16-7-14/29365503.jpg" alt="网页主界面"><br>　　上传后可以直接复制markdown的代码，这对于hexo的插入图片附件是极好的。<br><img src="http://7xs9lb.com1.z0.glb.clouddn.com/16-7-14/9976607.jpg" alt="效果如图"></p>
+<p>　　以上为个人使用观点，不带任何吹黑性质，适合自己使用的就好。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;因为hexo的博客静态网页文件是在本地生成，对于图片附件的支持不是很好，本来是用的官方的一个插件，但是那个插件在我使用固定连接后会有一个文件夹的问题存在，我没有时间去捣鼓，就去找了别的图床工具。&lt;/p&gt;
+&lt;/blockquote&gt;
+    
+    </summary>
+    
+    
+      <category term="hexo" scheme="https://liaobinbin.com/tags/hexo/"/>
+    
+      <category term="图床" scheme="https://liaobinbin.com/tags/%E5%9B%BE%E5%BA%8A/"/>
+    
+      <category term="七牛" scheme="https://liaobinbin.com/tags/%E4%B8%83%E7%89%9B/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>将常用系统迁移到MAC</title>
+    <link href="https://liaobinbin.com/2016/04/15/change-my-always-OS-to-OSX-MAC.html"/>
+    <id>https://liaobinbin.com/2016/04/15/change-my-always-OS-to-OSX-MAC.html</id>
+    <published>2016-04-14T18:45:43.000Z</published>
+    <updated>2017-06-13T18:49:57.000Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote>
+<p>宁静以致远，厚薄而积发</p>
+</blockquote>
+<a id="more"></a>
+<h2 id="Windows常用软件列表"><a href="#Windows常用软件列表" class="headerlink" title="Windows常用软件列表"></a>Windows常用软件列表</h2><ul>
+<li>winrar(每次安装系统都必装的，因为有些程序需要解压缩，没一个好的解压软件真的不行)</li>
+<li>chrome(互联网的世界没有他怎么能行？三系统全用着，谷歌全家桶)</li>
+<li>diskgenius(难免会有操作磁盘之类的东东，用来修改U盘的一些引导参数也好用)</li>
+</ul>
+<h2 id="Linux常用软件列表"><a href="#Linux常用软件列表" class="headerlink" title="Linux常用软件列表"></a>Linux常用软件列表</h2><ul>
+<li>VIM</li>
+<li>xfce</li>
+<li>zsh</li>
+<li>awesome</li>
+<li>i3wm</li>
+<li>emacs</li>
+<li>mpd</li>
+</ul>
+<h2 id="Mac下常用软件列表"><a href="#Mac下常用软件列表" class="headerlink" title="Mac下常用软件列表"></a>Mac下常用软件列表</h2><ul>
+<li>VIM</li>
+<li>Xcode</li>
+<li>eclipse</li>
+<li>IDEA</li>
+<li>Dash</li>
+<li>zsh</li>
+<li>oh-my-zsh</li>
+<li>Iterm</li>
+<li>Alfred</li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;宁静以致远，厚薄而积发&lt;/p&gt;
+&lt;/blockquote&gt;
+    
+    </summary>
+    
+    
+      <category term="mac" scheme="https://liaobinbin.com/tags/mac/"/>
+    
+      <category term="linux" scheme="https://liaobinbin.com/tags/linux/"/>
+    
+      <category term="windows" scheme="https://liaobinbin.com/tags/windows/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>部署HEXO同时发布到github和coding</title>
+    <link href="https://liaobinbin.com/2016/04/14/deploy-hexo-to-github-and-coding.html"/>
+    <id>https://liaobinbin.com/2016/04/14/deploy-hexo-to-github-and-coding.html</id>
+    <published>2016-04-13T18:41:00.000Z</published>
+    <updated>2017-06-13T18:43:34.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>　　其实一开始我的网站是部署在我公司的服务器上的，不过由于公司的香港服务器的机房停止了对大陆的接入线路，导致访问的时候会先到美国转一圈才能访问主机，还不如使用美国服务器了。<br><a id="more"></a><br>　　刚好在网上爬帖的时候，看到了一个把hexo部署到github和coding的<a href="http://www.jianshu.com/p/7ad9d3cd4d6e" target="_blank" rel="external">教程</a>，我之前的hexo都单独放过github和gitcafe。所以操作什么的都很轻松，重点是看到他使用dnspod的CNAME转发，分别让国内的用户访问coding源国外的用户访问github源，所以我觉得这样是非常好的。<br>　　于是我也折腾了一下，把Hexo跑了起来，不过就是这两个都不能像独立空间那样，可以使用自己的SSL证书，于是我刚申请的三年免费的沃通SSL证书就不知道何去何从了。<br>　　不过说真的，其实我不知道写什么，我估计是因为自己肚子里面没有什么墨水吧:) 词穷—。=</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;　　其实一开始我的网站是部署在我公司的服务器上的，不过由于公司的香港服务器的机房停止了对大陆的接入线路，导致访问的时候会先到美国转一圈才能访问主机，还不如使用美国服务器了。&lt;br&gt;
+    
+    </summary>
+    
+    
+      <category term="hexo" scheme="https://liaobinbin.com/tags/hexo/"/>
+    
+      <category term="coding" scheme="https://liaobinbin.com/tags/coding/"/>
+    
+      <category term="github" scheme="https://liaobinbin.com/tags/github/"/>
+    
+  </entry>
+  
+</feed>
