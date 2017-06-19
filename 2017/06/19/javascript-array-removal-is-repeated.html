@@ -1,0 +1,215 @@
+<!DOCTYPE html><html lang="zh-cn"><head><!--Document Settings--><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1"><meta name="renderer" content="webkit"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"><!--Page Meta--><title>Bin's Blog</title><meta name="description" content="一个戳逼的日记本。"><!--Mobile Meta--><meta name="HandheldFriendly" content="True"><!--Brand icon--><link rel="shortcut icon" href="/images/favicon.png"><!--Styles'n'Scripts--><link rel="stylesheet" href="/css/font-awesome.min.css"><link rel="stylesheet" href="/css/atom-one-light.css"><link rel="stylesheet" href="/css/waves.min.css"><link rel="stylesheet" href="/css/zoom.css"><link rel="stylesheet" href="/css/layout.css"><link rel="stylesheet" href="/css/adapt.css"><script src="/js/jquery-2.2.4.min.js"></script></head><body><!-- page-loading--><div class="page-loading"><div class="page-loading-main"><div class="page-loading-one"></div><div class="page-loading-two"></div></div></div><div id="pjax-container"><div class="mask"></div><div class="mask2"></div><!-- navigation--><div class="navbar-layout"><div class="navbar-header"><img src="/images/logo.jpg" alt="Bin's Blog"></div><div class="navbar-date"><div class="navbar-date-post"><h2>文章</h2><p>8</p></div><div class="navbar-date-tags"><h2>标签</h2><p>19</p></div><div class="clear-float"></div></div><div class="navbar-links"><ul><li><a href="/" target="_self">BLOG</a></li><li><a href="/archives/" target="_self">ARCHIVE</a></li><li><a href="/tags" target="_self">TAG</a></li><li><a href="/links" target="_self">LINK</a></li></ul></div><div class="navbar-icon"><a class="fa fa-github navbar-github" href="https://github.com/liaobinbin"></a><a class="fa fa-weibo navbar-weibo" href="http://weibo.com/mycxs"></a><a class="fa fa-envelope navbar-mail" href="mailto:undefined"></a><a class="fa fa-rss navbar-rss" href="/atom.xml"></a></div></div><!--body--><div class="body-layout"><div class="post-body-layout"><style media="screen">.post-header {
+    width: 100%;
+    height: 280px;
+    background: url(https://cdn.weic96.cn/website/a/15/4545620ec1ce9ee9147a91ab69c06.jpg);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-position: center;
+    padding: 50px 0;
+    text-align: center;
+    margin-bottom: 100px;
+    position: relative;
+}
+
+.post-header-wave {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 56px;
+    background: url(images/index-header-wave.png);
+    background-size: 100% 100%;
+}
+
+.post-header-info {
+    text-align: center;
+    margin-top: 70px;
+    width: 100%;
+}
+
+.post-header-info > h2 {
+    font-size: 35px;
+    color: #fff;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.post-header-info > time {
+    font-size: 9pt;
+    color: #fff;
+    font-weight: 400;
+}
+
+.post-body-layout {
+    background: none;
+}
+
+@media screen and (max-width: 380px) {
+    .post-header {
+        width: 98%;
+        height: auto;
+        background: none;
+        padding: 30px 0;
+        margin-bottom: 30px;
+        margin: 0 auto;
+    }
+
+    .post-header-info {
+        margin-top: 35px;
+    }
+
+    .post-header-info > h2 {
+        font-size: 26px;
+        font-weight: 200;
+        color: #666;
+        margin-bottom: 15px;
+    }
+
+    .post-header-info > time {
+        font-size: 9pt;
+        color: #999;
+        font-weight: 200;
+    }
+
+    .post-header-wave {
+        position: absolute;
+        bottom: 0;
+        width: 0;
+        height: 0;
+        background: none;
+    }
+}</style><div class="post-header"><div class="post-header-info"><h2>Js对于数组去重提高效率一些心得</h2><time datetime="2017年06月19日"><i class="fa fa-calendar"> 发表于 2017年06月19日</i></time></div><div class="post-header-wave"></div></div><div class="index-container"><div class="post-layout"><article class="post-main"><section class="post-main-section"><p>最近在找工作，好几次面试都问过数组去重的问题。虽然问的都不一样，但是核心思想是没有变的。</p>
+<h2 id="第一种是比较常规的方法"><a href="#第一种是比较常规的方法" class="headerlink" title="第一种是比较常规的方法"></a>第一种是比较常规的方法</h2><p><strong>思路：</strong></p>
+<ol>
+<li>构建一个新的数组存放结果</li>
+<li>for循环中每次从原数组中取出一个元素，用这个元素循环与结果数组对比</li>
+<li>若结果数组中没有该元素，则存到结果数组中</li>
+</ol>
+<pre><code class="javascript">Array.prototype.unique1 = function(){
+ var res = [this[0]];
+ for(var i = 1; i &lt; this.length; i++){
+  var repeat = false;
+  for(var j = 0; j &lt; res.length; j++){
+   if(this[i] == res[j]){
+    repeat = true;
+    break;
+   }
+  }
+  if(!repeat){
+   res.push(this[i]);
+  }
+ }
+ return res;
+}
+var arr = [1, &#39;a&#39;, &#39;a&#39;, &#39;b&#39;, &#39;d&#39;, &#39;e&#39;, &#39;e&#39;, 1, 0]
+alert(arr.unique1());
+</code></pre>
+<h2 id="第二种方法比上面的方法效率要高"><a href="#第二种方法比上面的方法效率要高" class="headerlink" title="第二种方法比上面的方法效率要高"></a>第二种方法比上面的方法效率要高</h2><p><strong>思路：</strong></p>
+<ol>
+<li>先将原数组进行排序</li>
+<li>检查原数组中的第i个元素 与 结果数组中的最后一个元素是否相同，因为已经排序，所以重复元素会在相邻位置</li>
+<li>如果不相同，则将该元素存入结果数组中</li>
+</ol>
+<pre><code class="javascript">Array.prototype.unique2 = function(){
+ this.sort(); //先排序
+ var res = [this[0]];
+ for(var i = 1; i &lt; this.length; i++){
+  if(this[i] !== res[res.length - 1]){
+   res.push(this[i]);
+  }
+ }
+ return res;
+}
+var arr = [1, &#39;a&#39;, &#39;a&#39;, &#39;b&#39;, &#39;d&#39;, &#39;e&#39;, &#39;e&#39;, 1, 0]
+alert(arr.unique2());
+</code></pre>
+<p>第二种方法也会有一定的局限性，因为在去重前进行了排序，所以最后返回的去重结果也是排序后的。如果要求不改变数组的顺序去重，那这种方法便不可取了。</p>
+<h2 id="第三种方法（推荐使用）"><a href="#第三种方法（推荐使用）" class="headerlink" title="第三种方法（推荐使用）"></a>第三种方法（推荐使用）</h2><p><strong>思路：</strong></p>
+<ol>
+<li>创建一个新的数组存放结果</li>
+<li>创建一个空对象</li>
+<li>for循环时，每次取出一个元素与对象进行对比，如果这个元素不重复，则把它存放到结果数组中，同时把这个元素的内容作为对象的一个属性，并赋值为1，存入到第2步建立的对象中。</li>
+</ol>
+<blockquote>
+<p><strong>说明</strong>：至于如何对比，就是每次从原数组中取出一个元素，然后到对象中去访问这个属性，如果能访问到值，则说明重复。</p>
+</blockquote>
+<pre><code class="javascript">Array.prototype.unique3 = function(){
+ var res = [];
+ var json = {};
+ for(var i = 0; i &lt; this.length; i++){
+  if(!json[this[i]]){
+   res.push(this[i]);
+   json[this[i]] = 1;
+  }
+ }
+ return res;
+}
+var arr = [112,112,34,&#39;你好&#39;,112,112,34,&#39;你好&#39;,&#39;str&#39;,&#39;str1&#39;];
+alert(arr.unique3());
+</code></pre>
+<p>下面我遇到的面试题</p>
+<p><em>注释掉的是常规写法</em></p>
+<pre><code class="javascript">// function test(str) {
+//     var arr = str.split(&quot;&quot;);
+//     var newStr = &quot;&quot;; 
+//     for(var i=0; i&lt; arr.length; i++){
+//         var count = 0;
+//         for(var n=0; n&lt;arr.length; n++){
+//             if(arr[n] == arr[i]){
+//                 count ++;
+//             }
+//         }
+//         newStr += count &gt;= 2 ? &quot;)&quot; : &quot;(&quot;;
+//     }
+//     return newStr
+// }
+function test(str){
+    var arr = str.split(&quot;&quot;);
+    var result = [], hash = {};
+    for(var i=0,elem; (elem = arr[i]) != null; i++){
+        if(!hash[elem]){
+            result.push(elem);
+            hash[elem] = 1
+        }else{
+            hash[elem] ++;
+        }
+    }
+    for(var n=0,elem; (elem = result[n]) != null ; n++){
+        var reg = new RegExp(result[n], &quot;g&quot;);
+        hash[elem] &gt; 1 ? str = str.replace(reg, &quot;)&quot;) : str = str.replace(reg, &quot;(&quot;);
+    }
+    return str;
+}
+console.log(test(&#39;abcb&#39;));
+</code></pre>
+<p>这个是帮朋友写的一个题</p>
+<pre><code class="javascript">// function change(str, key){
+//     str = str.split(&#39;&#39;);
+//     key = key.split(&#39;&#39;);
+//     for(var i=0; i&lt;str.length; i++){
+//         for(var n=0; n&lt;key.length; n++){
+//             if(str[i] === key[n]){
+//                 str.splice(i, 1);
+//                 break;
+//             } else {
+//                 continue;
+//             }
+//         }
+//     }
+//     return str.join(&quot;&quot;);
+// }
+
+function change(str, key){
+    var arr = str.split(&#39;&#39;);
+    key = key.split(&#39;&#39;);
+    var hash = {};
+    for(var i=0,elem; (elem = key[i]) != null; i++){
+        if(!hash[elem]) hash[elem] = true
+    }
+    for(var n=0, elem; (elem = arr[n]) != null; n++){
+        if(hash[elem]) arr.splice(n,1);
+    }
+    return arr.join(&quot;&quot;);
+}
+console.log(change(&quot;they are students &quot;, &quot;aeous&quot;));
+</code></pre>
+</section><ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Array/">Array</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavasSript/">JavasSript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Repeat/">Repeat</a></li></ul><!-- index pagination--><!-- post pagination--><div class="post-readmore"><div class="post-readmore-left"></div><div class="post-readmore-center"></div><div class="post-readmore-right"><a class="down-a" href="/2017/06/18/shorthand-javascript-techniques.html"><span class="post-readmore-text">下一篇：</span>&nbsp;19个JavaScript编码中的简写语法&nbsp;<i class="post-readmore-icon fa fa-angle-right"> </i></a></div></div></article></div></div></div><!-- footer--><footer class="page-footer"><p>Copyright @ 2017 <a href="https://liaobinbin.com">Bob Liao</a></p><p>Powered by <a target="_blank">Hexo</a> , Themes <a href="https://weic96.cn/themes-note/" target="_blank">Note</a>.</p></footer></div><span class="navbar-btn"><span class="navbar-btn-line1"></span><span class="navbar-btn-line2"></span><span class="navbar-btn-line3"></span></span><span class="backtop-btn waves-effect waves-button waves-float"><i class="fa fa-angle-up"></i></span></div><!-- script--><script src="/js/jquery.pjax.js"></script><script src="/js/highlight.pack.js"></script><script src="/js/highlightjs-line-numbers.js"></script><script src="/js/waves.min.js"></script><script src="/js/zoom.js"></script><script src="/js/transition.js"></script><script src="/js/main.js"></script><script src="/js/loading.js"></script></body></html>
