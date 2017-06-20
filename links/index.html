@@ -77,4 +77,26 @@
         height: 0;
         background: none;
     }
-}</style><div class="post-header"><div class="post-header-info"><h2>links</h2><time datetime="2017年06月14日"><i class="fa fa-calendar"> 发表于 2017年06月14日</i></time></div><div class="post-header-wave"></div></div><div class="index-container"><div class="post-layout"><article class="post-main"><section class="post-main-section"></section><!-- index pagination--><!-- post pagination--><div class="post-readmore"><div class="post-readmore-left"></div><div class="post-readmore-center"></div><div class="post-readmore-right"></div></div></article></div></div></div><!-- footer--><footer class="page-footer"><p>Copyright @ 2017 <a href="https://liaobinbin.com">Bob Liao</a></p><p>Powered by <a target="_blank">Hexo</a> , Themes <a href="https://weic96.cn/themes-note/" target="_blank">Note</a>.</p></footer></div><span class="navbar-btn"><span class="navbar-btn-line1"></span><span class="navbar-btn-line2"></span><span class="navbar-btn-line3"></span></span><span class="backtop-btn waves-effect waves-button waves-float"><i class="fa fa-angle-up"></i></span></div><!-- script--><script src="/js/jquery.pjax.js"></script><script src="/js/highlight.pack.js"></script><script src="/js/highlightjs-line-numbers.js"></script><script src="/js/waves.min.js"></script><script src="/js/zoom.js"></script><script src="/js/transition.js"></script><script src="/js/main.js"></script><script src="/js/loading.js"></script></body></html>
+}</style><div class="post-header"><div class="post-header-info"><h2>links</h2><time datetime="2017年06月14日"><i class="fa fa-calendar"> 发表于 2017年06月14日</i></time></div><div class="post-header-wave"></div></div><div class="index-container"><div class="post-layout"><article class="post-main"><section class="post-main-section"></section><!-- index pagination--><!-- post pagination--><div class="post-readmore"><div class="post-readmore-left"></div><div class="post-readmore-center"></div><div class="post-readmore-right"></div></div><div class="post-comments"><span class="post-comments-btn">评论</span><div class="post-comments-script"><div id="disqus_thread"></div><script type="text/javascript">$(document).ready(function() {
+$('.post-comments-btn').on('click', function(){
+var disqus_shortname = 'bobslogs';	// 修改值为你的网站名;
+$.ajax({
+type: "GET",
+url: "http://" + disqus_shortname + ".disqus.com/embed.js",
+dataType: "script",
+cache: true
+});
+//$(this).fadeOut();
+});
+});
+var reset = function (newIdentifier, newUrl, newTitle, newLanguage) {
+DISQUS.reset({
+reload: true,
+config: function () {
+this.page.identifier = newIdentifier;
+this.page.url = newUrl;
+this.page.title = newTitle;
+this.language = newLanguage;
+}
+});
+};</script></div></div></article></div></div></div><!-- footer--><footer class="page-footer"><p>Copyright @ 2017 <a href="https://liaobinbin.com">Bob Liao</a></p><p>Powered by <a target="_blank">Hexo</a> , Themes <a href="https://weic96.cn/themes-note/" target="_blank">Note</a>.</p></footer></div><span class="navbar-btn"><span class="navbar-btn-line1"></span><span class="navbar-btn-line2"></span><span class="navbar-btn-line3"></span></span><span class="backtop-btn waves-effect waves-button waves-float"><i class="fa fa-angle-up"></i></span></div><!-- script--><script src="/js/jquery.pjax.js"></script><script src="/js/highlight.pack.js"></script><script src="/js/highlightjs-line-numbers.js"></script><script src="/js/waves.min.js"></script><script src="/js/zoom.js"></script><script src="/js/transition.js"></script><script src="/js/main.js"></script><script src="/js/loading.js"></script></body></html>

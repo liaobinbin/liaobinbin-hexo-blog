@@ -107,4 +107,26 @@ proxy = socks5://127.0.0.1:1080
 <p>以上是我的配置文件，当跑起该服务后，将会在4411端口开放一个http代理服务。</p>
 <h3 id="IOS"><a href="#IOS" class="headerlink" title="IOS"></a>IOS</h3><p>手机端的设置，首先保证手机和linux在同一局域网，而且要注意防火墙不要拦截该端口，主要是针对linux。<br>手机可以在编辑WiFil里面的最下面，找到<code>HTTP代理</code>，设置为<code>手动</code>，填入你的linux的局域网ip地址和端口号。<br>不需要开启鉴定。</p>
 <h3 id="然后"><a href="#然后" class="headerlink" title="然后"></a>然后</h3><p>就愉快的玩耍吧。</p>
-</section><ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ios/">ios</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/kcptun/">kcptun</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/shadowsocks/">shadowsocks</a></li></ul><!-- index pagination--><!-- post pagination--><div class="post-readmore"><div class="post-readmore-left"><a class="down-a" href="/2017/06/18/shorthand-javascript-techniques.html"><span class="post-readmore-text">上一篇：</span><i class="post-readmore-icon fa fa-angle-left"></i>&nbsp;19个JavaScript编码中的简写语法 </a></div><div class="post-readmore-center"></div><div class="post-readmore-right"><a class="down-a" href="/2017/03/10/linux-use-keptun-and-shadowsocks.html"><span class="post-readmore-text">下一篇：</span>&nbsp;Linux用Kcptun和SS进行上网加速&nbsp;<i class="post-readmore-icon fa fa-angle-right"> </i></a></div></div></article></div></div></div><!-- footer--><footer class="page-footer"><p>Copyright @ 2017 <a href="https://liaobinbin.com">Bob Liao</a></p><p>Powered by <a target="_blank">Hexo</a> , Themes <a href="https://weic96.cn/themes-note/" target="_blank">Note</a>.</p></footer></div><span class="navbar-btn"><span class="navbar-btn-line1"></span><span class="navbar-btn-line2"></span><span class="navbar-btn-line3"></span></span><span class="backtop-btn waves-effect waves-button waves-float"><i class="fa fa-angle-up"></i></span></div><!-- script--><script src="/js/jquery.pjax.js"></script><script src="/js/highlight.pack.js"></script><script src="/js/highlightjs-line-numbers.js"></script><script src="/js/waves.min.js"></script><script src="/js/zoom.js"></script><script src="/js/transition.js"></script><script src="/js/main.js"></script><script src="/js/loading.js"></script></body></html>
+</section><ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ios/">ios</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/kcptun/">kcptun</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/shadowsocks/">shadowsocks</a></li></ul><!-- index pagination--><!-- post pagination--><div class="post-readmore"><div class="post-readmore-left"><a class="down-a" href="/2017/06/18/shorthand-javascript-techniques.html"><span class="post-readmore-text">上一篇：</span><i class="post-readmore-icon fa fa-angle-left"></i>&nbsp;19个JavaScript编码中的简写语法 </a></div><div class="post-readmore-center"></div><div class="post-readmore-right"><a class="down-a" href="/2017/03/10/linux-use-keptun-and-shadowsocks.html"><span class="post-readmore-text">下一篇：</span>&nbsp;Linux用Kcptun和SS进行上网加速&nbsp;<i class="post-readmore-icon fa fa-angle-right"> </i></a></div></div><div class="post-comments"><span class="post-comments-btn">评论</span><div class="post-comments-script"><div id="disqus_thread"></div><script type="text/javascript">$(document).ready(function() {
+$('.post-comments-btn').on('click', function(){
+var disqus_shortname = 'bobslogs';	// 修改值为你的网站名;
+$.ajax({
+type: "GET",
+url: "http://" + disqus_shortname + ".disqus.com/embed.js",
+dataType: "script",
+cache: true
+});
+//$(this).fadeOut();
+});
+});
+var reset = function (newIdentifier, newUrl, newTitle, newLanguage) {
+DISQUS.reset({
+reload: true,
+config: function () {
+this.page.identifier = newIdentifier;
+this.page.url = newUrl;
+this.page.title = newTitle;
+this.language = newLanguage;
+}
+});
+};</script></div></div></article></div></div></div><!-- footer--><footer class="page-footer"><p>Copyright @ 2017 <a href="https://liaobinbin.com">Bob Liao</a></p><p>Powered by <a target="_blank">Hexo</a> , Themes <a href="https://weic96.cn/themes-note/" target="_blank">Note</a>.</p></footer></div><span class="navbar-btn"><span class="navbar-btn-line1"></span><span class="navbar-btn-line2"></span><span class="navbar-btn-line3"></span></span><span class="backtop-btn waves-effect waves-button waves-float"><i class="fa fa-angle-up"></i></span></div><!-- script--><script src="/js/jquery.pjax.js"></script><script src="/js/highlight.pack.js"></script><script src="/js/highlightjs-line-numbers.js"></script><script src="/js/waves.min.js"></script><script src="/js/zoom.js"></script><script src="/js/transition.js"></script><script src="/js/main.js"></script><script src="/js/loading.js"></script></body></html>
