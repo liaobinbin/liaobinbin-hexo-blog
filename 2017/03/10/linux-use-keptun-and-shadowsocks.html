@@ -1,155 +1,179 @@
-<!DOCTYPE html><html lang="zh-cn"><head><!--Document Settings--><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1"><meta name="renderer" content="webkit"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"><!--Page Meta--><title>Bin's Blog</title><meta name="description" content="一个戳逼的日记本。"><!--Mobile Meta--><meta name="HandheldFriendly" content="True"><!--Brand icon--><link rel="shortcut icon" href="/images/favicon.png"><!--Styles'n'Scripts--><link rel="stylesheet" href="/css/font-awesome.min.css"><link rel="stylesheet" href="/css/atom-one-light.css"><link rel="stylesheet" href="/css/waves.min.css"><link rel="stylesheet" href="/css/zoom.css"><link rel="stylesheet" href="/css/layout.css"><link rel="stylesheet" href="/css/adapt.css"><script src="/js/jquery-2.2.4.min.js"></script></head><body><!-- page-loading--><div class="page-loading"><div class="page-loading-main"><div class="page-loading-one"></div><div class="page-loading-two"></div></div></div><div id="pjax-container"><div class="mask"></div><div class="mask2"></div><!-- navigation--><div class="navbar-layout"><div class="navbar-header"><img src="/images/logo.jpg" alt="Bin's Blog"></div><div class="navbar-date"><div class="navbar-date-post"><h2>文章</h2><p>8</p></div><div class="navbar-date-tags"><h2>标签</h2><p>19</p></div><div class="clear-float"></div></div><div class="navbar-links"><ul><li><a href="/" target="_self">BLOG</a></li><li><a href="/archives/" target="_self">ARCHIVE</a></li><li><a href="/tags" target="_self">TAG</a></li><li><a href="/links" target="_self">LINK</a></li></ul></div><div class="navbar-icon"><a class="fa fa-github navbar-github" href="https://github.com/liaobinbin"></a><a class="fa fa-weibo navbar-weibo" href="http://weibo.com/mycxs"></a><a class="fa fa-envelope navbar-mail" href="mailto:undefined"></a><a class="fa fa-rss navbar-rss" href="/atom.xml"></a></div></div><!--body--><div class="body-layout"><div class="post-body-layout"><style media="screen">.post-header {
-    width: 100%;
-    height: 280px;
-    background: url(https://cdn.weic96.cn/website/a/15/4545620ec1ce9ee9147a91ab69c06.jpg);
-    background-repeat: no-repeat;
-    background-size: 100% 100%;
-    background-position: center;
-    padding: 50px 0;
-    text-align: center;
-    margin-bottom: 100px;
-    position: relative;
-}
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Linux用Kcptun和SS进行上网加速 | Bin&#39;s Blog | Good Lucky.</title>
 
-.post-header-wave {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    height: 56px;
-    background: url(images/index-header-wave.png);
-    background-size: 100% 100%;
-}
+  
+  <meta name="author" content="Bob Liao">
+  
 
-.post-header-info {
-    text-align: center;
-    margin-top: 70px;
-    width: 100%;
-}
+  
+  <meta name="description" content="一个戳逼的日记本。">
+  
 
-.post-header-info > h2 {
-    font-size: 35px;
-    color: #fff;
-    font-weight: bold;
-    margin-bottom: 15px;
-}
+  
+  
+  <meta name="keywords" content="linux,kcptun,shadowsocks">
+  
 
-.post-header-info > time {
-    font-size: 9pt;
-    color: #fff;
-    font-weight: 400;
-}
+  <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
 
-.post-body-layout {
-    background: none;
-}
+  <meta property="og:title" content="Linux用Kcptun和SS进行上网加速"/>
 
-@media screen and (max-width: 380px) {
-    .post-header {
-        width: 98%;
-        height: auto;
-        background: none;
-        padding: 30px 0;
-        margin-bottom: 30px;
-        margin: 0 auto;
-    }
+  <meta property="og:site_name" content="Bin&#39;s Blog"/>
 
-    .post-header-info {
-        margin-top: 35px;
-    }
+  
+  <meta property="og:image" content="/favicon.ico"/>
+  
 
-    .post-header-info > h2 {
-        font-size: 26px;
-        font-weight: 200;
-        color: #666;
-        margin-bottom: 15px;
-    }
+  <link href="/favicon.ico" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="Bin&#39;s Blog" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+</head>
 
-    .post-header-info > time {
-        font-size: 9pt;
-        color: #999;
-        font-weight: 200;
-    }
 
-    .post-header-wave {
-        position: absolute;
-        bottom: 0;
-        width: 0;
-        height: 0;
-        background: none;
-    }
-}</style><div class="post-header"><div class="post-header-info"><h2>Linux用Kcptun和SS进行上网加速</h2><time datetime="2017年03月10日"><i class="fa fa-calendar"> 发表于 2017年03月10日</i></time></div><div class="post-header-wave"></div></div><div class="index-container"><div class="post-layout"><article class="post-main"><section class="post-main-section"><blockquote>
+<body>
+<div class="blog">
+  <div class="content">
+
+    <header>
+  <div class="site-branding">
+    <h1 class="site-title">
+      <a href="/">Bin&#39;s Blog</a>
+    </h1>
+    <p class="site-description">Good Lucky.</p>
+  </div>
+  <nav class="site-navigation">
+    <ul>
+      
+        <li><a href="/">Home</a></li>
+      
+        <li><a href="/archives">Archives</a></li>
+      
+    </ul>
+  </nav>
+</header>
+
+    <main class="site-main posts-loop">
+    <article>
+
+  
+    
+    <h3 class="article-title"><span>Linux用Kcptun和SS进行上网加速</span></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2017/03/10/linux-use-keptun-and-shadowsocks.html" rel="bookmark">
+        <time class="entry-date published" datetime="2017-03-09T19:04:18.000Z">
+          2017-03-10
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <blockquote>
 <p>针对使用linux桌面版的用户和基于linux路由器的用户。</p>
 </blockquote>
 <h2 id="第一步：下载Kcptun可执行文件。"><a href="#第一步：下载Kcptun可执行文件。" class="headerlink" title="第一步：下载Kcptun可执行文件。"></a>第一步：下载Kcptun可执行文件。</h2><p><a href="https://github.com/xtaci/kcptun/releases" target="_blank" rel="external">Kcptun下载地址</a><br>需要根据自己系统版本选择相应的软件版本进行下载，因为我的主机是64位的，所以我下载的是<a href="https://github.com/xtaci/kcptun/releases/download/v20170218/kcptun-linux-amd64-20170218.tar.gz" target="_blank" rel="external">kcptun-linux-amd64-20170218.tar.gz</a></p>
-<pre><code class="bash">tar -xzf  kcptun-linux-amd64-20170218.tar.gz
-</code></pre>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">tar -xzf  kcptun-linux-amd64-20170218.tar.gz</div></pre></td></tr></table></figure>
 <p>解压后你将会得到两个文件，一个是<code>server_linux_amd64</code>，另外一个是<code>client_linux_amd64</code>。作为客户端，我们当然应该使用<code>client_linux_amd64</code>。<br>执行下面的命令可以获取到帮助文档</p>
-<pre><code class="bash">./client_linux_amd64 -h
-</code></pre>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">./client_linux_amd64 -h</div></pre></td></tr></table></figure>
 <a id="more"></a>
 <p>为了方便进行参数的设置，我这里使用其中<code>-c</code>的选项，这个选项将会让kcptun运行的时候调用一个<code>json</code>文件，在<code>json</code>文件里面有我们提前写好的服务器参数。</p>
-<pre><code class="json">{
-    &quot;localaddr&quot;: &quot;:8388&quot;, //本地使用的端口
-    &quot;remoteaddr&quot;: &quot;********:29900&quot;, //服务器的kcptun服务的ip地址加端口
-    &quot;key&quot;: &quot;*****&quot;, //你设定的加密密码
-    &quot;crypt&quot;: &quot;aes&quot;, //加密方式
-    &quot;mode&quot;: &quot;fast2&quot;, //加速模式
-    &quot;conn&quot;: 1, //从这以下的参数，你需要根据你在服务器端的配置参数进行设置
-    &quot;autoexpire&quot;: 60,
-    &quot;mtu&quot;: 1350,
-    &quot;sndwnd&quot;: 1024,
-    &quot;rcvwnd&quot;: 1024,
-    &quot;datashard&quot;: 10,
-    &quot;parityshard&quot;: 3,
-    &quot;dscp&quot;: 0,
-    &quot;nocomp&quot;: false,
-    &quot;acknodelay&quot;: false,
-    &quot;nodelay&quot;: 0,
-    &quot;interval&quot;: 20,
-    &quot;resend&quot;: 2,
-    &quot;nc&quot;: 1,
-    &quot;sockbuf&quot;: 4194304,
-    &quot;keepalive&quot;: 10
-}
-</code></pre>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">    "localaddr": ":8388", //本地使用的端口</div><div class="line">    "remoteaddr": "********:29900", //服务器的kcptun服务的ip地址加端口</div><div class="line">    "key": "*****", //你设定的加密密码</div><div class="line">    "crypt": "aes", //加密方式</div><div class="line">    "mode": "fast2", //加速模式</div><div class="line">    "conn": 1, //从这以下的参数，你需要根据你在服务器端的配置参数进行设置</div><div class="line">    "autoexpire": 60,</div><div class="line">    "mtu": 1350,</div><div class="line">    "sndwnd": 1024,</div><div class="line">    "rcvwnd": 1024,</div><div class="line">    "datashard": 10,</div><div class="line">    "parityshard": 3,</div><div class="line">    "dscp": 0,</div><div class="line">    "nocomp": false,</div><div class="line">    "acknodelay": false,</div><div class="line">    "nodelay": 0,</div><div class="line">    "interval": 20,</div><div class="line">    "resend": 2,</div><div class="line">    "nc": 1,</div><div class="line">    "sockbuf": 4194304,</div><div class="line">    "keepalive": 10</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>然后我讲这个文件保存为<code>myvps.json</code><br>在终端执行下面的命令就可以运行kcptun服务。</p>
-<pre><code class="bash">./client_linux_amd64 -c myvps.json 
-#我是把该`json`文件存放在相同的路径下，如不同，则需要完整路径。
-</code></pre>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">./client_linux_amd64 -c myvps.json </div><div class="line"><span class="comment">#我是把该`json`文件存放在相同的路径下，如不同，则需要完整路径。</span></div></pre></td></tr></table></figure>
 <h2 id="第二步，关于ss的设置"><a href="#第二步，关于ss的设置" class="headerlink" title="第二步，关于ss的设置"></a>第二步，关于ss的设置</h2><p>执行完第一步的操作以后，在你的电脑或者是你的路由器就已经跑起了kcptun服务并且运行在”8388”端口上。<br>你需要把你的ss客户端配置文件进行修改，把原来的远程服务器IP地址改为<code>127.0.0.1</code>，并且修改原来的SS服务端口为<code>8388</code>，而SS里面的加密方式和密码还有SS服务器的本地端口则不需要修改。</p>
 <p>这样关于你浏览器的插件设置将不需要修改便可直接使用。<br>但是得到网速将会是以前很多倍。</p>
 <h2 id="完结，优化"><a href="#完结，优化" class="headerlink" title="完结，优化"></a>完结，优化</h2><h3 id="将SS用于命令行"><a href="#将SS用于命令行" class="headerlink" title="将SS用于命令行"></a>将SS用于命令行</h3><p>你需要用到一个工具室<code>proxychains</code><br>在配置文件的最后一行加上</p>
-<pre><code class="bash">socks5 127.0.0.1 1080
-</code></pre>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">socks5 127.0.0.1 1080</div></pre></td></tr></table></figure>
 <p>这样可以使你的git等命令也可以走代理的路线，大大的提高了从<code>github</code>下载速度。其他需要下载国外资源的命令也可以使用。</p>
 <p>命令用法：就在原有的命令的最前面加上<code>proxychains</code> <em>注意命令后面需要接一个空格</em></p>
-<pre><code class="bash">proxychains git clone git://xxxxxxxxx
-</code></pre>
-<h3 id="开机自启动kcptun"><a href="#开机自启动kcptun" class="headerlink" title="开机自启动kcptun"></a>开机自启动kcptun</h3><p>我把自动启动的命令添加了加载图形界面后，实际上加入到系统自启会更好,所以我在我的<code>.xinitrc</code>中添加了以下代码</p>
-<pre><code class="bash">( ( sleep 2 &amp;amp;&amp;amp; /home/bob/Downloads/client_linux_amd64 -c /home/bob/Downloads/myvps.json ) &amp;amp; )
-</code></pre>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">proxychains git <span class="built_in">clone</span> git://xxxxxxxxx</div></pre></td></tr></table></figure>
+<h3 id="开机自启动kcptun"><a href="#开机自启动kcptun" class="headerlink" title="开机自启动kcptun"></a>开机自启动kcptun</h3><p>我把自动启动的命令添加了加载图形界面后，实际上加入到系统自启会更好,所以我在我的<code>.xinitrc</code>中添加了以下代码<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">( ( sleep 2 &amp;amp;&amp;amp; /home/bob/Downloads/client_linux_amd64 -c /home/bob/Downloads/myvps.json ) &amp;amp; )</div></pre></td></tr></table></figure></p>
 <p>其中路径应该修改为你自己的文件的绝对路径。</p>
 <h2 id="结束"><a href="#结束" class="headerlink" title="结束"></a>结束</h2><p>撒花撒花撒花撒花撒花撒花撒花撒花撒花撒花撒花撒花撒花撒花！！！！</p>
-</section><ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/kcptun/">kcptun</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/">linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/shadowsocks/">shadowsocks</a></li></ul><!-- index pagination--><!-- post pagination--><div class="post-readmore"><div class="post-readmore-left"><a class="down-a" href="/2017/06/14/use-linux-ss-for-my-iphone-of-lan-without-phone-client.html"><span class="post-readmore-text">上一篇：</span><i class="post-readmore-icon fa fa-angle-left"></i>&nbsp;使用linux系统的ss为局域网的iphone实现网络加速kcptun </a></div><div class="post-readmore-center"></div><div class="post-readmore-right"><a class="down-a" href="/2016/07/24/install-tomcat6-to-centos7.html"><span class="post-readmore-text">下一篇：</span>&nbsp;Linux VPS 搭建tomcat 6 基于centos 7&nbsp;<i class="post-readmore-icon fa fa-angle-right"> </i></a></div></div><div class="post-comments"><span class="post-comments-btn">评论</span><div class="post-comments-script"><div id="disqus_thread"></div><script type="text/javascript">$(document).ready(function() {
-$('.post-comments-btn').on('click', function(){
-var disqus_shortname = 'bobslogs';	// 修改值为你的网站名;
-$.ajax({
-type: "GET",
-url: "https://" + disqus_shortname + ".disqus.com/embed.js",
-dataType: "script",
-cache: true
-});
-//$(this).fadeOut();
-});
-});
-var reset = function (newIdentifier, newUrl, newTitle, newLanguage) {
-DISQUS.reset({
-reload: true,
-config: function () {
-this.page.identifier = newIdentifier;
-this.page.url = newUrl;
-this.page.title = newTitle;
-this.language = newLanguage;
-}
-});
-};</script></div></div></article></div></div></div><!-- footer--><footer class="page-footer"><p>Copyright @ 2017 <a href="https://liaobinbin.com">Bob Liao</a></p><p>Powered by <a target="_blank">Hexo</a> , Themes <a href="https://weic96.cn/themes-note/" target="_blank">Note</a>.</p></footer></div><span class="navbar-btn"><span class="navbar-btn-line1"></span><span class="navbar-btn-line2"></span><span class="navbar-btn-line3"></span></span><span class="backtop-btn waves-effect waves-button waves-float"><i class="fa fa-angle-up"></i></span></div><!-- script--><script src="/js/jquery.pjax.js"></script><script src="/js/highlight.pack.js"></script><script src="/js/highlightjs-line-numbers.js"></script><script src="/js/waves.min.js"></script><script src="/js/zoom.js"></script><script src="/js/transition.js"></script><script src="/js/main.js"></script><script src="/js/loading.js"></script></body></html>
+
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+
+    
+    
+
+    <span class="post-tags">
+      <i class="icon-tags"></i>
+        <a href="/tags/linux/">linux</a><a href="/tags/kcptun/">kcptun</a><a href="/tags/shadowsocks/">shadowsocks</a>
+    </span>
+    
+
+    </div>
+
+    
+  </div>
+</article>
+
+  
+	<section id="comments" class="comment">
+	  <div id="disqus_thread">
+	  <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+	  </div>
+	</section>
+
+	<script type="text/javascript">
+	var disqus_shortname = 'bobslogs';
+	(function(){
+	  var dsq = document.createElement('script');
+	  dsq.type = 'text/javascript';
+	  dsq.async = true;
+	  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+	  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+	}());
+	(function(){
+	  var dsq = document.createElement('script');
+	  dsq.type = 'text/javascript';
+	  dsq.async = true;
+	  dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
+	  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+	}());
+	</script>
+
+
+
+
+
+    </main>
+
+    <footer class="site-footer">
+  <p class="site-info">
+    Proudly powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and
+    Theme by <a href="https://github.com/CodeDaraW/Hacker" target="_blank">Hacker</a>
+    </br>
+    
+    &copy; 2017 Bob Liao
+    
+  </p>
+</footer>
+    
+  </div>
+</div>
+</body>
+</html>

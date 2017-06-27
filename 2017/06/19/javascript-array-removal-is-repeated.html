@@ -1,127 +1,103 @@
-<!DOCTYPE html><html lang="zh-cn"><head><!--Document Settings--><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1"><meta name="renderer" content="webkit"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"><!--Page Meta--><title>Bin's Blog</title><meta name="description" content="一个戳逼的日记本。"><!--Mobile Meta--><meta name="HandheldFriendly" content="True"><!--Brand icon--><link rel="shortcut icon" href="/images/favicon.png"><!--Styles'n'Scripts--><link rel="stylesheet" href="/css/font-awesome.min.css"><link rel="stylesheet" href="/css/atom-one-light.css"><link rel="stylesheet" href="/css/waves.min.css"><link rel="stylesheet" href="/css/zoom.css"><link rel="stylesheet" href="/css/layout.css"><link rel="stylesheet" href="/css/adapt.css"><script src="/js/jquery-2.2.4.min.js"></script></head><body><!-- page-loading--><div class="page-loading"><div class="page-loading-main"><div class="page-loading-one"></div><div class="page-loading-two"></div></div></div><div id="pjax-container"><div class="mask"></div><div class="mask2"></div><!-- navigation--><div class="navbar-layout"><div class="navbar-header"><img src="/images/logo.jpg" alt="Bin's Blog"></div><div class="navbar-date"><div class="navbar-date-post"><h2>文章</h2><p>8</p></div><div class="navbar-date-tags"><h2>标签</h2><p>19</p></div><div class="clear-float"></div></div><div class="navbar-links"><ul><li><a href="/" target="_self">BLOG</a></li><li><a href="/archives/" target="_self">ARCHIVE</a></li><li><a href="/tags" target="_self">TAG</a></li><li><a href="/links" target="_self">LINK</a></li></ul></div><div class="navbar-icon"><a class="fa fa-github navbar-github" href="https://github.com/liaobinbin"></a><a class="fa fa-weibo navbar-weibo" href="http://weibo.com/mycxs"></a><a class="fa fa-envelope navbar-mail" href="mailto:undefined"></a><a class="fa fa-rss navbar-rss" href="/atom.xml"></a></div></div><!--body--><div class="body-layout"><div class="post-body-layout"><style media="screen">.post-header {
-    width: 100%;
-    height: 280px;
-    background: url(https://cdn.weic96.cn/website/a/15/4545620ec1ce9ee9147a91ab69c06.jpg);
-    background-repeat: no-repeat;
-    background-size: 100% 100%;
-    background-position: center;
-    padding: 50px 0;
-    text-align: center;
-    margin-bottom: 100px;
-    position: relative;
-}
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Js对于数组去重提高效率一些心得 | Bin&#39;s Blog | Good Lucky.</title>
 
-.post-header-wave {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    height: 56px;
-    background: url(images/index-header-wave.png);
-    background-size: 100% 100%;
-}
+  
+  <meta name="author" content="Bob Liao">
+  
 
-.post-header-info {
-    text-align: center;
-    margin-top: 70px;
-    width: 100%;
-}
+  
+  <meta name="description" content="一个戳逼的日记本。">
+  
 
-.post-header-info > h2 {
-    font-size: 35px;
-    color: #fff;
-    font-weight: bold;
-    margin-bottom: 15px;
-}
+  
+  
+  <meta name="keywords" content="JavasSript,Array,Repeat">
+  
 
-.post-header-info > time {
-    font-size: 9pt;
-    color: #fff;
-    font-weight: 400;
-}
+  <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
 
-.post-body-layout {
-    background: none;
-}
+  <meta property="og:title" content="Js对于数组去重提高效率一些心得"/>
 
-@media screen and (max-width: 380px) {
-    .post-header {
-        width: 98%;
-        height: auto;
-        background: none;
-        padding: 30px 0;
-        margin-bottom: 30px;
-        margin: 0 auto;
-    }
+  <meta property="og:site_name" content="Bin&#39;s Blog"/>
 
-    .post-header-info {
-        margin-top: 35px;
-    }
+  
+  <meta property="og:image" content="/favicon.ico"/>
+  
 
-    .post-header-info > h2 {
-        font-size: 26px;
-        font-weight: 200;
-        color: #666;
-        margin-bottom: 15px;
-    }
+  <link href="/favicon.ico" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="Bin&#39;s Blog" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+</head>
 
-    .post-header-info > time {
-        font-size: 9pt;
-        color: #999;
-        font-weight: 200;
-    }
 
-    .post-header-wave {
-        position: absolute;
-        bottom: 0;
-        width: 0;
-        height: 0;
-        background: none;
-    }
-}</style><div class="post-header"><div class="post-header-info"><h2>Js对于数组去重提高效率一些心得</h2><time datetime="2017年06月19日"><i class="fa fa-calendar"> 发表于 2017年06月19日</i></time></div><div class="post-header-wave"></div></div><div class="index-container"><div class="post-layout"><article class="post-main"><section class="post-main-section"><p>最近在找工作，好几次面试都问过数组去重的问题。虽然问的都不一样，但是核心思想是没有变的。</p>
+<body>
+<div class="blog">
+  <div class="content">
+
+    <header>
+  <div class="site-branding">
+    <h1 class="site-title">
+      <a href="/">Bin&#39;s Blog</a>
+    </h1>
+    <p class="site-description">Good Lucky.</p>
+  </div>
+  <nav class="site-navigation">
+    <ul>
+      
+        <li><a href="/">Home</a></li>
+      
+        <li><a href="/archives">Archives</a></li>
+      
+    </ul>
+  </nav>
+</header>
+
+    <main class="site-main posts-loop">
+    <article>
+
+  
+    
+    <h3 class="article-title"><span>Js对于数组去重提高效率一些心得</span></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2017/06/19/javascript-array-removal-is-repeated.html" rel="bookmark">
+        <time class="entry-date published" datetime="2017-06-19T13:20:08.000Z">
+          2017-06-19
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <p>最近在找工作，好几次面试都问过数组去重的问题。虽然问的都不一样，但是核心思想是没有变的。</p>
 <h2 id="第一种是比较常规的方法"><a href="#第一种是比较常规的方法" class="headerlink" title="第一种是比较常规的方法"></a>第一种是比较常规的方法</h2><p><strong>思路：</strong></p>
 <ol>
 <li>构建一个新的数组存放结果</li>
 <li>for循环中每次从原数组中取出一个元素，用这个元素循环与结果数组对比</li>
 <li>若结果数组中没有该元素，则存到结果数组中</li>
 </ol>
-<pre><code class="javascript">Array.prototype.unique1 = function(){
- var res = [this[0]];
- for(var i = 1; i &lt; this.length; i++){
-  var repeat = false;
-  for(var j = 0; j &lt; res.length; j++){
-   if(this[i] == res[j]){
-    repeat = true;
-    break;
-   }
-  }
-  if(!repeat){
-   res.push(this[i]);
-  }
- }
- return res;
-}
-var arr = [1, &#39;a&#39;, &#39;a&#39;, &#39;b&#39;, &#39;d&#39;, &#39;e&#39;, &#39;e&#39;, 1, 0]
-alert(arr.unique1());
-</code></pre>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">Array</span>.prototype.unique1 = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line"> <span class="keyword">var</span> res = [<span class="keyword">this</span>[<span class="number">0</span>]];</div><div class="line"> <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">1</span>; i &lt; <span class="keyword">this</span>.length; i++)&#123;</div><div class="line">  <span class="keyword">var</span> repeat = <span class="literal">false</span>;</div><div class="line">  <span class="keyword">for</span>(<span class="keyword">var</span> j = <span class="number">0</span>; j &lt; res.length; j++)&#123;</div><div class="line">   <span class="keyword">if</span>(<span class="keyword">this</span>[i] == res[j])&#123;</div><div class="line">    repeat = <span class="literal">true</span>;</div><div class="line">    <span class="keyword">break</span>;</div><div class="line">   &#125;</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">if</span>(!repeat)&#123;</div><div class="line">   res.push(<span class="keyword">this</span>[i]);</div><div class="line">  &#125;</div><div class="line"> &#125;</div><div class="line"> <span class="keyword">return</span> res;</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> arr = [<span class="number">1</span>, <span class="string">'a'</span>, <span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'d'</span>, <span class="string">'e'</span>, <span class="string">'e'</span>, <span class="number">1</span>, <span class="number">0</span>]</div><div class="line">alert(arr.unique1());</div></pre></td></tr></table></figure>
 <h2 id="第二种方法比上面的方法效率要高"><a href="#第二种方法比上面的方法效率要高" class="headerlink" title="第二种方法比上面的方法效率要高"></a>第二种方法比上面的方法效率要高</h2><p><strong>思路：</strong></p>
 <ol>
 <li>先将原数组进行排序</li>
 <li>检查原数组中的第i个元素 与 结果数组中的最后一个元素是否相同，因为已经排序，所以重复元素会在相邻位置</li>
 <li>如果不相同，则将该元素存入结果数组中</li>
 </ol>
-<pre><code class="javascript">Array.prototype.unique2 = function(){
- this.sort(); //先排序
- var res = [this[0]];
- for(var i = 1; i &lt; this.length; i++){
-  if(this[i] !== res[res.length - 1]){
-   res.push(this[i]);
-  }
- }
- return res;
-}
-var arr = [1, &#39;a&#39;, &#39;a&#39;, &#39;b&#39;, &#39;d&#39;, &#39;e&#39;, &#39;e&#39;, 1, 0]
-alert(arr.unique2());
-</code></pre>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">Array</span>.prototype.unique2 = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line"> <span class="keyword">this</span>.sort(); <span class="comment">//先排序</span></div><div class="line"> <span class="keyword">var</span> res = [<span class="keyword">this</span>[<span class="number">0</span>]];</div><div class="line"> <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">1</span>; i &lt; <span class="keyword">this</span>.length; i++)&#123;</div><div class="line">  <span class="keyword">if</span>(<span class="keyword">this</span>[i] !== res[res.length - <span class="number">1</span>])&#123;</div><div class="line">   res.push(<span class="keyword">this</span>[i]);</div><div class="line">  &#125;</div><div class="line"> &#125;</div><div class="line"> <span class="keyword">return</span> res;</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> arr = [<span class="number">1</span>, <span class="string">'a'</span>, <span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'d'</span>, <span class="string">'e'</span>, <span class="string">'e'</span>, <span class="number">1</span>, <span class="number">0</span>]</div><div class="line">alert(arr.unique2());</div></pre></td></tr></table></figure>
 <p>第二种方法也会有一定的局限性，因为在去重前进行了排序，所以最后返回的去重结果也是排序后的。如果要求不改变数组的顺序去重，那这种方法便不可取了。</p>
 <h2 id="第三种方法（推荐使用）"><a href="#第三种方法（推荐使用）" class="headerlink" title="第三种方法（推荐使用）"></a>第三种方法（推荐使用）</h2><p><strong>思路：</strong></p>
 <ol>
@@ -132,106 +108,86 @@ alert(arr.unique2());
 <blockquote>
 <p><strong>说明</strong>：至于如何对比，就是每次从原数组中取出一个元素，然后到对象中去访问这个属性，如果能访问到值，则说明重复。</p>
 </blockquote>
-<pre><code class="javascript">Array.prototype.unique3 = function(){
- var res = [];
- var json = {};
- for(var i = 0; i &lt; this.length; i++){
-  if(!json[this[i]]){
-   res.push(this[i]);
-   json[this[i]] = 1;
-  }
- }
- return res;
-}
-var arr = [112,112,34,&#39;你好&#39;,112,112,34,&#39;你好&#39;,&#39;str&#39;,&#39;str1&#39;];
-alert(arr.unique3());
-</code></pre>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">Array</span>.prototype.unique3 = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line"> <span class="keyword">var</span> res = [];</div><div class="line"> <span class="keyword">var</span> json = &#123;&#125;;</div><div class="line"> <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="keyword">this</span>.length; i++)&#123;</div><div class="line">  <span class="keyword">if</span>(!json[<span class="keyword">this</span>[i]])&#123;</div><div class="line">   res.push(<span class="keyword">this</span>[i]);</div><div class="line">   json[<span class="keyword">this</span>[i]] = <span class="number">1</span>;</div><div class="line">  &#125;</div><div class="line"> &#125;</div><div class="line"> <span class="keyword">return</span> res;</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> arr = [<span class="number">112</span>,<span class="number">112</span>,<span class="number">34</span>,<span class="string">'你好'</span>,<span class="number">112</span>,<span class="number">112</span>,<span class="number">34</span>,<span class="string">'你好'</span>,<span class="string">'str'</span>,<span class="string">'str1'</span>];</div><div class="line">alert(arr.unique3());</div></pre></td></tr></table></figure>
 <p>下面我遇到的面试题</p>
-<p><em>注释掉的是常规写法</em></p>
-<pre><code class="javascript">// function test(str) {
-//     var arr = str.split(&quot;&quot;);
-//     var newStr = &quot;&quot;; 
-//     for(var i=0; i&lt; arr.length; i++){
-//         var count = 0;
-//         for(var n=0; n&lt;arr.length; n++){
-//             if(arr[n] == arr[i]){
-//                 count ++;
-//             }
-//         }
-//         newStr += count &gt;= 2 ? &quot;)&quot; : &quot;(&quot;;
-//     }
-//     return newStr
-// }
-function test(str){
-    var arr = str.split(&quot;&quot;);
-    var result = [], hash = {};
-    for(var i=0,elem; (elem = arr[i]) != null; i++){
-        if(!hash[elem]){
-            result.push(elem);
-            hash[elem] = 1
-        }else{
-            hash[elem] ++;
-        }
-    }
-    for(var n=0,elem; (elem = result[n]) != null ; n++){
-        var reg = new RegExp(result[n], &quot;g&quot;);
-        hash[elem] &gt; 1 ? str = str.replace(reg, &quot;)&quot;) : str = str.replace(reg, &quot;(&quot;);
-    }
-    return str;
-}
-console.log(test(&#39;abcb&#39;));
-</code></pre>
+<p><em>注释掉的是常规写法</em><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// function test(str) &#123;</span></div><div class="line"><span class="comment">//     var arr = str.split("");</span></div><div class="line"><span class="comment">//     var newStr = ""; </span></div><div class="line"><span class="comment">//     for(var i=0; i&lt; arr.length; i++)&#123;</span></div><div class="line"><span class="comment">//         var count = 0;</span></div><div class="line"><span class="comment">//         for(var n=0; n&lt;arr.length; n++)&#123;</span></div><div class="line"><span class="comment">//             if(arr[n] == arr[i])&#123;</span></div><div class="line"><span class="comment">//                 count ++;</span></div><div class="line"><span class="comment">//             &#125;</span></div><div class="line"><span class="comment">//         &#125;</span></div><div class="line"><span class="comment">//         newStr += count &gt;= 2 ? ")" : "(";</span></div><div class="line"><span class="comment">//     &#125;</span></div><div class="line"><span class="comment">//     return newStr</span></div><div class="line"><span class="comment">// &#125;</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params">str</span>)</span>&#123;</div><div class="line">    <span class="keyword">var</span> arr = str.split(<span class="string">""</span>);</div><div class="line">    <span class="keyword">var</span> result = [], hash = &#123;&#125;;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>,elem; (elem = arr[i]) != <span class="literal">null</span>; i++)&#123;</div><div class="line">        <span class="keyword">if</span>(!hash[elem])&#123;</div><div class="line">            result.push(elem);</div><div class="line">            hash[elem] = <span class="number">1</span></div><div class="line">        &#125;<span class="keyword">else</span>&#123;</div><div class="line">            hash[elem] ++;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> n=<span class="number">0</span>,elem; (elem = result[n]) != <span class="literal">null</span> ; n++)&#123;</div><div class="line">        <span class="keyword">var</span> reg = <span class="keyword">new</span> <span class="built_in">RegExp</span>(result[n], <span class="string">"g"</span>);</div><div class="line">        hash[elem] &gt; <span class="number">1</span> ? str = str.replace(reg, <span class="string">")"</span>) : str = str.replace(reg, <span class="string">"("</span>);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> str;</div><div class="line">&#125;</div><div class="line"><span class="built_in">console</span>.log(test(<span class="string">'abcb'</span>));</div></pre></td></tr></table></figure></p>
 <p>这个是帮朋友写的一个题</p>
-<pre><code class="javascript">// function change(str, key){
-//     str = str.split(&#39;&#39;);
-//     key = key.split(&#39;&#39;);
-//     for(var i=0; i&lt;str.length; i++){
-//         for(var n=0; n&lt;key.length; n++){
-//             if(str[i] === key[n]){
-//                 str.splice(i, 1);
-//                 break;
-//             } else {
-//                 continue;
-//             }
-//         }
-//     }
-//     return str.join(&quot;&quot;);
-// }
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// function change(str, key)&#123;</span></div><div class="line"><span class="comment">//     str = str.split('');</span></div><div class="line"><span class="comment">//     key = key.split('');</span></div><div class="line"><span class="comment">//     for(var i=0; i&lt;str.length; i++)&#123;</span></div><div class="line"><span class="comment">//         for(var n=0; n&lt;key.length; n++)&#123;</span></div><div class="line"><span class="comment">//             if(str[i] === key[n])&#123;</span></div><div class="line"><span class="comment">//                 str.splice(i, 1);</span></div><div class="line"><span class="comment">//                 break;</span></div><div class="line"><span class="comment">//             &#125; else &#123;</span></div><div class="line"><span class="comment">//                 continue;</span></div><div class="line"><span class="comment">//             &#125;</span></div><div class="line"><span class="comment">//         &#125;</span></div><div class="line"><span class="comment">//     &#125;</span></div><div class="line"><span class="comment">//     return str.join("");</span></div><div class="line"><span class="comment">// &#125;</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">change</span>(<span class="params">str, key</span>)</span>&#123;</div><div class="line">    <span class="keyword">var</span> arr = str.split(<span class="string">''</span>);</div><div class="line">    key = key.split(<span class="string">''</span>);</div><div class="line">    <span class="keyword">var</span> hash = &#123;&#125;;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>,elem; (elem = key[i]) != <span class="literal">null</span>; i++)&#123;</div><div class="line">        <span class="keyword">if</span>(!hash[elem]) hash[elem] = <span class="literal">true</span></div><div class="line">    &#125;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> n=<span class="number">0</span>, elem; (elem = arr[n]) != <span class="literal">null</span>; n++)&#123;</div><div class="line">        <span class="keyword">if</span>(hash[elem]) arr.splice(n,<span class="number">1</span>);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> arr.join(<span class="string">""</span>);</div><div class="line">&#125;</div><div class="line"><span class="built_in">console</span>.log(change(<span class="string">"they are students "</span>, <span class="string">"aeous"</span>));</div></pre></td></tr></table></figure>
+      
+    </div>
 
-function change(str, key){
-    var arr = str.split(&#39;&#39;);
-    key = key.split(&#39;&#39;);
-    var hash = {};
-    for(var i=0,elem; (elem = key[i]) != null; i++){
-        if(!hash[elem]) hash[elem] = true
-    }
-    for(var n=0, elem; (elem = arr[n]) != null; n++){
-        if(hash[elem]) arr.splice(n,1);
-    }
-    return arr.join(&quot;&quot;);
-}
-console.log(change(&quot;they are students &quot;, &quot;aeous&quot;));
-</code></pre>
-</section><ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Array/">Array</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavasSript/">JavasSript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Repeat/">Repeat</a></li></ul><!-- index pagination--><!-- post pagination--><div class="post-readmore"><div class="post-readmore-left"></div><div class="post-readmore-center"></div><div class="post-readmore-right"><a class="down-a" href="/2017/06/18/shorthand-javascript-techniques.html"><span class="post-readmore-text">下一篇：</span>&nbsp;19个JavaScript编码中的简写语法&nbsp;<i class="post-readmore-icon fa fa-angle-right"> </i></a></div></div><div class="post-comments"><span class="post-comments-btn">评论</span><div class="post-comments-script"><div id="disqus_thread"></div><script type="text/javascript">$(document).ready(function() {
-$('.post-comments-btn').on('click', function(){
-var disqus_shortname = 'bobslogs';	// 修改值为你的网站名;
-$.ajax({
-type: "GET",
-url: "https://" + disqus_shortname + ".disqus.com/embed.js",
-dataType: "script",
-cache: true
-});
-//$(this).fadeOut();
-});
-});
-var reset = function (newIdentifier, newUrl, newTitle, newLanguage) {
-DISQUS.reset({
-reload: true,
-config: function () {
-this.page.identifier = newIdentifier;
-this.page.url = newUrl;
-this.page.title = newTitle;
-this.language = newLanguage;
-}
-});
-};</script></div></div></article></div></div></div><!-- footer--><footer class="page-footer"><p>Copyright @ 2017 <a href="https://liaobinbin.com">Bob Liao</a></p><p>Powered by <a target="_blank">Hexo</a> , Themes <a href="https://weic96.cn/themes-note/" target="_blank">Note</a>.</p></footer></div><span class="navbar-btn"><span class="navbar-btn-line1"></span><span class="navbar-btn-line2"></span><span class="navbar-btn-line3"></span></span><span class="backtop-btn waves-effect waves-button waves-float"><i class="fa fa-angle-up"></i></span></div><!-- script--><script src="/js/jquery.pjax.js"></script><script src="/js/highlight.pack.js"></script><script src="/js/highlightjs-line-numbers.js"></script><script src="/js/waves.min.js"></script><script src="/js/zoom.js"></script><script src="/js/transition.js"></script><script src="/js/main.js"></script><script src="/js/loading.js"></script></body></html>
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+      
+
+    <span class="post-categories">
+      <i class="icon-categories"></i>
+        <a href="/categories/前端/">前端</a>
+    </span>
+    
+
+    
+    
+
+    <span class="post-tags">
+      <i class="icon-tags"></i>
+        <a href="/tags/JavasSript/">JavasSript</a><a href="/tags/Array/">Array</a><a href="/tags/Repeat/">Repeat</a>
+    </span>
+    
+
+    </div>
+
+    
+  </div>
+</article>
+
+  
+	<section id="comments" class="comment">
+	  <div id="disqus_thread">
+	  <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+	  </div>
+	</section>
+
+	<script type="text/javascript">
+	var disqus_shortname = 'bobslogs';
+	(function(){
+	  var dsq = document.createElement('script');
+	  dsq.type = 'text/javascript';
+	  dsq.async = true;
+	  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+	  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+	}());
+	(function(){
+	  var dsq = document.createElement('script');
+	  dsq.type = 'text/javascript';
+	  dsq.async = true;
+	  dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
+	  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+	}());
+	</script>
+
+
+
+
+
+    </main>
+
+    <footer class="site-footer">
+  <p class="site-info">
+    Proudly powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and
+    Theme by <a href="https://github.com/CodeDaraW/Hacker" target="_blank">Hacker</a>
+    </br>
+    
+    &copy; 2017 Bob Liao
+    
+  </p>
+</footer>
+    
+  </div>
+</div>
+</body>
+</html>

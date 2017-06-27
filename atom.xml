@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://liaobinbin.com/"/>
-  <updated>2017-06-19T13:21:41.000Z</updated>
+  <updated>2017-06-24T11:10:03.000Z</updated>
   <id>https://liaobinbin.com/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="https://liaobinbin.com/2017/06/19/javascript-array-removal-is-repeated.html"/>
     <id>https://liaobinbin.com/2017/06/19/javascript-array-removal-is-repeated.html</id>
     <published>2017-06-19T13:20:08.000Z</published>
-    <updated>2017-06-19T13:21:41.000Z</updated>
+    <updated>2017-06-24T11:10:03.000Z</updated>
     
     <content type="html"><![CDATA[<p>最近在找工作，好几次面试都问过数组去重的问题。虽然问的都不一样，但是核心思想是没有变的。</p>
 <h2 id="第一种是比较常规的方法"><a href="#第一种是比较常规的方法" class="headerlink" title="第一种是比较常规的方法"></a>第一种是比较常规的方法</h2><p><strong>思路：</strong></p>
@@ -29,44 +29,14 @@
 <li>for循环中每次从原数组中取出一个元素，用这个元素循环与结果数组对比</li>
 <li>若结果数组中没有该元素，则存到结果数组中</li>
 </ol>
-<pre><code class="javascript">Array.prototype.unique1 = function(){
- var res = [this[0]];
- for(var i = 1; i &lt; this.length; i++){
-  var repeat = false;
-  for(var j = 0; j &lt; res.length; j++){
-   if(this[i] == res[j]){
-    repeat = true;
-    break;
-   }
-  }
-  if(!repeat){
-   res.push(this[i]);
-  }
- }
- return res;
-}
-var arr = [1, &#39;a&#39;, &#39;a&#39;, &#39;b&#39;, &#39;d&#39;, &#39;e&#39;, &#39;e&#39;, 1, 0]
-alert(arr.unique1());
-</code></pre>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">Array</span>.prototype.unique1 = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line"> <span class="keyword">var</span> res = [<span class="keyword">this</span>[<span class="number">0</span>]];</div><div class="line"> <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">1</span>; i &lt; <span class="keyword">this</span>.length; i++)&#123;</div><div class="line">  <span class="keyword">var</span> repeat = <span class="literal">false</span>;</div><div class="line">  <span class="keyword">for</span>(<span class="keyword">var</span> j = <span class="number">0</span>; j &lt; res.length; j++)&#123;</div><div class="line">   <span class="keyword">if</span>(<span class="keyword">this</span>[i] == res[j])&#123;</div><div class="line">    repeat = <span class="literal">true</span>;</div><div class="line">    <span class="keyword">break</span>;</div><div class="line">   &#125;</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">if</span>(!repeat)&#123;</div><div class="line">   res.push(<span class="keyword">this</span>[i]);</div><div class="line">  &#125;</div><div class="line"> &#125;</div><div class="line"> <span class="keyword">return</span> res;</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> arr = [<span class="number">1</span>, <span class="string">'a'</span>, <span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'d'</span>, <span class="string">'e'</span>, <span class="string">'e'</span>, <span class="number">1</span>, <span class="number">0</span>]</div><div class="line">alert(arr.unique1());</div></pre></td></tr></table></figure>
 <h2 id="第二种方法比上面的方法效率要高"><a href="#第二种方法比上面的方法效率要高" class="headerlink" title="第二种方法比上面的方法效率要高"></a>第二种方法比上面的方法效率要高</h2><p><strong>思路：</strong></p>
 <ol>
 <li>先将原数组进行排序</li>
 <li>检查原数组中的第i个元素 与 结果数组中的最后一个元素是否相同，因为已经排序，所以重复元素会在相邻位置</li>
 <li>如果不相同，则将该元素存入结果数组中</li>
 </ol>
-<pre><code class="javascript">Array.prototype.unique2 = function(){
- this.sort(); //先排序
- var res = [this[0]];
- for(var i = 1; i &lt; this.length; i++){
-  if(this[i] !== res[res.length - 1]){
-   res.push(this[i]);
-  }
- }
- return res;
-}
-var arr = [1, &#39;a&#39;, &#39;a&#39;, &#39;b&#39;, &#39;d&#39;, &#39;e&#39;, &#39;e&#39;, 1, 0]
-alert(arr.unique2());
-</code></pre>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">Array</span>.prototype.unique2 = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line"> <span class="keyword">this</span>.sort(); <span class="comment">//先排序</span></div><div class="line"> <span class="keyword">var</span> res = [<span class="keyword">this</span>[<span class="number">0</span>]];</div><div class="line"> <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">1</span>; i &lt; <span class="keyword">this</span>.length; i++)&#123;</div><div class="line">  <span class="keyword">if</span>(<span class="keyword">this</span>[i] !== res[res.length - <span class="number">1</span>])&#123;</div><div class="line">   res.push(<span class="keyword">this</span>[i]);</div><div class="line">  &#125;</div><div class="line"> &#125;</div><div class="line"> <span class="keyword">return</span> res;</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> arr = [<span class="number">1</span>, <span class="string">'a'</span>, <span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'d'</span>, <span class="string">'e'</span>, <span class="string">'e'</span>, <span class="number">1</span>, <span class="number">0</span>]</div><div class="line">alert(arr.unique2());</div></pre></td></tr></table></figure>
 <p>第二种方法也会有一定的局限性，因为在去重前进行了排序，所以最后返回的去重结果也是排序后的。如果要求不改变数组的顺序去重，那这种方法便不可取了。</p>
 <h2 id="第三种方法（推荐使用）"><a href="#第三种方法（推荐使用）" class="headerlink" title="第三种方法（推荐使用）"></a>第三种方法（推荐使用）</h2><p><strong>思路：</strong></p>
 <ol>
@@ -77,87 +47,11 @@ alert(arr.unique2());
 <blockquote>
 <p><strong>说明</strong>：至于如何对比，就是每次从原数组中取出一个元素，然后到对象中去访问这个属性，如果能访问到值，则说明重复。</p>
 </blockquote>
-<pre><code class="javascript">Array.prototype.unique3 = function(){
- var res = [];
- var json = {};
- for(var i = 0; i &lt; this.length; i++){
-  if(!json[this[i]]){
-   res.push(this[i]);
-   json[this[i]] = 1;
-  }
- }
- return res;
-}
-var arr = [112,112,34,&#39;你好&#39;,112,112,34,&#39;你好&#39;,&#39;str&#39;,&#39;str1&#39;];
-alert(arr.unique3());
-</code></pre>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">Array</span>.prototype.unique3 = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line"> <span class="keyword">var</span> res = [];</div><div class="line"> <span class="keyword">var</span> json = &#123;&#125;;</div><div class="line"> <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="keyword">this</span>.length; i++)&#123;</div><div class="line">  <span class="keyword">if</span>(!json[<span class="keyword">this</span>[i]])&#123;</div><div class="line">   res.push(<span class="keyword">this</span>[i]);</div><div class="line">   json[<span class="keyword">this</span>[i]] = <span class="number">1</span>;</div><div class="line">  &#125;</div><div class="line"> &#125;</div><div class="line"> <span class="keyword">return</span> res;</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> arr = [<span class="number">112</span>,<span class="number">112</span>,<span class="number">34</span>,<span class="string">'你好'</span>,<span class="number">112</span>,<span class="number">112</span>,<span class="number">34</span>,<span class="string">'你好'</span>,<span class="string">'str'</span>,<span class="string">'str1'</span>];</div><div class="line">alert(arr.unique3());</div></pre></td></tr></table></figure>
 <p>下面我遇到的面试题</p>
-<p><em>注释掉的是常规写法</em></p>
-<pre><code class="javascript">// function test(str) {
-//     var arr = str.split(&quot;&quot;);
-//     var newStr = &quot;&quot;; 
-//     for(var i=0; i&lt; arr.length; i++){
-//         var count = 0;
-//         for(var n=0; n&lt;arr.length; n++){
-//             if(arr[n] == arr[i]){
-//                 count ++;
-//             }
-//         }
-//         newStr += count &gt;= 2 ? &quot;)&quot; : &quot;(&quot;;
-//     }
-//     return newStr
-// }
-function test(str){
-    var arr = str.split(&quot;&quot;);
-    var result = [], hash = {};
-    for(var i=0,elem; (elem = arr[i]) != null; i++){
-        if(!hash[elem]){
-            result.push(elem);
-            hash[elem] = 1
-        }else{
-            hash[elem] ++;
-        }
-    }
-    for(var n=0,elem; (elem = result[n]) != null ; n++){
-        var reg = new RegExp(result[n], &quot;g&quot;);
-        hash[elem] &gt; 1 ? str = str.replace(reg, &quot;)&quot;) : str = str.replace(reg, &quot;(&quot;);
-    }
-    return str;
-}
-console.log(test(&#39;abcb&#39;));
-</code></pre>
+<p><em>注释掉的是常规写法</em><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// function test(str) &#123;</span></div><div class="line"><span class="comment">//     var arr = str.split("");</span></div><div class="line"><span class="comment">//     var newStr = ""; </span></div><div class="line"><span class="comment">//     for(var i=0; i&lt; arr.length; i++)&#123;</span></div><div class="line"><span class="comment">//         var count = 0;</span></div><div class="line"><span class="comment">//         for(var n=0; n&lt;arr.length; n++)&#123;</span></div><div class="line"><span class="comment">//             if(arr[n] == arr[i])&#123;</span></div><div class="line"><span class="comment">//                 count ++;</span></div><div class="line"><span class="comment">//             &#125;</span></div><div class="line"><span class="comment">//         &#125;</span></div><div class="line"><span class="comment">//         newStr += count &gt;= 2 ? ")" : "(";</span></div><div class="line"><span class="comment">//     &#125;</span></div><div class="line"><span class="comment">//     return newStr</span></div><div class="line"><span class="comment">// &#125;</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params">str</span>)</span>&#123;</div><div class="line">    <span class="keyword">var</span> arr = str.split(<span class="string">""</span>);</div><div class="line">    <span class="keyword">var</span> result = [], hash = &#123;&#125;;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>,elem; (elem = arr[i]) != <span class="literal">null</span>; i++)&#123;</div><div class="line">        <span class="keyword">if</span>(!hash[elem])&#123;</div><div class="line">            result.push(elem);</div><div class="line">            hash[elem] = <span class="number">1</span></div><div class="line">        &#125;<span class="keyword">else</span>&#123;</div><div class="line">            hash[elem] ++;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> n=<span class="number">0</span>,elem; (elem = result[n]) != <span class="literal">null</span> ; n++)&#123;</div><div class="line">        <span class="keyword">var</span> reg = <span class="keyword">new</span> <span class="built_in">RegExp</span>(result[n], <span class="string">"g"</span>);</div><div class="line">        hash[elem] &gt; <span class="number">1</span> ? str = str.replace(reg, <span class="string">")"</span>) : str = str.replace(reg, <span class="string">"("</span>);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> str;</div><div class="line">&#125;</div><div class="line"><span class="built_in">console</span>.log(test(<span class="string">'abcb'</span>));</div></pre></td></tr></table></figure></p>
 <p>这个是帮朋友写的一个题</p>
-<pre><code class="javascript">// function change(str, key){
-//     str = str.split(&#39;&#39;);
-//     key = key.split(&#39;&#39;);
-//     for(var i=0; i&lt;str.length; i++){
-//         for(var n=0; n&lt;key.length; n++){
-//             if(str[i] === key[n]){
-//                 str.splice(i, 1);
-//                 break;
-//             } else {
-//                 continue;
-//             }
-//         }
-//     }
-//     return str.join(&quot;&quot;);
-// }
-
-function change(str, key){
-    var arr = str.split(&#39;&#39;);
-    key = key.split(&#39;&#39;);
-    var hash = {};
-    for(var i=0,elem; (elem = key[i]) != null; i++){
-        if(!hash[elem]) hash[elem] = true
-    }
-    for(var n=0, elem; (elem = arr[n]) != null; n++){
-        if(hash[elem]) arr.splice(n,1);
-    }
-    return arr.join(&quot;&quot;);
-}
-console.log(change(&quot;they are students &quot;, &quot;aeous&quot;));
-</code></pre>
-]]></content>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// function change(str, key)&#123;</span></div><div class="line"><span class="comment">//     str = str.split('');</span></div><div class="line"><span class="comment">//     key = key.split('');</span></div><div class="line"><span class="comment">//     for(var i=0; i&lt;str.length; i++)&#123;</span></div><div class="line"><span class="comment">//         for(var n=0; n&lt;key.length; n++)&#123;</span></div><div class="line"><span class="comment">//             if(str[i] === key[n])&#123;</span></div><div class="line"><span class="comment">//                 str.splice(i, 1);</span></div><div class="line"><span class="comment">//                 break;</span></div><div class="line"><span class="comment">//             &#125; else &#123;</span></div><div class="line"><span class="comment">//                 continue;</span></div><div class="line"><span class="comment">//             &#125;</span></div><div class="line"><span class="comment">//         &#125;</span></div><div class="line"><span class="comment">//     &#125;</span></div><div class="line"><span class="comment">//     return str.join("");</span></div><div class="line"><span class="comment">// &#125;</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">change</span>(<span class="params">str, key</span>)</span>&#123;</div><div class="line">    <span class="keyword">var</span> arr = str.split(<span class="string">''</span>);</div><div class="line">    key = key.split(<span class="string">''</span>);</div><div class="line">    <span class="keyword">var</span> hash = &#123;&#125;;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>,elem; (elem = key[i]) != <span class="literal">null</span>; i++)&#123;</div><div class="line">        <span class="keyword">if</span>(!hash[elem]) hash[elem] = <span class="literal">true</span></div><div class="line">    &#125;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> n=<span class="number">0</span>, elem; (elem = arr[n]) != <span class="literal">null</span>; n++)&#123;</div><div class="line">        <span class="keyword">if</span>(hash[elem]) arr.splice(n,<span class="number">1</span>);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> arr.join(<span class="string">""</span>);</div><div class="line">&#125;</div><div class="line"><span class="built_in">console</span>.log(change(<span class="string">"they are students "</span>, <span class="string">"aeous"</span>));</div></pre></td></tr></table></figure>]]></content>
     
     <summary type="html">
     
@@ -165,6 +59,8 @@ console.log(change(&quot;they are students &quot;, &quot;aeous&quot;));
 &lt;h2 id=&quot;第一种是比较常规的方法&quot;&gt;&lt;a href=&quot;#第一种是比较常规的方法&quot; class=&quot;headerlink&quot; title=&quot;第一种是比较常规的方法&quot;&gt;&lt;/a&gt;第
     
     </summary>
+    
+      <category term="前端" scheme="https://liaobinbin.com/categories/%E5%89%8D%E7%AB%AF/"/>
     
     
       <category term="JavasSript" scheme="https://liaobinbin.com/tags/JavasSript/"/>
@@ -180,7 +76,7 @@ console.log(change(&quot;they are students &quot;, &quot;aeous&quot;));
     <link href="https://liaobinbin.com/2017/06/18/shorthand-javascript-techniques.html"/>
     <id>https://liaobinbin.com/2017/06/18/shorthand-javascript-techniques.html</id>
     <published>2017-06-18T12:57:16.000Z</published>
-    <updated>2017-06-18T12:58:17.000Z</updated>
+    <updated>2017-06-27T12:53:24.000Z</updated>
     
     <content type="html"><![CDATA[<p><strong>阅读此文章对于任何使用JavaScript的开发人员来说都是非常有必要的</strong>。我将这篇文章作为我使用JavaScript简化语法编码参考的重要来源已经很多年</p>
 <blockquote>
@@ -188,336 +84,124 @@ console.log(change(&quot;they are students &quot;, &quot;aeous&quot;));
 </blockquote>
 <h1 id="1-The-Ternary-Operator-三元运算符"><a href="#1-The-Ternary-Operator-三元运算符" class="headerlink" title="1. The Ternary Operator(三元运算符)"></a>1. The Ternary Operator(三元运算符)</h1><p>当你想在一行中编写<code>if..else</code>语句时，这将会是一个非常好的方式。</p>
 <p>原版：</p>
-<pre><code class="javascript">const x = 20;
-let big;
-
-if (x &gt; 10) {
-    big = true;
-} else {
-    big = false;
-}
-</code></pre>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> x = <span class="number">20</span>;</div><div class="line"><span class="keyword">let</span> big;</div><div class="line"></div><div class="line"><span class="keyword">if</span> (x &gt; <span class="number">10</span>) &#123;</div><div class="line">    big = <span class="literal">true</span>;</div><div class="line">&#125; <span class="keyword">else</span> &#123;</div><div class="line">    big = <span class="literal">false</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>简版：</p>
-<pre><code class="javascript">const big = x &gt; 10 ? true : false;
-</code></pre>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> big = x &gt; <span class="number">10</span> ? <span class="literal">true</span> : <span class="literal">false</span>;</div></pre></td></tr></table></figure>
 <p>你也可以嵌套<code>if</code>语句像这样：</p>
-<pre><code class="javascript">const big = x &gt; 10 ? &quot; greater 10&quot; : x &lt; 5 ? &quot;less 5&quot; : &quot;between 5 and 10&quot;;
-</code></pre>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> big = x &gt; <span class="number">10</span> ? <span class="string">" greater 10"</span> : x &lt; <span class="number">5</span> ? <span class="string">"less 5"</span> : <span class="string">"between 5 and 10"</span>;</div></pre></td></tr></table></figure>
+<a id="more"></a>
 <h1 id="2-Short-circuit-Evaluation-Shorthand-空值or未定义检查"><a href="#2-Short-circuit-Evaluation-Shorthand-空值or未定义检查" class="headerlink" title="2. Short-circuit Evaluation Shorthand(空值or未定义检查)"></a>2. Short-circuit Evaluation Shorthand(空值or未定义检查)</h1><p>将变量值分配给另一个变量时，可能需要确保源变量不为<code>null</code>，<code>undefined</code>或为<code>&#39;&#39;</code>。你可以使用多个条件来一个很长的<code>if</code>语句，也可以使用短路赋值。</p>
 <p>原版：</p>
-<pre><code class="javascript">if (variable1 !== null || variable1 !== undefined || variable1 !== &#39;&#39;) {
-     let variable2 = variable1;
-}
-</code></pre>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> (variable1 !== <span class="literal">null</span> || variable1 !== <span class="literal">undefined</span> || variable1 !== <span class="string">''</span>) &#123;</div><div class="line">     <span class="keyword">let</span> variable2 = variable1;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>简版：</p>
-<pre><code class="javascript">const variable2 = variable1  || &#39;new&#39;;
-</code></pre>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> variable2 = variable1  || <span class="string">'new'</span>;</div></pre></td></tr></table></figure>
 <p>不相信我？你可以自己测试（把下面的代码粘贴在<a href="https://es6console.com/" target="_blank" rel="external">es6console</a>)：</p>
-<pre><code class="javascript">let variable1;
-let variable2 = variable1  || &#39;&#39;;
-console.log(variable2 === &#39;&#39;); // prints true
-
-variable1 = &#39;foo&#39;;
-variable2 = variable1  || &#39;&#39;;
-console.log(variable2); // prints foo
-</code></pre>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> variable1;</div><div class="line"><span class="keyword">let</span> variable2 = variable1  || <span class="string">''</span>;</div><div class="line"><span class="built_in">console</span>.log(variable2 === <span class="string">''</span>); <span class="comment">// prints true</span></div><div class="line"></div><div class="line">variable1 = <span class="string">'foo'</span>;</div><div class="line">variable2 = variable1  || <span class="string">''</span>;</div><div class="line"><span class="built_in">console</span>.log(variable2); <span class="comment">// prints foo</span></div></pre></td></tr></table></figure>
 <h1 id="3-Declaring-Variables-Shorthand-声明变量"><a href="#3-Declaring-Variables-Shorthand-声明变量" class="headerlink" title="3. Declaring Variables Shorthand(声明变量)"></a>3. Declaring Variables Shorthand(声明变量)</h1><p>在你的函数开始时声明变量复制是一个好习惯。这种简写方法可以在同时声明多分变量时节省大量的时间和空间。</p>
 <p>原版：</p>
-<pre><code class="javascript">let x;
-let y;
-let z = 3;
-</code></pre>
-<p>简写：</p>
-<pre><code class="javascript">let x, y, z=3;
-</code></pre>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> x;</div><div class="line"><span class="keyword">let</span> y;</div><div class="line"><span class="keyword">let</span> z = <span class="number">3</span>;</div></pre></td></tr></table></figure>
+<p>简写：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> x, y, z=<span class="number">3</span>;</div></pre></td></tr></table></figure></p>
 <h1 id="4-If-Presence-Shorthand-判断是否存在"><a href="#4-If-Presence-Shorthand-判断是否存在" class="headerlink" title="4. If Presence Shorthand(判断是否存在)"></a>4. If Presence Shorthand(判断是否存在)</h1><p>这可能是微不足道的，但值得一提。当正在进行『如果检查』的时候，分配运算符有时可以省略。</p>
 <p>原版：</p>
-<pre><code class="javascript">if (likeJavaScript === true)
-</code></pre>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> (likeJavaScript === <span class="literal">true</span>)</div></pre></td></tr></table></figure>
 <p>简版：</p>
-<pre><code class="javascript">if (likeJavaScript)
-</code></pre>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> (likeJavaScript)</div></pre></td></tr></table></figure>
 <blockquote>
 <p><strong>Note</strong>:这两个例子并不是完全相同，只要<code>likeJavaScript</code>是一个真值，简版的逻辑就会通过。</p>
 </blockquote>
 <p>这是另外一个例子。如果『a』不等于<code>true</code>，则做某事。</p>
 <p>原版：</p>
-<pre><code class="javascript">let a;
-if ( a !== true ) {
-// do something...
-}
-</code></pre>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> a;</div><div class="line"><span class="keyword">if</span> ( a !== <span class="literal">true</span> ) &#123;</div><div class="line"><span class="comment">// do something...</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>简版：</p>
-<pre><code class="javascript">let a;
-if ( !a ) {
-// do something...
-}
-</code></pre>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> a;</div><div class="line"><span class="keyword">if</span> ( !a ) &#123;</div><div class="line"><span class="comment">// do something...</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h1 id="5-JavaScript-for-Loop-Shorthand-JS循环"><a href="#5-JavaScript-for-Loop-Shorthand-JS循环" class="headerlink" title="5. JavaScript for Loop Shorthand(JS循环)"></a>5. JavaScript for Loop Shorthand(JS循环)</h1><p>这个小提示是非常有用的，如果你想要纯粹的原生<code>JavaScript</code>，而不是依赖外部的库，例如<code>jQuery</code>或者<code>loadsh</code>。</p>
 <p>原版：</p>
-<pre><code class="javascript">for (let i = 0; i &lt; allImgs.length; i++)
-</code></pre>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; allImgs.length; i++)</div></pre></td></tr></table></figure>
 <p>简版：</p>
-<pre><code class="javascript">for (let index in allImgs)
-</code></pre>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> (<span class="keyword">let</span> index <span class="keyword">in</span> allImgs)</div></pre></td></tr></table></figure>
 <p><code>Array.forEach</code> 简化：</p>
-<pre><code class="javascript">function logArrayElements(element, index, array) {
-  console.log(&quot;a[&quot; + index + &quot;] = &quot; + element);
-}
-[2, 5, 9].forEach(logArrayElements);
-// logs:
-// a[0] = 2
-// a[1] = 5
-// a[2] = 9
-</code></pre>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">logArrayElements</span>(<span class="params">element, index, array</span>) </span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="string">"a["</span> + index + <span class="string">"] = "</span> + element);</div><div class="line">&#125;</div><div class="line">[<span class="number">2</span>, <span class="number">5</span>, <span class="number">9</span>].forEach(logArrayElements);</div><div class="line"><span class="comment">// logs:</span></div><div class="line"><span class="comment">// a[0] = 2</span></div><div class="line"><span class="comment">// a[1] = 5</span></div><div class="line"><span class="comment">// a[2] = 9</span></div></pre></td></tr></table></figure>
 <h1 id="6-Short-circuit-Evaluation-短路赋值"><a href="#6-Short-circuit-Evaluation-短路赋值" class="headerlink" title="6. Short-circuit Evaluation(短路赋值)"></a>6. Short-circuit Evaluation(短路赋值)</h1><p>如果预期的参数为<code>null</code>或<code>undefined</code>，则不用写六行代码来分配一个默认值，所以我们可以简单地使用一个短路逻辑运算符并用一行代码来完成通同样的事情。</p>
 <p>原版：</p>
-<pre><code class="javascript">let dbHost;
-if (process.env.DB_HOST) {
-  dbHost = process.env.DB_HOST;
-} else {
-  dbHost = &#39;localhost&#39;;
-}
-</code></pre>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> dbHost;</div><div class="line"><span class="keyword">if</span> (process.env.DB_HOST) &#123;</div><div class="line">  dbHost = process.env.DB_HOST;</div><div class="line">&#125; <span class="keyword">else</span> &#123;</div><div class="line">  dbHost = <span class="string">'localhost'</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>简版：</p>
-<pre><code class="javascript">const dbHost = process.env.DB_HOST || &#39;localhost&#39;;
-</code></pre>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> dbHost = process.env.DB_HOST || <span class="string">'localhost'</span>;</div></pre></td></tr></table></figure>
 <h1 id="7-Decimal-base-exponents-十进制基数指数"><a href="#7-Decimal-base-exponents-十进制基数指数" class="headerlink" title="7. Decimal base exponents(十进制基数指数)"></a>7. Decimal base exponents(十进制基数指数)</h1><p>你可能已经看过这个了。它本质上是一个花哨的方式来编写没有尾随<code>0</code>的数字。例如<code>1e7</code>基本上意味着是<code>1</code>,随后是<code>7</code>个零。它表示一个十进制基数（在JavaScript作为浮点型解释）等于10,000,000。</p>
 <p>原版：</p>
-<pre><code class="javascript">for (let i = 0; i &lt; 10000; i++) {}
-</code></pre>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; <span class="number">10000</span>; i++) &#123;&#125;</div></pre></td></tr></table></figure>
 <p>简版：</p>
-<pre><code class="javascript">for (let i = 0; i &lt; 1e7; i++) {}
-
-// All the below will evaluate to true
-1e0 === 1;
-1e1 === 10;
-1e2 === 100;
-1e3 === 1000;
-1e4 === 10000;
-1e5 === 100000;
-</code></pre>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; <span class="number">1e7</span>; i++) &#123;&#125;</div><div class="line"></div><div class="line"><span class="comment">// All the below will evaluate to true</span></div><div class="line"><span class="number">1e0</span> === <span class="number">1</span>;</div><div class="line"><span class="number">1e1</span> === <span class="number">10</span>;</div><div class="line"><span class="number">1e2</span> === <span class="number">100</span>;</div><div class="line"><span class="number">1e3</span> === <span class="number">1000</span>;</div><div class="line"><span class="number">1e4</span> === <span class="number">10000</span>;</div><div class="line"><span class="number">1e5</span> === <span class="number">100000</span>;</div></pre></td></tr></table></figure>
 <h1 id="8-Object-Property-Shorthand-对象属性"><a href="#8-Object-Property-Shorthand-对象属性" class="headerlink" title="8. Object Property Shorthand(对象属性)"></a>8. Object Property Shorthand(对象属性)</h1><p>在<code>JavaScript</code>中定义对象字面量变得更加容易。ES6为对象分配属性提供了一种跟简单的方法。如果属性名称和值名称相同，则可以利用简写符号。</p>
 <p>原版：</p>
-<pre><code class="javascript">const obj = { x:x, y:y };
-</code></pre>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> obj = &#123; <span class="attr">x</span>:x, <span class="attr">y</span>:y &#125;;</div></pre></td></tr></table></figure>
 <p>简版：</p>
-<pre><code class="javascript">const obj = { x, y };
-</code></pre>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> obj = &#123; x, y &#125;;</div></pre></td></tr></table></figure>
 <h1 id="9-Arrow-Functions-Shorthand-箭头函数"><a href="#9-Arrow-Functions-Shorthand-箭头函数" class="headerlink" title="9. Arrow Functions Shorthand(箭头函数)"></a>9. Arrow Functions Shorthand(箭头函数)</h1><p>传统的函数易于简单的形式读取和书写，但是一旦你将其嵌套在其他函数调用中，它们往往会变得有点冗长且令人困惑。</p>
 <p>原版：</p>
-<pre><code class="javascript">function sayHello(name) {
-  console.log(&#39;Hello&#39;, name);
-}
-
-setTimeout(function() {
-  console.log(&#39;Loaded&#39;)
-}, 2000);
-
-list.forEach(function(item) {
-  console.log(item);
-});
-</code></pre>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">sayHello</span>(<span class="params">name</span>) </span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="string">'Hello'</span>, name);</div><div class="line">&#125;</div><div class="line"></div><div class="line">setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="string">'Loaded'</span>)</div><div class="line">&#125;, <span class="number">2000</span>);</div><div class="line"></div><div class="line">list.forEach(<span class="function"><span class="keyword">function</span>(<span class="params">item</span>) </span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(item);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
 <p>简版：</p>
-<pre><code class="javascript">sayHello = name =&gt; console.log(&#39;Hello&#39;, name);
-
-setTimeout(() =&gt; console.log(&#39;Loaded&#39;), 2000);
-
-list.forEach(item =&gt; console.log(item));
-</code></pre>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">sayHello = <span class="function"><span class="params">name</span> =&gt;</span> <span class="built_in">console</span>.log(<span class="string">'Hello'</span>, name);</div><div class="line"></div><div class="line">setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> <span class="built_in">console</span>.log(<span class="string">'Loaded'</span>), <span class="number">2000</span>);</div><div class="line"></div><div class="line">list.forEach(<span class="function"><span class="params">item</span> =&gt;</span> <span class="built_in">console</span>.log(item));</div></pre></td></tr></table></figure>
 <h1 id="10-Implicit-Return-Shorthand-隐式Return"><a href="#10-Implicit-Return-Shorthand-隐式Return" class="headerlink" title="10. Implicit Return Shorthand(隐式Return)"></a>10. Implicit Return Shorthand(隐式Return)</h1><p><code>Return</code>是我们经常使用的返回函数的最终结果的关键字。一个单一语句的箭头函数将隐式地返回结果的值（该函数必需省略大括号<code>{}</code>，以省略<code>return</code>关键字）。</p>
 <p>要返回多行语句（例如对象文本），必须使用<code>()</code>而不是<code>{}</code>来包裹函数体。这确保代码被执行为单个语句。</p>
 <p>原版：</p>
-<pre><code class="javascript">function calcCircumference(diameter) {
-  return Math.PI * diameter
-}
-</code></pre>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">calcCircumference</span>(<span class="params">diameter</span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> <span class="built_in">Math</span>.PI * diameter</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>简版：</p>
-<pre><code class="javascript">calcCircumference = diameter =&gt; (
-  Math.PI * diameter;
-)
-</code></pre>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">calcCircumference = <span class="function"><span class="params">diameter</span> =&gt;</span> (</div><div class="line">  <span class="built_in">Math</span>.PI * diameter;</div><div class="line">)</div></pre></td></tr></table></figure>
 <h1 id="11-Default-Parameter-Values-默认参数值"><a href="#11-Default-Parameter-Values-默认参数值" class="headerlink" title="11. Default Parameter Values(默认参数值)"></a>11. Default Parameter Values(默认参数值)</h1><p>你可以使用<code>if</code>语句定义函数参数的默认值。在ES6中，你可以在函数声明中定义默认值。</p>
 <p>原版：</p>
-<pre><code class="javascript">function volume(l, w, h) {
-  if (w === undefined)
-    w = 3;
-  if (h === undefined)
-    h = 4;
-  return l * w * h;
-}
-</code></pre>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">volume</span>(<span class="params">l, w, h</span>) </span>&#123;</div><div class="line">  <span class="keyword">if</span> (w === <span class="literal">undefined</span>)</div><div class="line">    w = <span class="number">3</span>;</div><div class="line">  <span class="keyword">if</span> (h === <span class="literal">undefined</span>)</div><div class="line">    h = <span class="number">4</span>;</div><div class="line">  <span class="keyword">return</span> l * w * h;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>简版：</p>
-<pre><code class="javascript">volume = (l, w = 3, h = 4 ) =&gt; (l * w * h);
-
-volume(2) //output: 24
-</code></pre>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">volume = <span class="function">(<span class="params">l, w = <span class="number">3</span>, h = <span class="number">4</span> </span>) =&gt;</span> (l * w * h);</div><div class="line"></div><div class="line">volume(<span class="number">2</span>) <span class="comment">//output: 24</span></div></pre></td></tr></table></figure>
 <h1 id="12-Template-Literals-模板文字"><a href="#12-Template-Literals-模板文字" class="headerlink" title="12. Template Literals(模板文字)"></a>12. Template Literals(模板文字)</h1><p>你不厌倦使用<code>+</code>将多个变量连接成一个字符串吗？这不是一个更容易的方式吗？如果你能试用ES6，那么你就是幸运的。所有你需要做的就是使用 <code>` </code> 符号，和<code>${}</code>来包含你的变量。</p>
 <p>原版：</p>
-<pre><code class="javascript">const welcome = &#39;You have logged in as &#39; + first + &#39; &#39; + last + &#39;.&#39;
-
-const db = &#39;http://&#39; + host + &#39;:&#39; + port + &#39;/&#39; + database;
-</code></pre>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> welcome = <span class="string">'You have logged in as '</span> + first + <span class="string">' '</span> + last + <span class="string">'.'</span></div><div class="line"></div><div class="line"><span class="keyword">const</span> db = <span class="string">'http://'</span> + host + <span class="string">':'</span> + port + <span class="string">'/'</span> + database;</div></pre></td></tr></table></figure>
 <p>简版：</p>
-<pre><code class="javascript">const welcome = `You have logged in as ${first} ${last}`;
-
-const db = `http://${host}:${port}/${database}`;
-</code></pre>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> welcome = <span class="string">`You have logged in as <span class="subst">$&#123;first&#125;</span> <span class="subst">$&#123;last&#125;</span>`</span>;</div><div class="line"></div><div class="line"><span class="keyword">const</span> db = <span class="string">`http://<span class="subst">$&#123;host&#125;</span>:<span class="subst">$&#123;port&#125;</span>/<span class="subst">$&#123;database&#125;</span>`</span>;</div></pre></td></tr></table></figure>
 <h1 id="13-Destructuring-Assignment-Shorthand-解构分配"><a href="#13-Destructuring-Assignment-Shorthand-解构分配" class="headerlink" title="13. Destructuring Assignment Shorthand(解构分配)"></a>13. Destructuring Assignment Shorthand(解构分配)</h1><p>如果你正在使用任何流行的Web框架，那么你将很高兴使用数组或数据以对象文字形式传递组件和API之间的信息。一旦数据对象到达组件，就需要解包它。</p>
 <p>原版：</p>
-<pre><code class="javascript">const observable = require(&#39;mobx/observable&#39;);
-const action = require(&#39;mobx/action&#39;);
-const runInAction = require(&#39;mobx/runInAction&#39;);
-
-const store = this.props.store;
-const form = this.props.form;
-const loading = this.props.loading;
-const errors = this.props.errors;
-const entity = this.props.entity;
-</code></pre>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> observable = <span class="built_in">require</span>(<span class="string">'mobx/observable'</span>);</div><div class="line"><span class="keyword">const</span> action = <span class="built_in">require</span>(<span class="string">'mobx/action'</span>);</div><div class="line"><span class="keyword">const</span> runInAction = <span class="built_in">require</span>(<span class="string">'mobx/runInAction'</span>);</div><div class="line"></div><div class="line"><span class="keyword">const</span> store = <span class="keyword">this</span>.props.store;</div><div class="line"><span class="keyword">const</span> form = <span class="keyword">this</span>.props.form;</div><div class="line"><span class="keyword">const</span> loading = <span class="keyword">this</span>.props.loading;</div><div class="line"><span class="keyword">const</span> errors = <span class="keyword">this</span>.props.errors;</div><div class="line"><span class="keyword">const</span> entity = <span class="keyword">this</span>.props.entity;</div></pre></td></tr></table></figure>
 <p>简版：</p>
-<pre><code class="javascript">import { observable, action, runInAction } from &#39;mobx&#39;;
-
-const { store, form, loading, errors, entity } = this.props;
-</code></pre>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> &#123; observable, action, runInAction &#125; <span class="keyword">from</span> <span class="string">'mobx'</span>;</div><div class="line"></div><div class="line"><span class="keyword">const</span> &#123; store, form, loading, errors, entity &#125; = <span class="keyword">this</span>.props;</div></pre></td></tr></table></figure>
 <p>你甚至可以分配你自己的变量名：</p>
-<pre><code class="javascript">const { store, form, loading, errors, entity:contact } = this.props;
-</code></pre>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> &#123; store, form, loading, errors, <span class="attr">entity</span>:contact &#125; = <span class="keyword">this</span>.props;</div></pre></td></tr></table></figure>
 <h1 id="14-Multi-line-String-Shorthand-多行字符串"><a href="#14-Multi-line-String-Shorthand-多行字符串" class="headerlink" title="14. Multi-line String Shorthand(多行字符串)"></a>14. Multi-line String Shorthand(多行字符串)</h1><p>如果你发现自己需要在代码中编写多行字符串，那么你将如何编写它：</p>
 <p>原版：</p>
-<pre><code class="javascript">const lorem = &#39;Lorem ipsum dolor sit amet, consectetur\n\t&#39;
-    + &#39;adipisicing elit, sed do eiusmod tempor incididunt\n\t&#39;
-    + &#39;ut labore et dolore magna aliqua. Ut enim ad minim\n\t&#39;
-    + &#39;veniam, quis nostrud exercitation ullamco laboris\n\t&#39;
-    + &#39;nisi ut aliquip ex ea commodo consequat. Duis aute\n\t&#39;
-    + &#39;irure dolor in reprehenderit in voluptate velit esse.\n\t&#39;
-</code></pre>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> lorem = <span class="string">'Lorem ipsum dolor sit amet, consectetur\n\t'</span></div><div class="line">    + <span class="string">'adipisicing elit, sed do eiusmod tempor incididunt\n\t'</span></div><div class="line">    + <span class="string">'ut labore et dolore magna aliqua. Ut enim ad minim\n\t'</span></div><div class="line">    + <span class="string">'veniam, quis nostrud exercitation ullamco laboris\n\t'</span></div><div class="line">    + <span class="string">'nisi ut aliquip ex ea commodo consequat. Duis aute\n\t'</span></div><div class="line">    + <span class="string">'irure dolor in reprehenderit in voluptate velit esse.\n\t'</span></div></pre></td></tr></table></figure>
 <p>但有一个更简单的方案。只需使用反引号。</p>
 <p>简版：</p>
-<pre><code class="javascript">const lorem = `Lorem ipsum dolor sit amet, consectetur
-    adipisicing elit, sed do eiusmod tempor incididunt
-    ut labore et dolore magna aliqua. Ut enim ad minim
-    veniam, quis nostrud exercitation ullamco laboris
-    nisi ut aliquip ex ea commodo consequat. Duis aute
-    irure dolor in reprehenderit in voluptate velit esse.`
-</code></pre>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> lorem = <span class="string">`Lorem ipsum dolor sit amet, consectetur</span></div><div class="line">    adipisicing elit, sed do eiusmod tempor incididunt</div><div class="line">    ut labore et dolore magna aliqua. Ut enim ad minim</div><div class="line">    veniam, quis nostrud exercitation ullamco laboris</div><div class="line">    nisi ut aliquip ex ea commodo consequat. Duis aute</div><div class="line">    irure dolor in reprehenderit in voluptate velit esse.`</div></pre></td></tr></table></figure>
 <h1 id="15-Spread-Operator-Shorthand-拓展操作符"><a href="#15-Spread-Operator-Shorthand-拓展操作符" class="headerlink" title="15. Spread Operator Shorthand(拓展操作符)"></a>15. Spread Operator Shorthand(拓展操作符)</h1><p>在ES6中引入的<strong>扩展运算符</strong>有几个用例，使JavaScript代码的使用更有效率和有趣。它可以用于替换某些数组函数。扩展操作符只是一连串的三个点。</p>
 <p>原版：</p>
-<pre><code class="javascript">// joining arrays
-const odd = [1, 3, 5];
-const nums = [2 ,4 , 6].concat(odd);
-
-// cloning arrays
-const arr = [1, 2, 3, 4];
-const arr2 = arr.slice()
-</code></pre>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// joining arrays</span></div><div class="line"><span class="keyword">const</span> odd = [<span class="number">1</span>, <span class="number">3</span>, <span class="number">5</span>];</div><div class="line"><span class="keyword">const</span> nums = [<span class="number">2</span> ,<span class="number">4</span> , <span class="number">6</span>].concat(odd);</div><div class="line"></div><div class="line"><span class="comment">// cloning arrays</span></div><div class="line"><span class="keyword">const</span> arr = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>];</div><div class="line"><span class="keyword">const</span> arr2 = arr.slice()</div></pre></td></tr></table></figure>
 <p>简版：</p>
-<pre><code class="javascript">// joining arrays
-const odd = [1, 3, 5 ];
-const nums = [2 ,4 , 6, ...odd];
-console.log(nums); // [ 2, 4, 6, 1, 3, 5 ]
-
-// cloning arrays
-const arr = [1, 2, 3, 4];
-const arr2 = [...arr];
-</code></pre>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// joining arrays</span></div><div class="line"><span class="keyword">const</span> odd = [<span class="number">1</span>, <span class="number">3</span>, <span class="number">5</span> ];</div><div class="line"><span class="keyword">const</span> nums = [<span class="number">2</span> ,<span class="number">4</span> , <span class="number">6</span>, ...odd];</div><div class="line"><span class="built_in">console</span>.log(nums); <span class="comment">// [ 2, 4, 6, 1, 3, 5 ]</span></div><div class="line"></div><div class="line"><span class="comment">// cloning arrays</span></div><div class="line"><span class="keyword">const</span> arr = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>];</div><div class="line"><span class="keyword">const</span> arr2 = [...arr];</div></pre></td></tr></table></figure>
 <p>与<code>concat()</code>方法不同，您可以使用扩展运算符在另一个数组的任何位置插入数组。</p>
-<pre><code class="javascript">const odd = [1, 3, 5 ];
-const nums = [2, ...odd, 4 , 6];
-</code></pre>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> odd = [<span class="number">1</span>, <span class="number">3</span>, <span class="number">5</span> ];</div><div class="line"><span class="keyword">const</span> nums = [<span class="number">2</span>, ...odd, <span class="number">4</span> , <span class="number">6</span>];</div></pre></td></tr></table></figure>
 <p>您还可以将扩展运算符与ES6解构符号组合：</p>
-<pre><code class="javascript">const { a, b, ...z } = { a: 1, b: 2, c: 3, d: 4 };
-console.log(a) // 1
-console.log(b) // 2
-console.log(z) // { c: 3, d: 4 }
-</code></pre>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> &#123; a, b, ...z &#125; = &#123; <span class="attr">a</span>: <span class="number">1</span>, <span class="attr">b</span>: <span class="number">2</span>, <span class="attr">c</span>: <span class="number">3</span>, <span class="attr">d</span>: <span class="number">4</span> &#125;;</div><div class="line"><span class="built_in">console</span>.log(a) <span class="comment">// 1</span></div><div class="line"><span class="built_in">console</span>.log(b) <span class="comment">// 2</span></div><div class="line"><span class="built_in">console</span>.log(z) <span class="comment">// &#123; c: 3, d: 4 &#125;</span></div></pre></td></tr></table></figure>
 <h1 id="16-Mandatory-Parameter-Shorthand-强制参数"><a href="#16-Mandatory-Parameter-Shorthand-强制参数" class="headerlink" title="16. Mandatory Parameter Shorthand(强制参数)"></a>16. Mandatory Parameter Shorthand(强制参数)</h1><p>默认情况下，JavaScript将函数参数设置为<code>undefined</code>，如果它们未传递值。一些其他语言将会发出警告或错误。要强制执行参数分配，如果<code>undefined</code>，可以使用<code>if</code>语句来抛出错误，或者你可以利用『强制参数简写』的优势。</p>
 <p>原版：</p>
-<pre><code class="javascript">function foo(bar) {
-  if(bar === undefined) {
-    throw new Error(&#39;Missing parameter!&#39;);
-  }
-  return bar;
-}
-</code></pre>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params">bar</span>) </span>&#123;</div><div class="line">  <span class="keyword">if</span>(bar === <span class="literal">undefined</span>) &#123;</div><div class="line">    <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">'Missing parameter!'</span>);</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">return</span> bar;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>简版：</p>
-<pre><code class="javascript">mandatory = () =&gt; {
-  throw new Error(&#39;Missing parameter!&#39;);
-}
-
-foo = (bar = mandatory()) =&gt; {
-  return bar;
-}
-</code></pre>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">mandatory = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">  <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">'Missing parameter!'</span>);</div><div class="line">&#125;</div><div class="line"></div><div class="line">foo = <span class="function">(<span class="params">bar = mandatory(</span>)) =&gt;</span> &#123;</div><div class="line">  <span class="keyword">return</span> bar;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h1 id="17-Array-find-Shorthand-数组的find函数"><a href="#17-Array-find-Shorthand-数组的find函数" class="headerlink" title="17. Array.find Shorthand(数组的find函数)"></a>17. Array.find Shorthand(数组的find函数)</h1><p>如果你有需求在原生JavaScript中编写查找功能，那么你可能已经使用了for循环。在ES6中，引入了一个名为<code>find()</code>的新数组函数。</p>
 <p>原版：</p>
-<pre><code class="javascript">const pets = [
-  { type: &#39;Dog&#39;, name: &#39;Max&#39;},
-  { type: &#39;Cat&#39;, name: &#39;Karl&#39;},
-  { type: &#39;Dog&#39;, name: &#39;Tommy&#39;},
-]
-
-function findDog(name) {
-  for(let i = 0; i&lt;pets.length; ++i) {
-    if(pets[i].type === &#39;Dog&#39; &amp;&amp; pets[i].name === name) {
-      return pets[i];
-    }
-  }
-}
-</code></pre>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> pets = [</div><div class="line">  &#123; <span class="attr">type</span>: <span class="string">'Dog'</span>, <span class="attr">name</span>: <span class="string">'Max'</span>&#125;,</div><div class="line">  &#123; <span class="attr">type</span>: <span class="string">'Cat'</span>, <span class="attr">name</span>: <span class="string">'Karl'</span>&#125;,</div><div class="line">  &#123; <span class="attr">type</span>: <span class="string">'Dog'</span>, <span class="attr">name</span>: <span class="string">'Tommy'</span>&#125;,</div><div class="line">]</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">findDog</span>(<span class="params">name</span>) </span>&#123;</div><div class="line">  <span class="keyword">for</span>(<span class="keyword">let</span> i = <span class="number">0</span>; i&lt;pets.length; ++i) &#123;</div><div class="line">    <span class="keyword">if</span>(pets[i].type === <span class="string">'Dog'</span> &amp;&amp; pets[i].name === name) &#123;</div><div class="line">      <span class="keyword">return</span> pets[i];</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>简版：</p>
-<pre><code class="javascript">pet = pets.find(pet =&gt; pet.type ===&#39;Dog&#39; &amp;&amp; pet.name === &#39;Tommy&#39;);
-console.log(pet); // { type: &#39;Dog&#39;, name: &#39;Tommy&#39; }
-</code></pre>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">pet = pets.find(<span class="function"><span class="params">pet</span> =&gt;</span> pet.type ===<span class="string">'Dog'</span> &amp;&amp; pet.name === <span class="string">'Tommy'</span>);</div><div class="line"><span class="built_in">console</span>.log(pet); <span class="comment">// &#123; type: 'Dog', name: 'Tommy' &#125;</span></div></pre></td></tr></table></figure>
 <h1 id="18-Object-key-Shorthand-运用对象的Key"><a href="#18-Object-key-Shorthand-运用对象的Key" class="headerlink" title="18. Object [key] Shorthand(运用对象的Key)"></a>18. Object [key] Shorthand(运用对象的Key)</h1><p>你知道<code>Foo.bar</code>也可以写成<code>Foo [&#39;bar&#39;]</code>吗？起初，似乎没有一个理由，你应该这样写。但是，这个符号为您提供了编写可重用代码的构建块。</p>
 <p>思考一个验证函数的简化示例：</p>
-<pre><code class="javascript">function validate(values) {
-  if(!values.first)
-    return false;
-  if(!values.last)
-    return false;
-  return true;
-}
-
-console.log(validate({first:&#39;Bruce&#39;,last:&#39;Wayne&#39;})); // true
-</code></pre>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">validate</span>(<span class="params">values</span>) </span>&#123;</div><div class="line">  <span class="keyword">if</span>(!values.first)</div><div class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">  <span class="keyword">if</span>(!values.last)</div><div class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">  <span class="keyword">return</span> <span class="literal">true</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(validate(&#123;<span class="attr">first</span>:<span class="string">'Bruce'</span>,<span class="attr">last</span>:<span class="string">'Wayne'</span>&#125;)); <span class="comment">// true</span></div></pre></td></tr></table></figure>
 <p>这个功能完成了它的工作。但是，考虑一种情况，您有很多形式需要应用验证但具有不同的字段和规则。构建可以在运行时配置的通用验证函数不是更好吗？</p>
 <p>简版：</p>
-<pre><code class="javascript">// object validation rules
-const schema = {
-  first: {
-    required:true
-  },
-  last: {
-    required:true
-  }
-}
-
-// universal validation function
-const validate = (schema, values) =&gt; {
-  for(field in schema) {
-    if(schema[field].required) {
-      if(!values[field]) {
-        return false;
-      }
-    }
-  }
-  return true;
-}
-
-
-console.log(validate(schema, {first:&#39;Bruce&#39;})); // false
-console.log(validate(schema, {first:&#39;Bruce&#39;,last:&#39;Wayne&#39;})); // true
-</code></pre>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// object validation rules</span></div><div class="line"><span class="keyword">const</span> schema = &#123;</div><div class="line">  <span class="attr">first</span>: &#123;</div><div class="line">    <span class="attr">required</span>:<span class="literal">true</span></div><div class="line">  &#125;,</div><div class="line">  <span class="attr">last</span>: &#123;</div><div class="line">    <span class="attr">required</span>:<span class="literal">true</span></div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// universal validation function</span></div><div class="line"><span class="keyword">const</span> validate = <span class="function">(<span class="params">schema, values</span>) =&gt;</span> &#123;</div><div class="line">  <span class="keyword">for</span>(field <span class="keyword">in</span> schema) &#123;</div><div class="line">    <span class="keyword">if</span>(schema[field].required) &#123;</div><div class="line">      <span class="keyword">if</span>(!values[field]) &#123;</div><div class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">      &#125;</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">return</span> <span class="literal">true</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(validate(schema, &#123;<span class="attr">first</span>:<span class="string">'Bruce'</span>&#125;)); <span class="comment">// false</span></div><div class="line"><span class="built_in">console</span>.log(validate(schema, &#123;<span class="attr">first</span>:<span class="string">'Bruce'</span>,<span class="attr">last</span>:<span class="string">'Wayne'</span>&#125;)); <span class="comment">// true</span></div></pre></td></tr></table></figure>
 <p>现在我们有一个验证函数，我们可以在所有代码块中重用，而无需为每个函数编写自定义验证函数。</p>
 <h1 id="19-Double-Bitwise-NOT-Shorthand"><a href="#19-Double-Bitwise-NOT-Shorthand" class="headerlink" title="19. Double Bitwise NOT Shorthand"></a>19. Double Bitwise NOT Shorthand</h1><p>位运算符是您在初学者JavaScript教程中学到的功能之一，您永远不会在任何地方实现它们。此外，如果您不处理二进制文件，谁想要处理这些零和零。</p>
 <p>但是，对于<code>~~</code>，非常实用的用例。你可以使用它作为<code>Math.floor()</code>的替代。它的优点是它执行相同的操作更快。</p>
 <p>原版：</p>
-<pre><code class="javascript">Math.floor(4.9) === 4  //true
-</code></pre>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">Math</span>.floor(<span class="number">4.9</span>) === <span class="number">4</span>  <span class="comment">//true</span></div></pre></td></tr></table></figure>
 <p>简版：</p>
-<pre><code class="javascript">~~4.9 === 4  //true
-</code></pre>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">~~<span class="number">4.9</span> === <span class="number">4</span>  <span class="comment">//true</span></div></pre></td></tr></table></figure>
 <h1 id="20-Suggest-One-你也来建议一条？"><a href="#20-Suggest-One-你也来建议一条？" class="headerlink" title="20. Suggest One? (你也来建议一条？)"></a>20. Suggest One? (你也来建议一条？)</h1><p>我真的很喜欢这些，并希望找到更多，请留下评论！</p>
 ]]></content>
     
@@ -525,7 +209,15 @@ console.log(validate(schema, {first:&#39;Bruce&#39;,last:&#39;Wayne&#39;})); // 
     
       &lt;p&gt;&lt;strong&gt;阅读此文章对于任何使用JavaScript的开发人员来说都是非常有必要的&lt;/strong&gt;。我将这篇文章作为我使用JavaScript简化语法编码参考的重要来源已经很多年&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;&lt;strong&gt;2017年6月14日&lt;/str
+&lt;p&gt;&lt;strong&gt;2017年6月14日&lt;/strong&gt;:本文基于ES6语法更新添加新的简写技巧。如果您想了解有关ES6更改的更多信息，&lt;a href=&quot;https://www.sitepoint.com/premium/screencasts/a-look-into-es2016&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;查看ES6相关内容&lt;/a&gt;。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h1 id=&quot;1-The-Ternary-Operator-三元运算符&quot;&gt;&lt;a href=&quot;#1-The-Ternary-Operator-三元运算符&quot; class=&quot;headerlink&quot; title=&quot;1. The Ternary Operator(三元运算符)&quot;&gt;&lt;/a&gt;1. The Ternary Operator(三元运算符)&lt;/h1&gt;&lt;p&gt;当你想在一行中编写&lt;code&gt;if..else&lt;/code&gt;语句时，这将会是一个非常好的方式。&lt;/p&gt;
+&lt;p&gt;原版：&lt;/p&gt;
+&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;4&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;5&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;6&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;7&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;8&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;const&lt;/span&gt; x = &lt;span class=&quot;number&quot;&gt;20&lt;/span&gt;;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;let&lt;/span&gt; big;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; (x &amp;gt; &lt;span class=&quot;number&quot;&gt;10&lt;/span&gt;) &amp;#123;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    big = &lt;span class=&quot;literal&quot;&gt;true&lt;/span&gt;;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;#125; &lt;span class=&quot;keyword&quot;&gt;else&lt;/span&gt; &amp;#123;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    big = &lt;span class=&quot;literal&quot;&gt;false&lt;/span&gt;;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;#125;&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;简版：&lt;/p&gt;
+&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;const&lt;/span&gt; big = x &amp;gt; &lt;span class=&quot;number&quot;&gt;10&lt;/span&gt; ? &lt;span class=&quot;literal&quot;&gt;true&lt;/span&gt; : &lt;span class=&quot;literal&quot;&gt;false&lt;/span&gt;;&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;你也可以嵌套&lt;code&gt;if&lt;/code&gt;语句像这样：&lt;/p&gt;
+&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;const&lt;/span&gt; big = x &amp;gt; &lt;span class=&quot;number&quot;&gt;10&lt;/span&gt; ? &lt;span class=&quot;string&quot;&gt;&quot; greater 10&quot;&lt;/span&gt; : x &amp;lt; &lt;span class=&quot;number&quot;&gt;5&lt;/span&gt; ? &lt;span class=&quot;string&quot;&gt;&quot;less 5&quot;&lt;/span&gt; : &lt;span class=&quot;string&quot;&gt;&quot;between 5 and 10&quot;&lt;/span&gt;;&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
     
     </summary>
     
@@ -547,31 +239,9 @@ console.log(validate(schema, {first:&#39;Bruce&#39;,last:&#39;Wayne&#39;})); // 
     
     <content type="html"><![CDATA[<p>折腾这个的原因是因为在IOS下没有支持<code>kcptun</code>加速的ss客户端，而且我这个穷屌丝，买不起可以刷固件的路由器。<br>所以就只有想办法把linux系统中的ss共享到局域网，IOS可以局域网的代理进行加速。实现躺在床上高速看<code>youtube</code>的效果。<br>因为<code>windows</code>的ss客户端已经自带的允许来自局域网的连接的功能，然而Linux的ss却没有此功能。<br>所有只有另寻它径，在网上查找资料就找到了一个名为<code>meow</code>代理工具，可以讲sock5代理转为http代理。</p>
 <p>老规矩上<code>gayhub</code>地址：<a href="https://github.com/renzhn/MEOW" target="_blank" rel="external">https://github.com/renzhn/MEOW</a></p>
-<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p>根据帮助文档，这里我直接执行他所提供的脚本</p>
-<pre><code class="bash">curl -L git.io/meowproxy | bash
-</code></pre>
+<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p>根据帮助文档，这里我直接执行他所提供的脚本<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">curl -L git.io/meowproxy | bash</div></pre></td></tr></table></figure></p>
 <p>这里会弹出一个提示框会让你输入安装的绝对路径，前提是该目录存在。<br>我填写的是<code>/home/bob/meow</code>。<br>安装的过程根据网络的因素可能时间会有点长，等待安装完成后。</p>
-<h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><p>可以在安装目录下找到一个可执行文件，使用<code>./MEOW</code>就可以执行。<br>它会自动调用<code>~/.meow/rc</code>这个配置文件。</p>
-<pre><code class="config">#############################
-# 监听地址，设为0.0.0.0可以监听所有端口，共享给局域网使用
-#############################
-listen = http://0.0.0.0:4411
-#############################
-# 指定二级代理
-#############################
-# 例子：
-#SOCKS5:
-proxy = socks5://127.0.0.1:1080
-# HTTP:
-#   proxy = http://127.0.0.1:8080
-#   proxy = http://user:password@127.0.0.1:8080
-# shadowsocks:
-#   proxy = ss://encrypt_method:password@1.2.3.4:8388
-#   支持的加密方法如下：
-#     aes-128-cfb, aes-192-cfb, aes-256-cfb,
-#     bf-cfb, cast5-cfb, des-cfb, rc4-md5,
-#     chacha20, salsa20, rc4, table
-</code></pre>
+<h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><p>可以在安装目录下找到一个可执行文件，使用<code>./MEOW</code>就可以执行。<br>它会自动调用<code>~/.meow/rc</code>这个配置文件。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">#############################</div><div class="line"># 监听地址，设为0.0.0.0可以监听所有端口，共享给局域网使用</div><div class="line">#############################</div><div class="line">listen = http://0.0.0.0:4411</div><div class="line">#############################</div><div class="line"># 指定二级代理</div><div class="line">#############################</div><div class="line"># 例子：</div><div class="line">#SOCKS5:</div><div class="line">proxy = socks5://127.0.0.1:1080</div><div class="line"># HTTP:</div><div class="line">#   proxy = http://127.0.0.1:8080</div><div class="line">#   proxy = http://user:password@127.0.0.1:8080</div><div class="line"># shadowsocks:</div><div class="line">#   proxy = ss://encrypt_method:password@1.2.3.4:8388</div><div class="line">#   支持的加密方法如下：</div><div class="line">#     aes-128-cfb, aes-192-cfb, aes-256-cfb,</div><div class="line">#     bf-cfb, cast5-cfb, des-cfb, rc4-md5,</div><div class="line">#     chacha20, salsa20, rc4, table</div></pre></td></tr></table></figure></p>
 <p>以上是我的配置文件，当跑起该服务后，将会在4411端口开放一个http代理服务。</p>
 <h3 id="IOS"><a href="#IOS" class="headerlink" title="IOS"></a>IOS</h3><p>手机端的设置，首先保证手机和linux在同一局域网，而且要注意防火墙不要拦截该端口，主要是针对linux。<br>手机可以在编辑WiFil里面的最下面，找到<code>HTTP代理</code>，设置为<code>手动</code>，填入你的linux的局域网ip地址和端口号。<br>不需要开启鉴定。</p>
 <h3 id="然后"><a href="#然后" class="headerlink" title="然后"></a>然后</h3><p>就愉快的玩耍吧。</p>
@@ -603,53 +273,22 @@ proxy = socks5://127.0.0.1:1080
 <p>针对使用linux桌面版的用户和基于linux路由器的用户。</p>
 </blockquote>
 <h2 id="第一步：下载Kcptun可执行文件。"><a href="#第一步：下载Kcptun可执行文件。" class="headerlink" title="第一步：下载Kcptun可执行文件。"></a>第一步：下载Kcptun可执行文件。</h2><p><a href="https://github.com/xtaci/kcptun/releases" target="_blank" rel="external">Kcptun下载地址</a><br>需要根据自己系统版本选择相应的软件版本进行下载，因为我的主机是64位的，所以我下载的是<a href="https://github.com/xtaci/kcptun/releases/download/v20170218/kcptun-linux-amd64-20170218.tar.gz" target="_blank" rel="external">kcptun-linux-amd64-20170218.tar.gz</a></p>
-<pre><code class="bash">tar -xzf  kcptun-linux-amd64-20170218.tar.gz
-</code></pre>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">tar -xzf  kcptun-linux-amd64-20170218.tar.gz</div></pre></td></tr></table></figure>
 <p>解压后你将会得到两个文件，一个是<code>server_linux_amd64</code>，另外一个是<code>client_linux_amd64</code>。作为客户端，我们当然应该使用<code>client_linux_amd64</code>。<br>执行下面的命令可以获取到帮助文档</p>
-<pre><code class="bash">./client_linux_amd64 -h
-</code></pre>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">./client_linux_amd64 -h</div></pre></td></tr></table></figure>
 <a id="more"></a>
 <p>为了方便进行参数的设置，我这里使用其中<code>-c</code>的选项，这个选项将会让kcptun运行的时候调用一个<code>json</code>文件，在<code>json</code>文件里面有我们提前写好的服务器参数。</p>
-<pre><code class="json">{
-    &quot;localaddr&quot;: &quot;:8388&quot;, //本地使用的端口
-    &quot;remoteaddr&quot;: &quot;********:29900&quot;, //服务器的kcptun服务的ip地址加端口
-    &quot;key&quot;: &quot;*****&quot;, //你设定的加密密码
-    &quot;crypt&quot;: &quot;aes&quot;, //加密方式
-    &quot;mode&quot;: &quot;fast2&quot;, //加速模式
-    &quot;conn&quot;: 1, //从这以下的参数，你需要根据你在服务器端的配置参数进行设置
-    &quot;autoexpire&quot;: 60,
-    &quot;mtu&quot;: 1350,
-    &quot;sndwnd&quot;: 1024,
-    &quot;rcvwnd&quot;: 1024,
-    &quot;datashard&quot;: 10,
-    &quot;parityshard&quot;: 3,
-    &quot;dscp&quot;: 0,
-    &quot;nocomp&quot;: false,
-    &quot;acknodelay&quot;: false,
-    &quot;nodelay&quot;: 0,
-    &quot;interval&quot;: 20,
-    &quot;resend&quot;: 2,
-    &quot;nc&quot;: 1,
-    &quot;sockbuf&quot;: 4194304,
-    &quot;keepalive&quot;: 10
-}
-</code></pre>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">    "localaddr": ":8388", //本地使用的端口</div><div class="line">    "remoteaddr": "********:29900", //服务器的kcptun服务的ip地址加端口</div><div class="line">    "key": "*****", //你设定的加密密码</div><div class="line">    "crypt": "aes", //加密方式</div><div class="line">    "mode": "fast2", //加速模式</div><div class="line">    "conn": 1, //从这以下的参数，你需要根据你在服务器端的配置参数进行设置</div><div class="line">    "autoexpire": 60,</div><div class="line">    "mtu": 1350,</div><div class="line">    "sndwnd": 1024,</div><div class="line">    "rcvwnd": 1024,</div><div class="line">    "datashard": 10,</div><div class="line">    "parityshard": 3,</div><div class="line">    "dscp": 0,</div><div class="line">    "nocomp": false,</div><div class="line">    "acknodelay": false,</div><div class="line">    "nodelay": 0,</div><div class="line">    "interval": 20,</div><div class="line">    "resend": 2,</div><div class="line">    "nc": 1,</div><div class="line">    "sockbuf": 4194304,</div><div class="line">    "keepalive": 10</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>然后我讲这个文件保存为<code>myvps.json</code><br>在终端执行下面的命令就可以运行kcptun服务。</p>
-<pre><code class="bash">./client_linux_amd64 -c myvps.json 
-#我是把该`json`文件存放在相同的路径下，如不同，则需要完整路径。
-</code></pre>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">./client_linux_amd64 -c myvps.json </div><div class="line"><span class="comment">#我是把该`json`文件存放在相同的路径下，如不同，则需要完整路径。</span></div></pre></td></tr></table></figure>
 <h2 id="第二步，关于ss的设置"><a href="#第二步，关于ss的设置" class="headerlink" title="第二步，关于ss的设置"></a>第二步，关于ss的设置</h2><p>执行完第一步的操作以后，在你的电脑或者是你的路由器就已经跑起了kcptun服务并且运行在”8388”端口上。<br>你需要把你的ss客户端配置文件进行修改，把原来的远程服务器IP地址改为<code>127.0.0.1</code>，并且修改原来的SS服务端口为<code>8388</code>，而SS里面的加密方式和密码还有SS服务器的本地端口则不需要修改。</p>
 <p>这样关于你浏览器的插件设置将不需要修改便可直接使用。<br>但是得到网速将会是以前很多倍。</p>
 <h2 id="完结，优化"><a href="#完结，优化" class="headerlink" title="完结，优化"></a>完结，优化</h2><h3 id="将SS用于命令行"><a href="#将SS用于命令行" class="headerlink" title="将SS用于命令行"></a>将SS用于命令行</h3><p>你需要用到一个工具室<code>proxychains</code><br>在配置文件的最后一行加上</p>
-<pre><code class="bash">socks5 127.0.0.1 1080
-</code></pre>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">socks5 127.0.0.1 1080</div></pre></td></tr></table></figure>
 <p>这样可以使你的git等命令也可以走代理的路线，大大的提高了从<code>github</code>下载速度。其他需要下载国外资源的命令也可以使用。</p>
 <p>命令用法：就在原有的命令的最前面加上<code>proxychains</code> <em>注意命令后面需要接一个空格</em></p>
-<pre><code class="bash">proxychains git clone git://xxxxxxxxx
-</code></pre>
-<h3 id="开机自启动kcptun"><a href="#开机自启动kcptun" class="headerlink" title="开机自启动kcptun"></a>开机自启动kcptun</h3><p>我把自动启动的命令添加了加载图形界面后，实际上加入到系统自启会更好,所以我在我的<code>.xinitrc</code>中添加了以下代码</p>
-<pre><code class="bash">( ( sleep 2 &amp;amp;&amp;amp; /home/bob/Downloads/client_linux_amd64 -c /home/bob/Downloads/myvps.json ) &amp;amp; )
-</code></pre>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">proxychains git <span class="built_in">clone</span> git://xxxxxxxxx</div></pre></td></tr></table></figure>
+<h3 id="开机自启动kcptun"><a href="#开机自启动kcptun" class="headerlink" title="开机自启动kcptun"></a>开机自启动kcptun</h3><p>我把自动启动的命令添加了加载图形界面后，实际上加入到系统自启会更好,所以我在我的<code>.xinitrc</code>中添加了以下代码<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">( ( sleep 2 &amp;amp;&amp;amp; /home/bob/Downloads/client_linux_amd64 -c /home/bob/Downloads/myvps.json ) &amp;amp; )</div></pre></td></tr></table></figure></p>
 <p>其中路径应该修改为你自己的文件的绝对路径。</p>
 <h2 id="结束"><a href="#结束" class="headerlink" title="结束"></a>结束</h2><p>撒花撒花撒花撒花撒花撒花撒花撒花撒花撒花撒花撒花撒花撒花！！！！</p>
 ]]></content>
@@ -660,11 +299,9 @@ proxy = socks5://127.0.0.1:1080
 &lt;p&gt;针对使用linux桌面版的用户和基于linux路由器的用户。&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h2 id=&quot;第一步：下载Kcptun可执行文件。&quot;&gt;&lt;a href=&quot;#第一步：下载Kcptun可执行文件。&quot; class=&quot;headerlink&quot; title=&quot;第一步：下载Kcptun可执行文件。&quot;&gt;&lt;/a&gt;第一步：下载Kcptun可执行文件。&lt;/h2&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/xtaci/kcptun/releases&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Kcptun下载地址&lt;/a&gt;&lt;br&gt;需要根据自己系统版本选择相应的软件版本进行下载，因为我的主机是64位的，所以我下载的是&lt;a href=&quot;https://github.com/xtaci/kcptun/releases/download/v20170218/kcptun-linux-amd64-20170218.tar.gz&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;kcptun-linux-amd64-20170218.tar.gz&lt;/a&gt;&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&quot;bash&quot;&gt;tar -xzf  kcptun-linux-amd64-20170218.tar.gz
-&lt;/code&gt;&lt;/pre&gt;
+&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;tar -xzf  kcptun-linux-amd64-20170218.tar.gz&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;p&gt;解压后你将会得到两个文件，一个是&lt;code&gt;server_linux_amd64&lt;/code&gt;，另外一个是&lt;code&gt;client_linux_amd64&lt;/code&gt;。作为客户端，我们当然应该使用&lt;code&gt;client_linux_amd64&lt;/code&gt;。&lt;br&gt;执行下面的命令可以获取到帮助文档&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&quot;bash&quot;&gt;./client_linux_amd64 -h
-&lt;/code&gt;&lt;/pre&gt;
+&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;./client_linux_amd64 -h&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
     
     </summary>
     
@@ -691,49 +328,22 @@ proxy = socks5://127.0.0.1:1080
 <h1 id="安装Linux"><a href="#安装Linux" class="headerlink" title="安装Linux"></a>安装Linux</h1><h2 id="创建一个虚拟机"><a href="#创建一个虚拟机" class="headerlink" title="创建一个虚拟机"></a>创建一个虚拟机</h2><p>　　公司是一台VPS主服务器，里面的虚拟机采用<code>Hyper-v</code>的软件来开通VPS，首先是类似<code>VMware</code>一样创建的一台空虚拟机，这里的配置使用的是双核，1GB内存，40GB磁盘。<br>　　内存启用了<code>Hyper-v</code>的动态内存，启动内存为1024MB，最小内存为512M，最大内存为1024MB，压缩比为百分之20。</p>
 <h3 id="下载centos7镜像文件"><a href="#下载centos7镜像文件" class="headerlink" title="下载centos7镜像文件"></a>下载centos7镜像文件</h3><p>　　在<a href="https://www.centos.org/" target="_blank" rel="external">centos的官网</a>直接通过谷歌浏览器下载，速度很快，10MB每秒。因为公司的服务器本身是一个美国VPS宿主机。<br>　　我选择下载的<a href="http://isoredirect.centos.org/centos/7/isos/x86_64/CentOS-7-x86_64-Minimal-1511.iso" target="_blank" rel="external">CentOS-7-x86_64-Minimal-1511.iso</a>。</p>
 <h3 id="安装系统"><a href="#安装系统" class="headerlink" title="安装系统"></a>安装系统</h3><p>　　1. 编辑该虚拟机的配置，使其的光驱设置为刚才下载的iso文件。<br>　　2. 启动虚拟机，并且使用Hyper-v连接到该虚拟机。<br>　　3. 进入引导界面，选择第一步，开始安装。<br>　　4. 等待加载图形界面<br>　　5. 配置需要安装的磁盘和安全性、时区、语言等参数<br>　　6. 点击开始安装，会在完成安装后要求你设置root密码和新建用户（可以选择不新建用户）。<br>　　7. 我新建一个叫做bob的用户，并且将该用户设置为系统管理员。<br>　　8. 完成安装，系统重启。</p>
-<h2 id="配置Linux"><a href="#配置Linux" class="headerlink" title="配置Linux"></a>配置Linux</h2><h3 id="网络设置"><a href="#网络设置" class="headerlink" title="网络设置"></a>网络设置</h3><p>　　进入系统后，第一个设置是修改网卡配置。<br>　　因为该服务器是需要接入互联网的，所以使用的是一个独立IP，通过编辑ifcfg-eth0可以实现静态网络连接。而且这里因为是最小化安装，所以很多的编辑器自带是没有安装的，能够使用的是<code>VI</code>。而且我使用的是bob身份登陆的。不是root身份还需要使用sudo命令。</p>
-<pre><code class="bash">sudo vi /etc/sysconfig/network-scripts/ifcfg-eth0
-</code></pre>
+<h2 id="配置Linux"><a href="#配置Linux" class="headerlink" title="配置Linux"></a>配置Linux</h2><h3 id="网络设置"><a href="#网络设置" class="headerlink" title="网络设置"></a>网络设置</h3><p>　　进入系统后，第一个设置是修改网卡配置。<br>　　因为该服务器是需要接入互联网的，所以使用的是一个独立IP，通过编辑ifcfg-eth0可以实现静态网络连接。而且这里因为是最小化安装，所以很多的编辑器自带是没有安装的，能够使用的是<code>VI</code>。而且我使用的是bob身份登陆的。不是root身份还需要使用sudo命令。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo vi /etc/sysconfig/network-scripts/ifcfg-eth0</div></pre></td></tr></table></figure></p>
 <p>　　修改如下内容：</p>
-<h1 id="其他已经存在的参数不需要删除"><a href="#其他已经存在的参数不需要删除" class="headerlink" title="其他已经存在的参数不需要删除"></a>其他已经存在的参数不需要删除</h1><pre><code class="bash">BOOTPROTO=&quot;static&quot; #dhcp改为static   
-ONBOOT=&quot;yes&quot; #开机启用本配置  
-IPADDR=XXX.XXX.XXX.XXX #静态IP  
-GATEWAY=XXX.XXX.XXX.XXX #默认网关  
-NETMASK=255.255.255.248 #子网掩码  
-DNS1=8.8.8.8 #DNS 配置  
-DNS2=8.8.4.4
-</code></pre>
-<p>保存文件后重启网络服务：</p>
-<pre><code class="bash">sudo service network restart
-</code></pre>
-<h1 id="或者用"><a href="#或者用" class="headerlink" title="或者用"></a>或者用</h1><pre><code class="bash">sudo systemctl restart network.serivce
-</code></pre>
+<h1 id="其他已经存在的参数不需要删除"><a href="#其他已经存在的参数不需要删除" class="headerlink" title="其他已经存在的参数不需要删除"></a>其他已经存在的参数不需要删除</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">BOOTPROTO=<span class="string">"static"</span> <span class="comment">#dhcp改为static   </span></div><div class="line">ONBOOT=<span class="string">"yes"</span> <span class="comment">#开机启用本配置  </span></div><div class="line">IPADDR=XXX.XXX.XXX.XXX <span class="comment">#静态IP  </span></div><div class="line">GATEWAY=XXX.XXX.XXX.XXX <span class="comment">#默认网关  </span></div><div class="line">NETMASK=255.255.255.248 <span class="comment">#子网掩码  </span></div><div class="line">DNS1=8.8.8.8 <span class="comment">#DNS 配置  </span></div><div class="line">DNS2=8.8.4.4</div></pre></td></tr></table></figure>
+<p>保存文件后重启网络服务：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo service network restart</div></pre></td></tr></table></figure></p>
+<h1 id="或者用"><a href="#或者用" class="headerlink" title="或者用"></a>或者用</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo systemctl restart network.serivce</div></pre></td></tr></table></figure>
 <p>使用<code>ip addr</code>查看效果。</p>
-<h3 id="更新软件仓库和系统"><a href="#更新软件仓库和系统" class="headerlink" title="更新软件仓库和系统"></a>更新软件仓库和系统</h3><p>　　这个使用的是一个很简单的命令：</p>
-<pre><code class="bash">sudo yum update
-</code></pre>
+<h3 id="更新软件仓库和系统"><a href="#更新软件仓库和系统" class="headerlink" title="更新软件仓库和系统"></a>更新软件仓库和系统</h3><p>　　这个使用的是一个很简单的命令：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo yum update</div></pre></td></tr></table></figure></p>
 <p>　　等待系统更新完成。这时候通过<code>Hyper-v</code>生成一个快照，以免后面的错误操作方便可以随时还原。</p>
 <h1 id="安装tomcat"><a href="#安装tomcat" class="headerlink" title="安装tomcat　　"></a>安装tomcat　　</h1><h2 id="安装jdk"><a href="#安装jdk" class="headerlink" title="安装jdk"></a>安装jdk</h2><p>　　最小化安装centos是没有包含任何jdk存在的，包括openjdk也是没有的，所以这里可以直接去官网下载最新的Jdk.</p>
-<h3 id="安装Wget"><a href="#安装Wget" class="headerlink" title="安装Wget"></a>安装Wget</h3><pre><code class="bash">sudo yum install wget
-</code></pre>
-<h3 id="安装JDK"><a href="#安装JDK" class="headerlink" title="安装JDK"></a>安装JDK</h3><p>　　在浏览器中找到jdk的官网和正确的版本下载地址，这里选用的是 <a href="http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html" target="_blank" rel="external">Java SE Development Kit 8u101</a>,找到<code>jdk-8u101-linux-x64.rpm</code>复制其下载地址，使用以下命令下载到centos中：</p>
-<pre><code class="bash">wget http://download.oracle.com/otn-pub/java/jdk/8u101-b13/jdk-8u101-linux-x64.rpm
-</code></pre>
-<p>　　下载完成后，使用rpm开始安装：</p>
-<pre><code class="bash">sudo rpm -ivh jdk-8u101-linux-x64.rpm
-</code></pre>
-<h2 id="安装tomcat6"><a href="#安装tomcat6" class="headerlink" title="安装tomcat6"></a>安装tomcat6</h2><h3 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h3><pre><code class="bash">wget http://mirrors.hust.edu.cn/apache/tomcat/tomcat-6/v6.0.45/bin/apache-tomcat-6.0.45.tar.gz
-</code></pre>
-<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p>　　首先解压到当前目录，使用<code>tar</code>命令解压到下载的目录。</p>
-<pre><code class="bash">tar -zxvf apache-tomcat-6.0.45.tar.gz
-</code></pre>
-<p>　　然后移动到根目录下，这使用root权限移动到跟目录，并且重命名为tomcat6。</p>
-<pre><code class="bash">sudo mv apache-tomcat-6.0.45 /tomcat6
-</code></pre>
-<h2 id="启动tomcat6"><a href="#启动tomcat6" class="headerlink" title="启动tomcat6"></a>启动tomcat6</h2><p>　　启动tomcat6比较容易，直接移动到tomcat目录下的Bin文件夹。里面有启动脚本，使用普通用户权限执行即可。</p>
-<pre><code class="bash">cd /tomcat6/bin
-./startup
-</code></pre>
+<h3 id="安装Wget"><a href="#安装Wget" class="headerlink" title="安装Wget"></a>安装Wget</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo yum install wget</div></pre></td></tr></table></figure>
+<h3 id="安装JDK"><a href="#安装JDK" class="headerlink" title="安装JDK"></a>安装JDK</h3><p>　　在浏览器中找到jdk的官网和正确的版本下载地址，这里选用的是 <a href="http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html" target="_blank" rel="external">Java SE Development Kit 8u101</a>,找到<code>jdk-8u101-linux-x64.rpm</code>复制其下载地址，使用以下命令下载到centos中：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">wget http://download.oracle.com/otn-pub/java/jdk/8u101-b13/jdk-8u101-linux-x64.rpm</div></pre></td></tr></table></figure></p>
+<p>　　下载完成后，使用rpm开始安装：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo rpm -ivh jdk-8u101-linux-x64.rpm</div></pre></td></tr></table></figure></p>
+<h2 id="安装tomcat6"><a href="#安装tomcat6" class="headerlink" title="安装tomcat6"></a>安装tomcat6</h2><h3 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">wget http://mirrors.hust.edu.cn/apache/tomcat/tomcat-6/v6.0.45/bin/apache-tomcat-6.0.45.tar.gz</div></pre></td></tr></table></figure>
+<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p>　　首先解压到当前目录，使用<code>tar</code>命令解压到下载的目录。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">tar -zxvf apache-tomcat-6.0.45.tar.gz</div></pre></td></tr></table></figure></p>
+<p>　　然后移动到根目录下，这使用root权限移动到跟目录，并且重命名为tomcat6。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo mv apache-tomcat-6.0.45 /tomcat6</div></pre></td></tr></table></figure></p>
+<h2 id="启动tomcat6"><a href="#启动tomcat6" class="headerlink" title="启动tomcat6"></a>启动tomcat6</h2><p>　　启动tomcat6比较容易，直接移动到tomcat目录下的Bin文件夹。里面有启动脚本，使用普通用户权限执行即可。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">cd</span> /tomcat6/bin</div><div class="line">./startup</div></pre></td></tr></table></figure></p>
 <p>　　这时候应该可以看到提示成功运行的信息。</p>
 <h2 id="访问tomcat6"><a href="#访问tomcat6" class="headerlink" title="访问tomcat6"></a>访问tomcat6</h2><p>　　访问tomcat6默认的端口是8080。使用<code>XXX.XXX.XXX.XXX:8080</code>就可以看到访问效果了。不需要关闭<code>iptables</code>。</p>
 <h1 id="安装完成后。"><a href="#安装完成后。" class="headerlink" title="安装完成后。"></a>安装完成后。</h1><p>　　啥也不会，也不会写jsp代码。发现没什么卵用。</p>
