@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://liaobinbin.com/"/>
-  <updated>2017-06-24T11:10:03.000Z</updated>
+  <updated>2017-06-27T15:50:08.000Z</updated>
   <id>https://liaobinbin.com/</id>
   
   <author>
@@ -20,16 +20,17 @@
     <link href="https://liaobinbin.com/2017/06/19/javascript-array-removal-is-repeated.html"/>
     <id>https://liaobinbin.com/2017/06/19/javascript-array-removal-is-repeated.html</id>
     <published>2017-06-19T13:20:08.000Z</published>
-    <updated>2017-06-24T11:10:03.000Z</updated>
+    <updated>2017-06-27T15:50:08.000Z</updated>
     
     <content type="html"><![CDATA[<p>最近在找工作，好几次面试都问过数组去重的问题。虽然问的都不一样，但是核心思想是没有变的。</p>
 <h2 id="第一种是比较常规的方法"><a href="#第一种是比较常规的方法" class="headerlink" title="第一种是比较常规的方法"></a>第一种是比较常规的方法</h2><p><strong>思路：</strong></p>
 <ol>
 <li>构建一个新的数组存放结果</li>
 <li>for循环中每次从原数组中取出一个元素，用这个元素循环与结果数组对比</li>
-<li>若结果数组中没有该元素，则存到结果数组中</li>
-</ol>
+<li>若结果数组中没有该元素，则存到结果数组中<a id="more"></a>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">Array</span>.prototype.unique1 = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line"> <span class="keyword">var</span> res = [<span class="keyword">this</span>[<span class="number">0</span>]];</div><div class="line"> <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">1</span>; i &lt; <span class="keyword">this</span>.length; i++)&#123;</div><div class="line">  <span class="keyword">var</span> repeat = <span class="literal">false</span>;</div><div class="line">  <span class="keyword">for</span>(<span class="keyword">var</span> j = <span class="number">0</span>; j &lt; res.length; j++)&#123;</div><div class="line">   <span class="keyword">if</span>(<span class="keyword">this</span>[i] == res[j])&#123;</div><div class="line">    repeat = <span class="literal">true</span>;</div><div class="line">    <span class="keyword">break</span>;</div><div class="line">   &#125;</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">if</span>(!repeat)&#123;</div><div class="line">   res.push(<span class="keyword">this</span>[i]);</div><div class="line">  &#125;</div><div class="line"> &#125;</div><div class="line"> <span class="keyword">return</span> res;</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> arr = [<span class="number">1</span>, <span class="string">'a'</span>, <span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'d'</span>, <span class="string">'e'</span>, <span class="string">'e'</span>, <span class="number">1</span>, <span class="number">0</span>]</div><div class="line">alert(arr.unique1());</div></pre></td></tr></table></figure>
+</li>
+</ol>
 <h2 id="第二种方法比上面的方法效率要高"><a href="#第二种方法比上面的方法效率要高" class="headerlink" title="第二种方法比上面的方法效率要高"></a>第二种方法比上面的方法效率要高</h2><p><strong>思路：</strong></p>
 <ol>
 <li>先将原数组进行排序</li>
@@ -56,7 +57,11 @@
     <summary type="html">
     
       &lt;p&gt;最近在找工作，好几次面试都问过数组去重的问题。虽然问的都不一样，但是核心思想是没有变的。&lt;/p&gt;
-&lt;h2 id=&quot;第一种是比较常规的方法&quot;&gt;&lt;a href=&quot;#第一种是比较常规的方法&quot; class=&quot;headerlink&quot; title=&quot;第一种是比较常规的方法&quot;&gt;&lt;/a&gt;第
+&lt;h2 id=&quot;第一种是比较常规的方法&quot;&gt;&lt;a href=&quot;#第一种是比较常规的方法&quot; class=&quot;headerlink&quot; title=&quot;第一种是比较常规的方法&quot;&gt;&lt;/a&gt;第一种是比较常规的方法&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;思路：&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;构建一个新的数组存放结果&lt;/li&gt;
+&lt;li&gt;for循环中每次从原数组中取出一个元素，用这个元素循环与结果数组对比&lt;/li&gt;
+&lt;li&gt;若结果数组中没有该元素，则存到结果数组中
     
     </summary>
     
@@ -76,20 +81,19 @@
     <link href="https://liaobinbin.com/2017/06/18/shorthand-javascript-techniques.html"/>
     <id>https://liaobinbin.com/2017/06/18/shorthand-javascript-techniques.html</id>
     <published>2017-06-18T12:57:16.000Z</published>
-    <updated>2017-06-27T12:53:24.000Z</updated>
+    <updated>2017-06-27T15:49:56.000Z</updated>
     
     <content type="html"><![CDATA[<p><strong>阅读此文章对于任何使用JavaScript的开发人员来说都是非常有必要的</strong>。我将这篇文章作为我使用JavaScript简化语法编码参考的重要来源已经很多年</p>
 <blockquote>
-<p><strong>2017年6月14日</strong>:本文基于ES6语法更新添加新的简写技巧。如果您想了解有关ES6更改的更多信息，<a href="https://www.sitepoint.com/premium/screencasts/a-look-into-es2016" target="_blank" rel="external">查看ES6相关内容</a>。</p>
-</blockquote>
-<h1 id="1-The-Ternary-Operator-三元运算符"><a href="#1-The-Ternary-Operator-三元运算符" class="headerlink" title="1. The Ternary Operator(三元运算符)"></a>1. The Ternary Operator(三元运算符)</h1><p>当你想在一行中编写<code>if..else</code>语句时，这将会是一个非常好的方式。</p>
+<p><strong>2017年6月14日</strong>:本文基于ES6语法更新添加新的简写技巧。如果您想了解有关ES6更改的更多信息，<a href="https://www.sitepoint.com/premium/screencasts/a-look-into-es2016" target="_blank" rel="external">查看ES6相关内容</a>。<br><a id="more"></a></p>
+<h1 id="1-The-Ternary-Operator-三元运算符"><a href="#1-The-Ternary-Operator-三元运算符" class="headerlink" title="1. The Ternary Operator(三元运算符)"></a>1. The Ternary Operator(三元运算符)</h1></blockquote>
+<p>当你想在一行中编写<code>if..else</code>语句时，这将会是一个非常好的方式。</p>
 <p>原版：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> x = <span class="number">20</span>;</div><div class="line"><span class="keyword">let</span> big;</div><div class="line"></div><div class="line"><span class="keyword">if</span> (x &gt; <span class="number">10</span>) &#123;</div><div class="line">    big = <span class="literal">true</span>;</div><div class="line">&#125; <span class="keyword">else</span> &#123;</div><div class="line">    big = <span class="literal">false</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>简版：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> big = x &gt; <span class="number">10</span> ? <span class="literal">true</span> : <span class="literal">false</span>;</div></pre></td></tr></table></figure>
 <p>你也可以嵌套<code>if</code>语句像这样：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> big = x &gt; <span class="number">10</span> ? <span class="string">" greater 10"</span> : x &lt; <span class="number">5</span> ? <span class="string">"less 5"</span> : <span class="string">"between 5 and 10"</span>;</div></pre></td></tr></table></figure>
-<a id="more"></a>
 <h1 id="2-Short-circuit-Evaluation-Shorthand-空值or未定义检查"><a href="#2-Short-circuit-Evaluation-Shorthand-空值or未定义检查" class="headerlink" title="2. Short-circuit Evaluation Shorthand(空值or未定义检查)"></a>2. Short-circuit Evaluation Shorthand(空值or未定义检查)</h1><p>将变量值分配给另一个变量时，可能需要确保源变量不为<code>null</code>，<code>undefined</code>或为<code>&#39;&#39;</code>。你可以使用多个条件来一个很长的<code>if</code>语句，也可以使用短路赋值。</p>
 <p>原版：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> (variable1 !== <span class="literal">null</span> || variable1 !== <span class="literal">undefined</span> || variable1 !== <span class="string">''</span>) &#123;</div><div class="line">     <span class="keyword">let</span> variable2 = variable1;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
@@ -209,15 +213,7 @@
     
       &lt;p&gt;&lt;strong&gt;阅读此文章对于任何使用JavaScript的开发人员来说都是非常有必要的&lt;/strong&gt;。我将这篇文章作为我使用JavaScript简化语法编码参考的重要来源已经很多年&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;&lt;strong&gt;2017年6月14日&lt;/strong&gt;:本文基于ES6语法更新添加新的简写技巧。如果您想了解有关ES6更改的更多信息，&lt;a href=&quot;https://www.sitepoint.com/premium/screencasts/a-look-into-es2016&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;查看ES6相关内容&lt;/a&gt;。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h1 id=&quot;1-The-Ternary-Operator-三元运算符&quot;&gt;&lt;a href=&quot;#1-The-Ternary-Operator-三元运算符&quot; class=&quot;headerlink&quot; title=&quot;1. The Ternary Operator(三元运算符)&quot;&gt;&lt;/a&gt;1. The Ternary Operator(三元运算符)&lt;/h1&gt;&lt;p&gt;当你想在一行中编写&lt;code&gt;if..else&lt;/code&gt;语句时，这将会是一个非常好的方式。&lt;/p&gt;
-&lt;p&gt;原版：&lt;/p&gt;
-&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;4&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;5&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;6&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;7&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;8&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;const&lt;/span&gt; x = &lt;span class=&quot;number&quot;&gt;20&lt;/span&gt;;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;let&lt;/span&gt; big;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; (x &amp;gt; &lt;span class=&quot;number&quot;&gt;10&lt;/span&gt;) &amp;#123;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    big = &lt;span class=&quot;literal&quot;&gt;true&lt;/span&gt;;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;#125; &lt;span class=&quot;keyword&quot;&gt;else&lt;/span&gt; &amp;#123;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    big = &lt;span class=&quot;literal&quot;&gt;false&lt;/span&gt;;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;#125;&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;简版：&lt;/p&gt;
-&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;const&lt;/span&gt; big = x &amp;gt; &lt;span class=&quot;number&quot;&gt;10&lt;/span&gt; ? &lt;span class=&quot;literal&quot;&gt;true&lt;/span&gt; : &lt;span class=&quot;literal&quot;&gt;false&lt;/span&gt;;&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;你也可以嵌套&lt;code&gt;if&lt;/code&gt;语句像这样：&lt;/p&gt;
-&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;const&lt;/span&gt; big = x &amp;gt; &lt;span class=&quot;number&quot;&gt;10&lt;/span&gt; ? &lt;span class=&quot;string&quot;&gt;&quot; greater 10&quot;&lt;/span&gt; : x &amp;lt; &lt;span class=&quot;number&quot;&gt;5&lt;/span&gt; ? &lt;span class=&quot;string&quot;&gt;&quot;less 5&quot;&lt;/span&gt; : &lt;span class=&quot;string&quot;&gt;&quot;between 5 and 10&quot;&lt;/span&gt;;&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;&lt;strong&gt;2017年6月14日&lt;/strong&gt;:本文基于ES6语法更新添加新的简写技巧。如果您想了解有关ES6更改的更多信息，&lt;a href=&quot;https://www.sitepoint.com/premium/screencasts/a-look-into-es2016&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;查看ES6相关内容&lt;/a&gt;。&lt;br&gt;
     
     </summary>
     

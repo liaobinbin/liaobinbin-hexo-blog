@@ -85,16 +85,15 @@
       
         <p><strong>阅读此文章对于任何使用JavaScript的开发人员来说都是非常有必要的</strong>。我将这篇文章作为我使用JavaScript简化语法编码参考的重要来源已经很多年</p>
 <blockquote>
-<p><strong>2017年6月14日</strong>:本文基于ES6语法更新添加新的简写技巧。如果您想了解有关ES6更改的更多信息，<a href="https://www.sitepoint.com/premium/screencasts/a-look-into-es2016" target="_blank" rel="external">查看ES6相关内容</a>。</p>
-</blockquote>
-<h1 id="1-The-Ternary-Operator-三元运算符"><a href="#1-The-Ternary-Operator-三元运算符" class="headerlink" title="1. The Ternary Operator(三元运算符)"></a>1. The Ternary Operator(三元运算符)</h1><p>当你想在一行中编写<code>if..else</code>语句时，这将会是一个非常好的方式。</p>
+<p><strong>2017年6月14日</strong>:本文基于ES6语法更新添加新的简写技巧。如果您想了解有关ES6更改的更多信息，<a href="https://www.sitepoint.com/premium/screencasts/a-look-into-es2016" target="_blank" rel="external">查看ES6相关内容</a>。<br><a id="more"></a></p>
+<h1 id="1-The-Ternary-Operator-三元运算符"><a href="#1-The-Ternary-Operator-三元运算符" class="headerlink" title="1. The Ternary Operator(三元运算符)"></a>1. The Ternary Operator(三元运算符)</h1></blockquote>
+<p>当你想在一行中编写<code>if..else</code>语句时，这将会是一个非常好的方式。</p>
 <p>原版：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> x = <span class="number">20</span>;</div><div class="line"><span class="keyword">let</span> big;</div><div class="line"></div><div class="line"><span class="keyword">if</span> (x &gt; <span class="number">10</span>) &#123;</div><div class="line">    big = <span class="literal">true</span>;</div><div class="line">&#125; <span class="keyword">else</span> &#123;</div><div class="line">    big = <span class="literal">false</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>简版：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> big = x &gt; <span class="number">10</span> ? <span class="literal">true</span> : <span class="literal">false</span>;</div></pre></td></tr></table></figure>
 <p>你也可以嵌套<code>if</code>语句像这样：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> big = x &gt; <span class="number">10</span> ? <span class="string">" greater 10"</span> : x &lt; <span class="number">5</span> ? <span class="string">"less 5"</span> : <span class="string">"between 5 and 10"</span>;</div></pre></td></tr></table></figure>
-<a id="more"></a>
 <h1 id="2-Short-circuit-Evaluation-Shorthand-空值or未定义检查"><a href="#2-Short-circuit-Evaluation-Shorthand-空值or未定义检查" class="headerlink" title="2. Short-circuit Evaluation Shorthand(空值or未定义检查)"></a>2. Short-circuit Evaluation Shorthand(空值or未定义检查)</h1><p>将变量值分配给另一个变量时，可能需要确保源变量不为<code>null</code>，<code>undefined</code>或为<code>&#39;&#39;</code>。你可以使用多个条件来一个很长的<code>if</code>语句，也可以使用短路赋值。</p>
 <p>原版：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> (variable1 !== <span class="literal">null</span> || variable1 !== <span class="literal">undefined</span> || variable1 !== <span class="string">''</span>) &#123;</div><div class="line">     <span class="keyword">let</span> variable2 = variable1;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
