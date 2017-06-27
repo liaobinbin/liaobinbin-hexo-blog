@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://liaobinbin.com/"/>
-  <updated>2017-06-27T16:31:16.000Z</updated>
+  <updated>2017-06-27T16:39:38.000Z</updated>
   <id>https://liaobinbin.com/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="https://liaobinbin.com/2017/06/28/mac-use-proxychains-for-git.html"/>
     <id>https://liaobinbin.com/2017/06/28/mac-use-proxychains-for-git.html</id>
     <published>2017-06-27T16:00:47.000Z</published>
-    <updated>2017-06-27T16:31:16.000Z</updated>
+    <updated>2017-06-27T16:39:38.000Z</updated>
     
     <content type="html"><![CDATA[<blockquote>
 <p>Note: 需要先在Mac上安装<code>shadowsocksX-NG</code>，并且配置自己的<code>shadowsocks</code>服务，最好是可以同时配置<code>kcptun</code>服务，这样的话可以得到更快的速度。<br><a id="more"></a><br>首先安装使用<code>brew</code>进行安装<code>proxychains-ng</code></p>
@@ -57,6 +57,8 @@
 &lt;p&gt;Note: 需要先在Mac上安装&lt;code&gt;shadowsocksX-NG&lt;/code&gt;，并且配置自己的&lt;code&gt;shadowsocks&lt;/code&gt;服务，最好是可以同时配置&lt;code&gt;kcptun&lt;/code&gt;服务，这样的话可以得到更快的速度。&lt;br&gt;
     
     </summary>
+    
+      <category term="Mac" scheme="https://liaobinbin.com/categories/Mac/"/>
     
     
       <category term="Mac" scheme="https://liaobinbin.com/tags/Mac/"/>
@@ -133,7 +135,7 @@
     <link href="https://liaobinbin.com/2017/06/18/shorthand-javascript-techniques.html"/>
     <id>https://liaobinbin.com/2017/06/18/shorthand-javascript-techniques.html</id>
     <published>2017-06-18T12:57:16.000Z</published>
-    <updated>2017-06-27T15:49:56.000Z</updated>
+    <updated>2017-06-27T16:39:45.000Z</updated>
     
     <content type="html"><![CDATA[<p><strong>阅读此文章对于任何使用JavaScript的开发人员来说都是非常有必要的</strong>。我将这篇文章作为我使用JavaScript简化语法编码参考的重要来源已经很多年</p>
 <blockquote>
@@ -269,6 +271,8 @@
     
     </summary>
     
+      <category term="前端" scheme="https://liaobinbin.com/categories/%E5%89%8D%E7%AB%AF/"/>
+    
     
       <category term="JavaScript" scheme="https://liaobinbin.com/tags/JavaScript/"/>
     
@@ -283,7 +287,7 @@
     <link href="https://liaobinbin.com/2017/06/14/use-linux-ss-for-my-iphone-of-lan-without-phone-client.html"/>
     <id>https://liaobinbin.com/2017/06/14/use-linux-ss-for-my-iphone-of-lan-without-phone-client.html</id>
     <published>2017-06-13T19:09:51.000Z</published>
-    <updated>2017-06-27T15:57:33.000Z</updated>
+    <updated>2017-06-27T16:39:58.000Z</updated>
     
     <content type="html"><![CDATA[<p>折腾这个的原因是因为在IOS下没有支持<code>kcptun</code>加速的ss客户端，而且我这个穷屌丝，买不起可以刷固件的路由器。<br>所以就只有想办法把linux系统中的ss共享到局域网，IOS可以局域网的代理进行加速。实现躺在床上高速看<code>youtube</code>的效果。<br>因为<code>windows</code>的ss客户端已经自带的允许来自局域网的连接的功能，然而Linux的ss却没有此功能。<br>所有只有另寻它径，在网上查找资料就找到了一个名为<code>meow</code>代理工具，可以讲sock5代理转为http代理。<br><a id="more"></a><br>老规矩上<code>gayhub</code>地址：<a href="https://github.com/renzhn/MEOW" target="_blank" rel="external">https://github.com/renzhn/MEOW</a></p>
 <h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p>根据帮助文档，这里我直接执行他所提供的脚本<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">curl -L git.io/meowproxy | bash</div></pre></td></tr></table></figure></p>
@@ -300,6 +304,8 @@
     
     </summary>
     
+      <category term="Linux" scheme="https://liaobinbin.com/categories/Linux/"/>
+    
     
       <category term="kcptun" scheme="https://liaobinbin.com/tags/kcptun/"/>
     
@@ -314,7 +320,7 @@
     <link href="https://liaobinbin.com/2017/03/10/linux-use-keptun-and-shadowsocks.html"/>
     <id>https://liaobinbin.com/2017/03/10/linux-use-keptun-and-shadowsocks.html</id>
     <published>2017-03-09T19:04:18.000Z</published>
-    <updated>2017-06-27T15:57:20.000Z</updated>
+    <updated>2017-06-27T16:39:29.000Z</updated>
     
     <content type="html"><![CDATA[<blockquote>
 <p>针对使用linux桌面版的用户和基于linux路由器的用户。</p>
@@ -347,6 +353,8 @@
     
     </summary>
     
+      <category term="Linux" scheme="https://liaobinbin.com/categories/Linux/"/>
+    
     
       <category term="linux" scheme="https://liaobinbin.com/tags/linux/"/>
     
@@ -361,7 +369,7 @@
     <link href="https://liaobinbin.com/2016/07/24/install-tomcat6-to-centos7.html"/>
     <id>https://liaobinbin.com/2016/07/24/install-tomcat6-to-centos7.html</id>
     <published>2016-07-23T18:54:24.000Z</published>
-    <updated>2017-06-13T19:01:40.000Z</updated>
+    <updated>2017-06-27T16:40:08.000Z</updated>
     
     <content type="html"><![CDATA[<blockquote>
 <p>因为部门老大的需要，所以部门老大让我在公司的服务器上面搭建一个linux 服务器。并且安装<code>tomcat 6</code>.其原因不详，我猜可能是他接的外水吧。</p>
@@ -399,6 +407,8 @@
     
     </summary>
     
+      <category term="Linux" scheme="https://liaobinbin.com/categories/Linux/"/>
+    
     
       <category term="linux" scheme="https://liaobinbin.com/tags/linux/"/>
     
@@ -413,7 +423,7 @@
     <link href="https://liaobinbin.com/2016/07/14/hexo-use-qiniu-image.html"/>
     <id>https://liaobinbin.com/2016/07/14/hexo-use-qiniu-image.html</id>
     <published>2016-07-13T18:50:33.000Z</published>
-    <updated>2017-06-13T18:52:15.000Z</updated>
+    <updated>2017-06-27T16:40:14.000Z</updated>
     
     <content type="html"><![CDATA[<blockquote>
 <p>因为hexo的博客静态网页文件是在本地生成，对于图片附件的支持不是很好，本来是用的官方的一个插件，但是那个插件在我使用固定连接后会有一个文件夹的问题存在，我没有时间去捣鼓，就去找了别的图床工具。</p>
@@ -432,6 +442,8 @@
     
     </summary>
     
+      <category term="Hexo" scheme="https://liaobinbin.com/categories/Hexo/"/>
+    
     
       <category term="hexo" scheme="https://liaobinbin.com/tags/hexo/"/>
     
@@ -446,7 +458,7 @@
     <link href="https://liaobinbin.com/2016/04/15/change-my-always-OS-to-OSX-MAC.html"/>
     <id>https://liaobinbin.com/2016/04/15/change-my-always-OS-to-OSX-MAC.html</id>
     <published>2016-04-14T18:45:43.000Z</published>
-    <updated>2017-06-13T18:49:57.000Z</updated>
+    <updated>2017-06-27T16:40:28.000Z</updated>
     
     <content type="html"><![CDATA[<blockquote>
 <p>宁静以致远，厚薄而积发</p>
@@ -487,6 +499,8 @@
     
     </summary>
     
+      <category term="Tools" scheme="https://liaobinbin.com/categories/Tools/"/>
+    
     
       <category term="mac" scheme="https://liaobinbin.com/tags/mac/"/>
     
@@ -501,7 +515,7 @@
     <link href="https://liaobinbin.com/2016/04/14/deploy-hexo-to-github-and-coding.html"/>
     <id>https://liaobinbin.com/2016/04/14/deploy-hexo-to-github-and-coding.html</id>
     <published>2016-04-13T18:41:00.000Z</published>
-    <updated>2017-06-13T18:43:34.000Z</updated>
+    <updated>2017-06-27T16:40:19.000Z</updated>
     
     <content type="html"><![CDATA[<p>　　其实一开始我的网站是部署在我公司的服务器上的，不过由于公司的香港服务器的机房停止了对大陆的接入线路，导致访问的时候会先到美国转一圈才能访问主机，还不如使用美国服务器了。<br><a id="more"></a><br>　　刚好在网上爬帖的时候，看到了一个把hexo部署到github和coding的<a href="http://www.jianshu.com/p/7ad9d3cd4d6e" target="_blank" rel="external">教程</a>，我之前的hexo都单独放过github和gitcafe。所以操作什么的都很轻松，重点是看到他使用dnspod的CNAME转发，分别让国内的用户访问coding源国外的用户访问github源，所以我觉得这样是非常好的。<br>　　于是我也折腾了一下，把Hexo跑了起来，不过就是这两个都不能像独立空间那样，可以使用自己的SSL证书，于是我刚申请的三年免费的沃通SSL证书就不知道何去何从了。<br>　　不过说真的，其实我不知道写什么，我估计是因为自己肚子里面没有什么墨水吧:) 词穷—。=</p>
 ]]></content>
@@ -511,6 +525,8 @@
       &lt;p&gt;　　其实一开始我的网站是部署在我公司的服务器上的，不过由于公司的香港服务器的机房停止了对大陆的接入线路，导致访问的时候会先到美国转一圈才能访问主机，还不如使用美国服务器了。&lt;br&gt;
     
     </summary>
+    
+      <category term="Hexo" scheme="https://liaobinbin.com/categories/Hexo/"/>
     
     
       <category term="hexo" scheme="https://liaobinbin.com/tags/hexo/"/>
