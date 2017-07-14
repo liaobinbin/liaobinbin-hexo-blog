@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://liaobinbin.com/should-i-use-javascript-closure.html</loc>
+    
+    <lastmod>2017-07-14T00:07:49.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://liaobinbin.com/404.html</loc>
     
     <lastmod>2017-07-06T14:04:53.000Z</lastmod>
@@ -9,70 +16,63 @@
   </url>
   
   <url>
-    <loc>https://liaobinbin.com/2017/07/02/should-i-use-javascript-closure.html</loc>
-    
-    <lastmod>2017-07-02T10:47:45.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://liaobinbin.com/2017/06/19/javascript-array-removal-is-repeated.html</loc>
+    <loc>https://liaobinbin.com/javascript-array-removal-is-repeated.html</loc>
     
     <lastmod>2017-07-02T10:47:03.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://liaobinbin.com/2016/04/15/change-my-always-OS-to-OSX-MAC.html</loc>
+    <loc>https://liaobinbin.com/change-my-always-OS-to-OSX-MAC.html</loc>
     
     <lastmod>2017-06-27T16:40:28.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://liaobinbin.com/2016/04/14/deploy-hexo-to-github-and-coding.html</loc>
+    <loc>https://liaobinbin.com/deploy-hexo-to-github-and-coding.html</loc>
     
     <lastmod>2017-06-27T16:40:19.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://liaobinbin.com/2016/07/14/hexo-use-qiniu-image.html</loc>
+    <loc>https://liaobinbin.com/hexo-use-qiniu-image.html</loc>
     
     <lastmod>2017-06-27T16:40:14.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://liaobinbin.com/2016/07/24/install-tomcat6-to-centos7.html</loc>
+    <loc>https://liaobinbin.com/install-tomcat6-to-centos7.html</loc>
     
     <lastmod>2017-06-27T16:40:08.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://liaobinbin.com/2017/06/14/use-linux-ss-for-my-iphone-of-lan-without-phone-client.html</loc>
+    <loc>https://liaobinbin.com/use-linux-ss-for-my-iphone-of-lan-without-phone-client.html</loc>
     
     <lastmod>2017-06-27T16:39:58.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://liaobinbin.com/2017/06/18/shorthand-javascript-techniques.html</loc>
+    <loc>https://liaobinbin.com/shorthand-javascript-techniques.html</loc>
     
     <lastmod>2017-06-27T16:39:45.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://liaobinbin.com/2017/06/28/mac-use-proxychains-for-git.html</loc>
+    <loc>https://liaobinbin.com/mac-use-proxychains-for-git.html</loc>
     
     <lastmod>2017-06-27T16:39:38.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://liaobinbin.com/2017/03/10/linux-use-keptun-and-shadowsocks.html</loc>
+    <loc>https://liaobinbin.com/linux-use-keptun-and-shadowsocks.html</loc>
     
     <lastmod>2017-06-27T16:39:29.000Z</lastmod>
     

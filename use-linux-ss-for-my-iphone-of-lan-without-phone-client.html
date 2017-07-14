@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next pisces use-motion" lang="zh-cn">
+<html class="theme-next pisces use-motion" lang="en">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -77,7 +77,7 @@
 <link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="linux,kcptun,shadowsocks," />
+  <meta name="keywords" content="kcptun,shadowsocks,ios," />
 
 
 
@@ -95,17 +95,17 @@
 
 
 
-<meta name="description" content="针对使用linux桌面版的用户和基于linux路由器的用户。  第一步：下载Kcptun可执行文件。Kcptun下载地址需要根据自己系统版本选择相应的软件版本进行下载，因为我的主机是64位的，所以我下载的是kcptun-linux-amd64-20170218.tar.gz">
-<meta name="keywords" content="linux,kcptun,shadowsocks">
+<meta name="description" content="折腾这个的原因是因为在IOS下没有支持kcptun加速的ss客户端，而且我这个穷屌丝，买不起可以刷固件的路由器。所以就只有想办法把linux系统中的ss共享到局域网，IOS可以局域网的代理进行加速。实现躺在床上高速看youtube的效果。因为windows的ss客户端已经自带的允许来自局域网的连接的功能，然而Linux的ss却没有此功能。所有只有另寻它径，在网上查找资料就找到了一个名为meow代理">
+<meta name="keywords" content="kcptun,shadowsocks,ios">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Linux用Kcptun和SS进行上网加速">
-<meta property="og:url" content="https://liaobinbin.com/2017/03/10/linux-use-keptun-and-shadowsocks.html">
+<meta property="og:title" content="使用linux系统的ss为局域网的iphone实现网络加速kcptun">
+<meta property="og:url" content="https://liaobinbin.com/use-linux-ss-for-my-iphone-of-lan-without-phone-client.html">
 <meta property="og:site_name" content="Bin&#39;s Blog">
-<meta property="og:description" content="针对使用linux桌面版的用户和基于linux路由器的用户。  第一步：下载Kcptun可执行文件。Kcptun下载地址需要根据自己系统版本选择相应的软件版本进行下载，因为我的主机是64位的，所以我下载的是kcptun-linux-amd64-20170218.tar.gz">
-<meta property="og:updated_time" content="2017-06-27T16:39:29.000Z">
+<meta property="og:description" content="折腾这个的原因是因为在IOS下没有支持kcptun加速的ss客户端，而且我这个穷屌丝，买不起可以刷固件的路由器。所以就只有想办法把linux系统中的ss共享到局域网，IOS可以局域网的代理进行加速。实现躺在床上高速看youtube的效果。因为windows的ss客户端已经自带的允许来自局域网的连接的功能，然而Linux的ss却没有此功能。所有只有另寻它径，在网上查找资料就找到了一个名为meow代理">
+<meta property="og:updated_time" content="2017-06-27T16:39:58.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Linux用Kcptun和SS进行上网加速">
-<meta name="twitter:description" content="针对使用linux桌面版的用户和基于linux路由器的用户。  第一步：下载Kcptun可执行文件。Kcptun下载地址需要根据自己系统版本选择相应的软件版本进行下载，因为我的主机是64位的，所以我下载的是kcptun-linux-amd64-20170218.tar.gz">
+<meta name="twitter:title" content="使用linux系统的ss为局域网的iphone实现网络加速kcptun">
+<meta name="twitter:description" content="折腾这个的原因是因为在IOS下没有支持kcptun加速的ss客户端，而且我这个穷屌丝，买不起可以刷固件的路由器。所以就只有想办法把linux系统中的ss共享到局域网，IOS可以局域网的代理进行加速。实现躺在床上高速看youtube的效果。因为windows的ss客户端已经自带的允许来自局域网的连接的功能，然而Linux的ss却没有此功能。所有只有另寻它径，在网上查找资料就找到了一个名为meow代理">
 
 
 
@@ -133,13 +133,13 @@
 
 
 
-  <link rel="canonical" href="https://liaobinbin.com/2017/03/10/linux-use-keptun-and-shadowsocks.html"/>
+  <link rel="canonical" href="https://liaobinbin.com/use-linux-ss-for-my-iphone-of-lan-without-phone-client.html"/>
 
 
 
 
 
-  <title>Linux用Kcptun和SS进行上网加速 | Bin's Blog</title>
+  <title>使用linux系统的ss为局域网的iphone实现网络加速kcptun | Bin's Blog</title>
   
 
 
@@ -157,7 +157,7 @@
 
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-cn">
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
 
   
   
@@ -205,7 +205,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Startseite
+            Home
           </a>
         </li>
       
@@ -215,7 +215,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archiv
+            Archives
           </a>
         </li>
       
@@ -258,7 +258,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://liaobinbin.com/2017/03/10/linux-use-keptun-and-shadowsocks.html">
+    <link itemprop="mainEntityOfPage" href="https://liaobinbin.com/use-linux-ss-for-my-iphone-of-lan-without-phone-client.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Bob Liao">
@@ -275,7 +275,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">Linux用Kcptun和SS进行上网加速</h2>
+          <h2 class="post-title" itemprop="name headline">使用linux系统的ss为局域网的iphone实现网络加速kcptun</h2>
         
 
         <div class="post-meta">
@@ -285,10 +285,10 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-03-10T03:04:18+08:00">
-                2017-03-10
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-06-14T03:09:51+08:00">
+                2017-06-14
               </time>
             
 
@@ -306,7 +306,7 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">in</span>
+                <span class="post-meta-item-text">In</span>
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
@@ -328,9 +328,9 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/03/10/linux-use-keptun-and-shadowsocks.html#comments" itemprop="discussionUrl">
+                <a href="/use-linux-ss-for-my-iphone-of-lan-without-phone-client.html#comments" itemprop="discussionUrl">
                   <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2017/03/10/linux-use-keptun-and-shadowsocks.html" itemprop="commentCount"></span>
+                        data-disqus-identifier="use-linux-ss-for-my-iphone-of-lan-without-phone-client.html" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -355,26 +355,13 @@
       
 
       
-        <blockquote>
-<p>针对使用linux桌面版的用户和基于linux路由器的用户。</p>
-</blockquote>
-<h2 id="第一步：下载Kcptun可执行文件。"><a href="#第一步：下载Kcptun可执行文件。" class="headerlink" title="第一步：下载Kcptun可执行文件。"></a>第一步：下载Kcptun可执行文件。</h2><p><a href="https://github.com/xtaci/kcptun/releases" target="_blank" rel="external">Kcptun下载地址</a><br>需要根据自己系统版本选择相应的软件版本进行下载，因为我的主机是64位的，所以我下载的是<a href="https://github.com/xtaci/kcptun/releases/download/v20170218/kcptun-linux-amd64-20170218.tar.gz" target="_blank" rel="external">kcptun-linux-amd64-20170218.tar.gz</a><br><a id="more"></a><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">tar -xzf  kcptun-linux-amd64-20170218.tar.gz</div></pre></td></tr></table></figure></p>
-<p>解压后你将会得到两个文件，一个是<code>server_linux_amd64</code>，另外一个是<code>client_linux_amd64</code>。作为客户端，我们当然应该使用<code>client_linux_amd64</code>。<br>执行下面的命令可以获取到帮助文档</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">./client_linux_amd64 -h</div></pre></td></tr></table></figure>
-<p>为了方便进行参数的设置，我这里使用其中<code>-c</code>的选项，这个选项将会让kcptun运行的时候调用一个<code>json</code>文件，在<code>json</code>文件里面有我们提前写好的服务器参数。</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">    "localaddr": ":8388", //本地使用的端口</div><div class="line">    "remoteaddr": "********:29900", //服务器的kcptun服务的ip地址加端口</div><div class="line">    "key": "*****", //你设定的加密密码</div><div class="line">    "crypt": "aes", //加密方式</div><div class="line">    "mode": "fast2", //加速模式</div><div class="line">    "conn": 1, //从这以下的参数，你需要根据你在服务器端的配置参数进行设置</div><div class="line">    "autoexpire": 60,</div><div class="line">    "mtu": 1350,</div><div class="line">    "sndwnd": 1024,</div><div class="line">    "rcvwnd": 1024,</div><div class="line">    "datashard": 10,</div><div class="line">    "parityshard": 3,</div><div class="line">    "dscp": 0,</div><div class="line">    "nocomp": false,</div><div class="line">    "acknodelay": false,</div><div class="line">    "nodelay": 0,</div><div class="line">    "interval": 20,</div><div class="line">    "resend": 2,</div><div class="line">    "nc": 1,</div><div class="line">    "sockbuf": 4194304,</div><div class="line">    "keepalive": 10</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>然后我讲这个文件保存为<code>myvps.json</code><br>在终端执行下面的命令就可以运行kcptun服务。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">./client_linux_amd64 -c myvps.json </div><div class="line"><span class="comment">#我是把该`json`文件存放在相同的路径下，如不同，则需要完整路径。</span></div></pre></td></tr></table></figure>
-<h2 id="第二步，关于ss的设置"><a href="#第二步，关于ss的设置" class="headerlink" title="第二步，关于ss的设置"></a>第二步，关于ss的设置</h2><p>执行完第一步的操作以后，在你的电脑或者是你的路由器就已经跑起了kcptun服务并且运行在”8388”端口上。<br>你需要把你的ss客户端配置文件进行修改，把原来的远程服务器IP地址改为<code>127.0.0.1</code>，并且修改原来的SS服务端口为<code>8388</code>，而SS里面的加密方式和密码还有SS服务器的本地端口则不需要修改。</p>
-<p>这样关于你浏览器的插件设置将不需要修改便可直接使用。<br>但是得到网速将会是以前很多倍。</p>
-<h2 id="完结，优化"><a href="#完结，优化" class="headerlink" title="完结，优化"></a>完结，优化</h2><h3 id="将SS用于命令行"><a href="#将SS用于命令行" class="headerlink" title="将SS用于命令行"></a>将SS用于命令行</h3><p>你需要用到一个工具室<code>proxychains</code><br>在配置文件的最后一行加上</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">socks5 127.0.0.1 1080</div></pre></td></tr></table></figure>
-<p>这样可以使你的git等命令也可以走代理的路线，大大的提高了从<code>github</code>下载速度。其他需要下载国外资源的命令也可以使用。</p>
-<p>命令用法：就在原有的命令的最前面加上<code>proxychains</code> <em>注意命令后面需要接一个空格</em></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">proxychains git <span class="built_in">clone</span> git://xxxxxxxxx</div></pre></td></tr></table></figure>
-<h3 id="开机自启动kcptun"><a href="#开机自启动kcptun" class="headerlink" title="开机自启动kcptun"></a>开机自启动kcptun</h3><p>我把自动启动的命令添加了加载图形界面后，实际上加入到系统自启会更好,所以我在我的<code>.xinitrc</code>中添加了以下代码<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">( ( sleep 2 &amp;amp;&amp;amp; /home/bob/Downloads/client_linux_amd64 -c /home/bob/Downloads/myvps.json ) &amp;amp; )</div></pre></td></tr></table></figure></p>
-<p>其中路径应该修改为你自己的文件的绝对路径。</p>
-<h2 id="结束"><a href="#结束" class="headerlink" title="结束"></a>结束</h2><p>撒花撒花撒花撒花撒花撒花撒花撒花撒花撒花撒花撒花撒花撒花！！！！</p>
+        <p>折腾这个的原因是因为在IOS下没有支持<code>kcptun</code>加速的ss客户端，而且我这个穷屌丝，买不起可以刷固件的路由器。<br>所以就只有想办法把linux系统中的ss共享到局域网，IOS可以局域网的代理进行加速。实现躺在床上高速看<code>youtube</code>的效果。<br>因为<code>windows</code>的ss客户端已经自带的允许来自局域网的连接的功能，然而Linux的ss却没有此功能。<br>所有只有另寻它径，在网上查找资料就找到了一个名为<code>meow</code>代理工具，可以讲sock5代理转为http代理。<br><a id="more"></a><br>老规矩上<code>gayhub</code>地址：<a href="https://github.com/renzhn/MEOW" target="_blank" rel="external">https://github.com/renzhn/MEOW</a></p>
+<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p>根据帮助文档，这里我直接执行他所提供的脚本<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">curl -L git.io/meowproxy | bash</div></pre></td></tr></table></figure></p>
+<p>这里会弹出一个提示框会让你输入安装的绝对路径，前提是该目录存在。<br>我填写的是<code>/home/bob/meow</code>。<br>安装的过程根据网络的因素可能时间会有点长，等待安装完成后。</p>
+<h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><p>可以在安装目录下找到一个可执行文件，使用<code>./MEOW</code>就可以执行。<br>它会自动调用<code>~/.meow/rc</code>这个配置文件。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">#############################</div><div class="line"># 监听地址，设为0.0.0.0可以监听所有端口，共享给局域网使用</div><div class="line">#############################</div><div class="line">listen = http://0.0.0.0:4411</div><div class="line">#############################</div><div class="line"># 指定二级代理</div><div class="line">#############################</div><div class="line"># 例子：</div><div class="line">#SOCKS5:</div><div class="line">proxy = socks5://127.0.0.1:1080</div><div class="line"># HTTP:</div><div class="line">#   proxy = http://127.0.0.1:8080</div><div class="line">#   proxy = http://user:password@127.0.0.1:8080</div><div class="line"># shadowsocks:</div><div class="line">#   proxy = ss://encrypt_method:password@1.2.3.4:8388</div><div class="line">#   支持的加密方法如下：</div><div class="line">#     aes-128-cfb, aes-192-cfb, aes-256-cfb,</div><div class="line">#     bf-cfb, cast5-cfb, des-cfb, rc4-md5,</div><div class="line">#     chacha20, salsa20, rc4, table</div></pre></td></tr></table></figure></p>
+<p>以上是我的配置文件，当跑起该服务后，将会在4411端口开放一个http代理服务。</p>
+<h3 id="IOS"><a href="#IOS" class="headerlink" title="IOS"></a>IOS</h3><p>手机端的设置，首先保证手机和linux在同一局域网，而且要注意防火墙不要拦截该端口，主要是针对linux。<br>手机可以在编辑WiFil里面的最下面，找到<code>HTTP代理</code>，设置为<code>手动</code>，填入你的linux的局域网ip地址和端口号。<br>不需要开启鉴定。</p>
+<h3 id="然后"><a href="#然后" class="headerlink" title="然后"></a>然后</h3><p>就愉快的玩耍吧。</p>
 
       
     </div>
@@ -403,11 +390,11 @@
     </li>
     <li class="post-copyright-link">
       <strong>Post link:</strong>
-      <a href="https://liaobinbin.com/2017/03/10/linux-use-keptun-and-shadowsocks.html" title="Linux用Kcptun和SS进行上网加速">https://liaobinbin.com/2017/03/10/linux-use-keptun-and-shadowsocks.html</a>
+      <a href="https://liaobinbin.com/use-linux-ss-for-my-iphone-of-lan-without-phone-client.html" title="使用linux系统的ss为局域网的iphone实现网络加速kcptun">https://liaobinbin.com/use-linux-ss-for-my-iphone-of-lan-without-phone-client.html</a>
     </li>
     <li class="post-copyright-license">
       <strong>Copyright Notice: </strong>
-      All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> unless stating additionally.
+      All articles are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> unless stating additionally.
     </li>
   </ul>
 
@@ -419,11 +406,11 @@
       
         <div class="post-tags">
           
-            <a href="/tags/linux/" rel="tag"># linux</a>
-          
             <a href="/tags/kcptun/" rel="tag"># kcptun</a>
           
             <a href="/tags/shadowsocks/" rel="tag"># shadowsocks</a>
+          
+            <a href="/tags/ios/" rel="tag"># ios</a>
           
         </div>
       
@@ -436,8 +423,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/07/24/install-tomcat6-to-centos7.html" rel="next" title="Linux VPS 搭建tomcat 6 基于centos 7">
-                <i class="fa fa-chevron-left"></i> Linux VPS 搭建tomcat 6 基于centos 7
+              <a href="/linux-use-keptun-and-shadowsocks.html" rel="next" title="Linux用Kcptun和SS进行上网加速">
+                <i class="fa fa-chevron-left"></i> Linux用Kcptun和SS进行上网加速
               </a>
             
           </div>
@@ -446,8 +433,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/06/14/use-linux-ss-for-my-iphone-of-lan-without-phone-client.html" rel="prev" title="使用linux系统的ss为局域网的iphone实现网络加速kcptun">
-                使用linux系统的ss为局域网的iphone实现网络加速kcptun <i class="fa fa-chevron-right"></i>
+              <a href="/shorthand-javascript-techniques.html" rel="prev" title="19个JavaScript编码中的简写语法">
+                19个JavaScript编码中的简写语法 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -504,10 +491,10 @@
       
         <ul class="sidebar-nav motion-element">
           <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            Inhaltsverzeichnis
+            Table of Contents
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview">
-            Übersicht
+            Overview
           </li>
         </ul>
       
@@ -528,7 +515,7 @@
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
                 <span class="site-state-item-count">10</span>
-                <span class="site-state-item-name">Artikel</span>
+                <span class="site-state-item-name">posts</span>
               </a>
             </div>
           
@@ -539,7 +526,7 @@
             <div class="site-state-item site-state-categories">
               
                 <span class="site-state-item-count">5</span>
-                <span class="site-state-item-name">Kategorien</span>
+                <span class="site-state-item-name">categories</span>
               
             </div>
           
@@ -550,7 +537,7 @@
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
                 <span class="site-state-item-count">25</span>
-                <span class="site-state-item-name">Tags</span>
+                <span class="site-state-item-name">tags</span>
               </a>
             </div>
           
@@ -620,7 +607,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#第一步：下载Kcptun可执行文件。"><span class="nav-number">1.</span> <span class="nav-text">第一步：下载Kcptun可执行文件。</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第二步，关于ss的设置"><span class="nav-number">2.</span> <span class="nav-text">第二步，关于ss的设置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#完结，优化"><span class="nav-number">3.</span> <span class="nav-text">完结，优化</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#将SS用于命令行"><span class="nav-number">3.1.</span> <span class="nav-text">将SS用于命令行</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#开机自启动kcptun"><span class="nav-number">3.2.</span> <span class="nav-text">开机自启动kcptun</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#结束"><span class="nav-number">4.</span> <span class="nav-text">结束</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#安装"><span class="nav-number">1.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用"><span class="nav-number">2.</span> <span class="nav-text">使用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#IOS"><span class="nav-number">3.</span> <span class="nav-text">IOS</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#然后"><span class="nav-number">4.</span> <span class="nav-text">然后</span></a></li></ol></div>
             
 
           </div>
@@ -652,7 +639,7 @@
 
 
 <div class="powered-by">
-  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
 </div>
 
 <div class="theme-info">
@@ -772,9 +759,9 @@
     
       <script type="text/javascript">
         var disqus_config = function () {
-          this.page.url = 'https://liaobinbin.com/2017/03/10/linux-use-keptun-and-shadowsocks.html';
-          this.page.identifier = '2017/03/10/linux-use-keptun-and-shadowsocks.html';
-          this.page.title = 'Linux用Kcptun和SS进行上网加速';
+          this.page.url = 'https://liaobinbin.com/use-linux-ss-for-my-iphone-of-lan-without-phone-client.html';
+          this.page.identifier = 'use-linux-ss-for-my-iphone-of-lan-without-phone-client.html';
+          this.page.title = '使用linux系统的ss为局域网的iphone实现网络加速kcptun';
         };
         var d = document, s = d.createElement('script');
         s.src = 'https://bobslogs.disqus.com/embed.js';
