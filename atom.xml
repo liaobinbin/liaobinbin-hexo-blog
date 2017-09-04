@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://liaobinbin.com/"/>
-  <updated>2017-07-14T00:07:49.000Z</updated>
+  <updated>2017-09-04T08:38:58.000Z</updated>
   <id>https://liaobinbin.com/</id>
   
   <author>
@@ -14,6 +14,57 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>vue数字输入框，输入自动并且同步转换为货币格式</title>
+    <link href="https://liaobinbin.com/vue-input-dollar-component.html"/>
+    <id>https://liaobinbin.com/vue-input-dollar-component.html</id>
+    <published>2017-09-04T08:38:07.000Z</published>
+    <updated>2017-09-04T08:38:58.000Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote>
+<p>小弟我没有Vue的开发经验，只是前几天面试的时候。公司给我出了这么一个题，我就一边看文档一边自己写了一下。<br>代码风格没有，就是想到啥就写了啥。</p>
+</blockquote>
+<p>可控制输入的最大值。</p>
+<p>这个组件主要是利用了VUE的数据双向绑定。</p>
+<p><img src="https://ypy.w3cvip.org/photo/2017/1b7a4ea9-b36d-4757-bfc7-ebc45e5f69a7.png!large" alt="逻辑图"></p>
+<p>通过<code>watch</code>来监听Input所绑定的数据，该数据的变化触发我的<code>saveNum</code>方法。</p>
+<p><code>saveNum</code> 中又分别调用以下方法：</p>
+<ol>
+<li><code>toNumber</code> //目的在于将输入框的内容去掉$以及,,然后得到一个浮点型数字</li>
+<li><code>formatMoney</code> // 把数字格式化成货币形式<ul>
+<li>拿到整数部分进行一个长度大于3的判断</li>
+<li>再把获取到长度除以3进行求余</li>
+<li>把整数部分转为字符串后，利用substr方法能拿到从0到余数位置的这段字符</li>
+<li>然后再把剩下的字符串三个一组进行划分，并且在其后面添加,号</li>
+<li>最后是小数部分不等于0的话，先用<code>toFixed(2)</code>保留两位小数，再把小数转成字符串并且从位置1开始截取，相当于删除了小数的0开头，得到一个.12形式的字符串</li>
+<li>最后把三个字符串拼接起来返回</li>
+<li><code>toNumber</code> 可以得到一个数字，那么把值存进<code>moneyNum</code>中，<code>moneyNum</code>只绑定了一个p的元素，暂时作为显示效果用。</li>
+</ul>
+</li>
+</ol>
+<p>然后使用<code>formatMoney</code> 把<code>moneyNum</code>的值格式化以后 返回得到一个 货币字符串，再把这个字符串赋值给<code>money</code>.</p>
+<p>因为input使用了<code>v-model</code>来绑定<code>money</code>这个值，所以当<code>money</code>变化的时候会把结果显示在输入框内。</p>
+<figure class="highlight"><table><tr><td class="code"><pre><div class="line">&lt;template&gt;</div><div class="line">  &lt;div class="money"&gt;</div><div class="line">    &lt;input type="text" v-model="money"&gt;</div><div class="line">    &lt;p&gt;&#123;&#123; moneyNum&#125;&#125;&lt;/p&gt;</div><div class="line">  &lt;/div&gt;</div><div class="line">&lt;/template&gt;</div><div class="line"></div><div class="line">&lt;script&gt;</div><div class="line">export default &#123;</div><div class="line">  name: 'moneyinput',</div><div class="line">  data () &#123;</div><div class="line">    return &#123;</div><div class="line">      money: "",</div><div class="line">      moneyNum: 0,</div><div class="line">      maxValue: 9999999</div><div class="line">    &#125;</div><div class="line">  &#125;,</div><div class="line">  methods: &#123;</div><div class="line">    formatMoney: function(number)&#123;</div><div class="line">      if(!number)&#123;</div><div class="line">        return '';</div><div class="line">      &#125;</div><div class="line">      // 拿到整数部分</div><div class="line">      let i = parseInt(number.toFixed(2), 10);</div><div class="line">      let dec = number - i;</div><div class="line">      // 整除3的时候补上一个分隔符</div><div class="line">      let j = (j = i.length) &gt; 3 ? j % 3 : 0; //拿到余数，从0到余数开始加分隔符</div><div class="line">      return "$" + (j ? i.toString().substr(0, j) + "," : "") + i.toString().substr(j).replace(/(\d&#123;3&#125;)(?=\d)/g, "$1" + ",") + (dec != 0 ? parseFloat(dec.toFixed(2)).toString().slice(1) : "");</div><div class="line">    &#125;,</div><div class="line"></div><div class="line">    toNumber: function(str) &#123;</div><div class="line">      return str.replace(/^\$/, '').replace(/,/g, '');</div><div class="line">    &#125;,</div><div class="line">    saveNum: function(input)&#123;</div><div class="line"></div><div class="line">      // 存值为数字</div><div class="line">      input == '' ? this.moneyNum = 0 :this.moneyNum = parseFloat(this.toNumber(this.money));</div><div class="line"></div><div class="line">      // 限制最大值</div><div class="line">      this.moneyNum = this.moneyNum &gt; this.maxValue ? this.maxValue : this.moneyNum;</div><div class="line"></div><div class="line">      //防止输入.的时候更新数据</div><div class="line">      if(input.substr(input.length - 1) == ".") return;</div><div class="line"></div><div class="line">      // 把数值格式化以后还原到input框内</div><div class="line">      this.money = this.formatMoney(this.moneyNum);</div><div class="line">    &#125;</div><div class="line">  &#125;,</div><div class="line">  watch: &#123;</div><div class="line">    //监听money的值，发生改变调用saveNum</div><div class="line">    money: 'saveNum'</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">&lt;/script&gt;</div><div class="line"></div><div class="line">&lt;style&gt;</div><div class="line">input &#123;</div><div class="line">  text-align: right;</div><div class="line">&#125;</div><div class="line">&lt;/style&gt;</div></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;小弟我没有Vue的开发经验，只是前几天面试的时候。公司给我出了这么一个题，我就一边看文档一边自己写了一下。&lt;br&gt;代码风格没有，就是想到啥就写了啥。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;可控制输入的最大值。&lt;/p&gt;
+&lt;p&gt;这个组件主要是利用了
+    
+    </summary>
+    
+    
+      <category term="vue" scheme="https://liaobinbin.com/tags/vue/"/>
+    
+      <category term="javascript" scheme="https://liaobinbin.com/tags/javascript/"/>
+    
+      <category term="input" scheme="https://liaobinbin.com/tags/input/"/>
+    
+  </entry>
   
   <entry>
     <title>闭包有啥用？闭包的应用场景</title>

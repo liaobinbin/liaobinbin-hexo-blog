@@ -77,7 +77,7 @@
 <link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="hexo,coding,github," />
+  <meta name="keywords" content="vue,javascript,input," />
 
 
 
@@ -95,17 +95,19 @@
 
 
 
-<meta name="description" content="其实一开始我的网站是部署在我公司的服务器上的，不过由于公司的香港服务器的机房停止了对大陆的接入线路，导致访问的时候会先到美国转一圈才能访问主机，还不如使用美国服务器了。">
-<meta name="keywords" content="hexo,coding,github">
+<meta name="description" content="小弟我没有Vue的开发经验，只是前几天面试的时候。公司给我出了这么一个题，我就一边看文档一边自己写了一下。代码风格没有，就是想到啥就写了啥。  可控制输入的最大值。 这个组件主要是利用了VUE的数据双向绑定。  通过watch来监听Input所绑定的数据，该数据的变化触发我的saveNum方法。 saveNum 中又分别调用以下方法：  toNumber //目的在于将输入框的内容去掉$以及,,">
+<meta name="keywords" content="vue,javascript,input">
 <meta property="og:type" content="article">
-<meta property="og:title" content="部署HEXO同时发布到github和coding">
-<meta property="og:url" content="https://liaobinbin.com/deploy-hexo-to-github-and-coding.html">
+<meta property="og:title" content="vue数字输入框，输入自动并且同步转换为货币格式">
+<meta property="og:url" content="https://liaobinbin.com/vue-input-dollar-component.html">
 <meta property="og:site_name" content="Bin&#39;s Blog">
-<meta property="og:description" content="其实一开始我的网站是部署在我公司的服务器上的，不过由于公司的香港服务器的机房停止了对大陆的接入线路，导致访问的时候会先到美国转一圈才能访问主机，还不如使用美国服务器了。">
-<meta property="og:updated_time" content="2017-06-27T16:40:19.000Z">
+<meta property="og:description" content="小弟我没有Vue的开发经验，只是前几天面试的时候。公司给我出了这么一个题，我就一边看文档一边自己写了一下。代码风格没有，就是想到啥就写了啥。  可控制输入的最大值。 这个组件主要是利用了VUE的数据双向绑定。  通过watch来监听Input所绑定的数据，该数据的变化触发我的saveNum方法。 saveNum 中又分别调用以下方法：  toNumber //目的在于将输入框的内容去掉$以及,,">
+<meta property="og:image" content="https://ypy.w3cvip.org/photo/2017/1b7a4ea9-b36d-4757-bfc7-ebc45e5f69a7.png!large">
+<meta property="og:updated_time" content="2017-09-04T08:38:58.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="部署HEXO同时发布到github和coding">
-<meta name="twitter:description" content="其实一开始我的网站是部署在我公司的服务器上的，不过由于公司的香港服务器的机房停止了对大陆的接入线路，导致访问的时候会先到美国转一圈才能访问主机，还不如使用美国服务器了。">
+<meta name="twitter:title" content="vue数字输入框，输入自动并且同步转换为货币格式">
+<meta name="twitter:description" content="小弟我没有Vue的开发经验，只是前几天面试的时候。公司给我出了这么一个题，我就一边看文档一边自己写了一下。代码风格没有，就是想到啥就写了啥。  可控制输入的最大值。 这个组件主要是利用了VUE的数据双向绑定。  通过watch来监听Input所绑定的数据，该数据的变化触发我的saveNum方法。 saveNum 中又分别调用以下方法：  toNumber //目的在于将输入框的内容去掉$以及,,">
+<meta name="twitter:image" content="https://ypy.w3cvip.org/photo/2017/1b7a4ea9-b36d-4757-bfc7-ebc45e5f69a7.png!large">
 
 
 
@@ -133,13 +135,13 @@
 
 
 
-  <link rel="canonical" href="https://liaobinbin.com/deploy-hexo-to-github-and-coding.html"/>
+  <link rel="canonical" href="https://liaobinbin.com/vue-input-dollar-component.html"/>
 
 
 
 
 
-  <title>部署HEXO同时发布到github和coding | Bin's Blog</title>
+  <title>vue数字输入框，输入自动并且同步转换为货币格式 | Bin's Blog</title>
   
 
 
@@ -258,7 +260,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://liaobinbin.com/deploy-hexo-to-github-and-coding.html">
+    <link itemprop="mainEntityOfPage" href="https://liaobinbin.com/vue-input-dollar-component.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Bob Liao">
@@ -275,7 +277,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">部署HEXO同时发布到github和coding</h2>
+          <h2 class="post-title" itemprop="name headline">vue数字输入框，输入自动并且同步转换为货币格式</h2>
         
 
         <div class="post-meta">
@@ -287,8 +289,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-04-14T02:41:00+08:00">
-                2016-04-14
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-09-04T16:38:07+08:00">
+                2017-09-04
               </time>
             
 
@@ -298,28 +300,6 @@
           </span>
 
           
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Hexo/" itemprop="url" rel="index">
-                    <span itemprop="name">Hexo</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
 
           
             
@@ -328,9 +308,9 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/deploy-hexo-to-github-and-coding.html#comments" itemprop="discussionUrl">
+                <a href="/vue-input-dollar-component.html#comments" itemprop="discussionUrl">
                   <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="deploy-hexo-to-github-and-coding.html" itemprop="commentCount"></span>
+                        data-disqus-identifier="vue-input-dollar-component.html" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -355,8 +335,30 @@
       
 
       
-        <p>　　其实一开始我的网站是部署在我公司的服务器上的，不过由于公司的香港服务器的机房停止了对大陆的接入线路，导致访问的时候会先到美国转一圈才能访问主机，还不如使用美国服务器了。<br><a id="more"></a><br>　　刚好在网上爬帖的时候，看到了一个把hexo部署到github和coding的<a href="http://www.jianshu.com/p/7ad9d3cd4d6e" target="_blank" rel="external">教程</a>，我之前的hexo都单独放过github和gitcafe。所以操作什么的都很轻松，重点是看到他使用dnspod的CNAME转发，分别让国内的用户访问coding源国外的用户访问github源，所以我觉得这样是非常好的。<br>　　于是我也折腾了一下，把Hexo跑了起来，不过就是这两个都不能像独立空间那样，可以使用自己的SSL证书，于是我刚申请的三年免费的沃通SSL证书就不知道何去何从了。<br>　　不过说真的，其实我不知道写什么，我估计是因为自己肚子里面没有什么墨水吧:) 词穷—。=</p>
-
+        <blockquote>
+<p>小弟我没有Vue的开发经验，只是前几天面试的时候。公司给我出了这么一个题，我就一边看文档一边自己写了一下。<br>代码风格没有，就是想到啥就写了啥。</p>
+</blockquote>
+<p>可控制输入的最大值。</p>
+<p>这个组件主要是利用了VUE的数据双向绑定。</p>
+<p><img src="https://ypy.w3cvip.org/photo/2017/1b7a4ea9-b36d-4757-bfc7-ebc45e5f69a7.png!large" alt="逻辑图"></p>
+<p>通过<code>watch</code>来监听Input所绑定的数据，该数据的变化触发我的<code>saveNum</code>方法。</p>
+<p><code>saveNum</code> 中又分别调用以下方法：</p>
+<ol>
+<li><code>toNumber</code> //目的在于将输入框的内容去掉$以及,,然后得到一个浮点型数字</li>
+<li><code>formatMoney</code> // 把数字格式化成货币形式<ul>
+<li>拿到整数部分进行一个长度大于3的判断</li>
+<li>再把获取到长度除以3进行求余</li>
+<li>把整数部分转为字符串后，利用substr方法能拿到从0到余数位置的这段字符</li>
+<li>然后再把剩下的字符串三个一组进行划分，并且在其后面添加,号</li>
+<li>最后是小数部分不等于0的话，先用<code>toFixed(2)</code>保留两位小数，再把小数转成字符串并且从位置1开始截取，相当于删除了小数的0开头，得到一个.12形式的字符串</li>
+<li>最后把三个字符串拼接起来返回</li>
+<li><code>toNumber</code> 可以得到一个数字，那么把值存进<code>moneyNum</code>中，<code>moneyNum</code>只绑定了一个p的元素，暂时作为显示效果用。</li>
+</ul>
+</li>
+</ol>
+<p>然后使用<code>formatMoney</code> 把<code>moneyNum</code>的值格式化以后 返回得到一个 货币字符串，再把这个字符串赋值给<code>money</code>.</p>
+<p>因为input使用了<code>v-model</code>来绑定<code>money</code>这个值，所以当<code>money</code>变化的时候会把结果显示在输入框内。</p>
+<figure class="highlight"><table><tr><td class="code"><pre><div class="line">&lt;template&gt;</div><div class="line">  &lt;div class="money"&gt;</div><div class="line">    &lt;input type="text" v-model="money"&gt;</div><div class="line">    &lt;p&gt;&#123;&#123; moneyNum&#125;&#125;&lt;/p&gt;</div><div class="line">  &lt;/div&gt;</div><div class="line">&lt;/template&gt;</div><div class="line"></div><div class="line">&lt;script&gt;</div><div class="line">export default &#123;</div><div class="line">  name: 'moneyinput',</div><div class="line">  data () &#123;</div><div class="line">    return &#123;</div><div class="line">      money: "",</div><div class="line">      moneyNum: 0,</div><div class="line">      maxValue: 9999999</div><div class="line">    &#125;</div><div class="line">  &#125;,</div><div class="line">  methods: &#123;</div><div class="line">    formatMoney: function(number)&#123;</div><div class="line">      if(!number)&#123;</div><div class="line">        return '';</div><div class="line">      &#125;</div><div class="line">      // 拿到整数部分</div><div class="line">      let i = parseInt(number.toFixed(2), 10);</div><div class="line">      let dec = number - i;</div><div class="line">      // 整除3的时候补上一个分隔符</div><div class="line">      let j = (j = i.length) &gt; 3 ? j % 3 : 0; //拿到余数，从0到余数开始加分隔符</div><div class="line">      return "$" + (j ? i.toString().substr(0, j) + "," : "") + i.toString().substr(j).replace(/(\d&#123;3&#125;)(?=\d)/g, "$1" + ",") + (dec != 0 ? parseFloat(dec.toFixed(2)).toString().slice(1) : "");</div><div class="line">    &#125;,</div><div class="line"></div><div class="line">    toNumber: function(str) &#123;</div><div class="line">      return str.replace(/^\$/, '').replace(/,/g, '');</div><div class="line">    &#125;,</div><div class="line">    saveNum: function(input)&#123;</div><div class="line"></div><div class="line">      // 存值为数字</div><div class="line">      input == '' ? this.moneyNum = 0 :this.moneyNum = parseFloat(this.toNumber(this.money));</div><div class="line"></div><div class="line">      // 限制最大值</div><div class="line">      this.moneyNum = this.moneyNum &gt; this.maxValue ? this.maxValue : this.moneyNum;</div><div class="line"></div><div class="line">      //防止输入.的时候更新数据</div><div class="line">      if(input.substr(input.length - 1) == ".") return;</div><div class="line"></div><div class="line">      // 把数值格式化以后还原到input框内</div><div class="line">      this.money = this.formatMoney(this.moneyNum);</div><div class="line">    &#125;</div><div class="line">  &#125;,</div><div class="line">  watch: &#123;</div><div class="line">    //监听money的值，发生改变调用saveNum</div><div class="line">    money: 'saveNum'</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">&lt;/script&gt;</div><div class="line"></div><div class="line">&lt;style&gt;</div><div class="line">input &#123;</div><div class="line">  text-align: right;</div><div class="line">&#125;</div><div class="line">&lt;/style&gt;</div></pre></td></tr></table></figure>
       
     </div>
 
@@ -384,7 +386,7 @@
     </li>
     <li class="post-copyright-link">
       <strong>Post link:</strong>
-      <a href="https://liaobinbin.com/deploy-hexo-to-github-and-coding.html" title="部署HEXO同时发布到github和coding">https://liaobinbin.com/deploy-hexo-to-github-and-coding.html</a>
+      <a href="https://liaobinbin.com/vue-input-dollar-component.html" title="vue数字输入框，输入自动并且同步转换为货币格式">https://liaobinbin.com/vue-input-dollar-component.html</a>
     </li>
     <li class="post-copyright-license">
       <strong>Copyright Notice: </strong>
@@ -400,11 +402,11 @@
       
         <div class="post-tags">
           
-            <a href="/tags/hexo/" rel="tag"># hexo</a>
+            <a href="/tags/vue/" rel="tag"># vue</a>
           
-            <a href="/tags/coding/" rel="tag"># coding</a>
+            <a href="/tags/javascript/" rel="tag"># javascript</a>
           
-            <a href="/tags/github/" rel="tag"># github</a>
+            <a href="/tags/input/" rel="tag"># input</a>
           
         </div>
       
@@ -417,15 +419,15 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/should-i-use-javascript-closure.html" rel="next" title="闭包有啥用？闭包的应用场景">
+                <i class="fa fa-chevron-left"></i> 闭包有啥用？闭包的应用场景
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/change-my-always-OS-to-OSX-MAC.html" rel="prev" title="将常用系统迁移到MAC">
-                将常用系统迁移到MAC <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -724,9 +726,9 @@
     
       <script type="text/javascript">
         var disqus_config = function () {
-          this.page.url = 'https://liaobinbin.com/deploy-hexo-to-github-and-coding.html';
-          this.page.identifier = 'deploy-hexo-to-github-and-coding.html';
-          this.page.title = '部署HEXO同时发布到github和coding';
+          this.page.url = 'https://liaobinbin.com/vue-input-dollar-component.html';
+          this.page.identifier = 'vue-input-dollar-component.html';
+          this.page.title = 'vue数字输入框，输入自动并且同步转换为货币格式';
         };
         var d = document, s = d.createElement('script');
         s.src = 'https://bobslogs.disqus.com/embed.js';
